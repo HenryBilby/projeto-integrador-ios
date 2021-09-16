@@ -1,4 +1,4 @@
 # projeto-integrador-ios
 Integrantes do projeto:
 Henry Miller
-Sara Felix
+Sara B S Felix
