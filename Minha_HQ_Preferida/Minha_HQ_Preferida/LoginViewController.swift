@@ -9,7 +9,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    let serviceLogin = ServiceLogin()
+    let loginViewModel = LoginViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,14 +18,20 @@ class LoginViewController: UIViewController {
 
 
     @IBAction func actionLoginWithFacebook(_ sender: Any) {
-        if serviceLogin.loginWithFacebookIsValid() {
-            
+        if loginViewModel.loginWithFacebookIsValid() {
+            performSegue(withIdentifier: "selectCharacterSegue", sender: sender)
         }
     }
     
     
     @IBAction func actionLoginWithGoogle(_ sender: Any) {
-        if serviceLogin.loginWithGoogleIsValid(){
+        if loginViewModel.loginWithGoogleIsValid(){
+            performSegue(withIdentifier: "selectCharacterSegue", sender: sender)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "selectCharacterSegue" {
             
         }
     }
