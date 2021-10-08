@@ -25,6 +25,7 @@
 		E0874250270F8F8A00BFE8F9 /* SelectCharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E087424F270F8F8A00BFE8F9 /* SelectCharacterViewModel.swift */; };
 		E0874252270F905D00BFE8F9 /* ServiceCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0874251270F905D00BFE8F9 /* ServiceCharacter.swift */; };
 		E0874256270F9EDE00BFE8F9 /* CharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0874255270F9EDE00BFE8F9 /* CharacterCollectionViewCell.swift */; };
+		E087425A2710798300BFE8F9 /* ShowSelectedCharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08742592710798300BFE8F9 /* ShowSelectedCharactersViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		E087424F270F8F8A00BFE8F9 /* SelectCharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCharacterViewModel.swift; sourceTree = "<group>"; };
 		E0874251270F905D00BFE8F9 /* ServiceCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCharacter.swift; sourceTree = "<group>"; };
 		E0874255270F9EDE00BFE8F9 /* CharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewCell.swift; sourceTree = "<group>"; };
+		E08742592710798300BFE8F9 /* ShowSelectedCharactersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSelectedCharactersViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 				E087421B270F39F100BFE8F9 /* LaunchScreen.storyboard */,
 				E087421E270F39F100BFE8F9 /* Info.plist */,
 				E087424D270F827F00BFE8F9 /* SelectCharacterViewController.swift */,
+				E08742592710798300BFE8F9 /* ShowSelectedCharactersViewController.swift */,
 			);
 			path = Minha_HQ_Preferida;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				E0874244270F4A5500BFE8F9 /* MarvelApiKey.swift in Sources */,
 				E0874215270F39EF00BFE8F9 /* LoginViewController.swift in Sources */,
 				E087424A270F7C2100BFE8F9 /* ServiceLogin.swift in Sources */,
+				E087425A2710798300BFE8F9 /* ShowSelectedCharactersViewController.swift in Sources */,
 				E0874252270F905D00BFE8F9 /* ServiceCharacter.swift in Sources */,
 				E0874246270F664D00BFE8F9 /* Thumbnail.swift in Sources */,
 				E087424C270F804B00BFE8F9 /* LoginViewModel.swift in Sources */,

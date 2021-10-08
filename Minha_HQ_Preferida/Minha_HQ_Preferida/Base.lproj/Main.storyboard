@@ -87,7 +87,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="epJ-Vv-A1A">
-                                <rect key="frame" x="16" y="186" width="382" height="660"/>
+                                <rect key="frame" x="16" y="186" width="382" height="578"/>
                                 <color key="backgroundColor" red="0.98039215800000001" green="0.88627451660000001" blue="0.35686278339999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xUA-Ae-3Zy">
                                     <size key="itemSize" width="128" height="128"/>
@@ -120,14 +120,31 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X83-aC-54h">
+                                <rect key="frame" x="130.5" y="780" width="153" height="66"/>
+                                <color key="backgroundColor" red="0.98039215800000001" green="0.88627451660000001" blue="0.35686278339999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="66" id="Mym-s7-qsK"/>
+                                    <constraint firstAttribute="width" constant="153" id="zP9-kp-gSZ"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Avançar">
+                                    <color key="titleColor" red="0.8078432083" green="0.20392158630000001" blue="0.1607843041" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="actionAvancarButton:" destination="IQH-Ds-LY3" eventType="touchUpInside" id="Fw7-d2-AKH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="I1s-re-t7n"/>
                         <color key="backgroundColor" red="0.87843137250000003" green="0.098039215690000001" blue="0.098039215690000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="X83-aC-54h" firstAttribute="top" secondItem="epJ-Vv-A1A" secondAttribute="bottom" constant="16" id="4Fh-go-hFO"/>
                             <constraint firstItem="epJ-Vv-A1A" firstAttribute="leading" secondItem="I1s-re-t7n" secondAttribute="leading" constant="16" id="4Us-Nk-Leg"/>
                             <constraint firstItem="vIW-Rd-iMw" firstAttribute="leading" secondItem="I1s-re-t7n" secondAttribute="leading" constant="16" id="Bqb-hs-M5F"/>
-                            <constraint firstItem="I1s-re-t7n" firstAttribute="bottom" secondItem="epJ-Vv-A1A" secondAttribute="bottom" constant="16" id="DGn-1w-B4w"/>
+                            <constraint firstItem="X83-aC-54h" firstAttribute="centerX" secondItem="I1s-re-t7n" secondAttribute="centerX" id="Dbb-Df-PVu"/>
                             <constraint firstItem="I1s-re-t7n" firstAttribute="trailing" secondItem="vIW-Rd-iMw" secondAttribute="trailing" constant="16" id="NFW-9l-FUj"/>
+                            <constraint firstItem="I1s-re-t7n" firstAttribute="bottom" secondItem="X83-aC-54h" secondAttribute="bottom" constant="16" id="PMW-bH-5eR"/>
                             <constraint firstItem="epJ-Vv-A1A" firstAttribute="top" secondItem="vIW-Rd-iMw" secondAttribute="bottom" constant="16" id="g9o-2e-jM2"/>
                             <constraint firstItem="vIW-Rd-iMw" firstAttribute="top" secondItem="I1s-re-t7n" secondAttribute="top" constant="16" id="jaJ-8V-ccr"/>
                             <constraint firstItem="I1s-re-t7n" firstAttribute="trailing" secondItem="epJ-Vv-A1A" secondAttribute="trailing" constant="16" id="xMW-Bd-Zje"/>
@@ -135,13 +152,31 @@
                     </view>
                     <navigationItem key="navigationItem" id="XId-eN-5GE"/>
                     <connections>
+                        <outlet property="avancarButton" destination="X83-aC-54h" id="bQ5-If-jB8"/>
                         <outlet property="selectCharacterCollectioView" destination="epJ-Vv-A1A" id="hZD-b0-F1g"/>
                         <outlet property="selectCharacterLabel" destination="vIW-Rd-iMw" id="Nfh-53-gxA"/>
+                        <segue destination="0WD-1X-z03" kind="show" identifier="showCharactersSegue" id="KBQ-XL-FHl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GX3-7c-HQL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1761" y="82"/>
+            <point key="canvasLocation" x="1760.8695652173915" y="81.696428571428569"/>
+        </scene>
+        <!--Show Selected Characters View Controller-->
+        <scene sceneID="Zhg-Tm-Cd4">
+            <objects>
+                <viewController id="0WD-1X-z03" customClass="ShowSelectedCharactersViewController" customModule="Minha_HQ_Preferida" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tNj-9P-7lN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="XTa-e6-SI1"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="qwu-Q7-ZYw"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LvA-1F-U2w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2570" y="82"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DiZ-WP-Ezs">

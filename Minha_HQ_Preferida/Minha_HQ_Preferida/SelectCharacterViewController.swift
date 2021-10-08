@@ -10,7 +10,9 @@ import UIKit
 class SelectCharacterViewController: UIViewController {
 
     @IBOutlet weak var selectCharacterLabel: UILabel!
+    @IBOutlet weak var avancarButton: UIButton!
     @IBOutlet weak var selectCharacterCollectioView: UICollectionView!
+    
     
     let selectCharacterViewModel = SelectCharacterViewModel()
     
@@ -18,7 +20,27 @@ class SelectCharacterViewController: UIViewController {
         super.viewDidLoad()
         selectCharacterViewModel.loadCharacters()
         setLabelRadius()
+        setButtonRadius()
         setCollectionView()
+    }
+    
+    @IBAction func actionAvancarButton(_ sender: Any) {
+        if selectCharacterViewModel.getCharacterListSelected().count == 3 {
+            performSegue(withIdentifier: "showCharactersSegue", sender: avancarButton)
+        } else {
+            //TODO: Inserir alert dialog
+            print("Quantidade de personagens selecionados diferente de 3")
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let showSelectedCharacters = segue.destination as? ShowSelectedCharactersViewController ,segue.identifier == "showCharactersSegue" {
+            showSelectedCharacters.selectedCharacters = selectCharacterViewModel.getCharacterListSelected()
+        }
+    }
+    
+    private func setButtonRadius() {
+        avancarButton.layer.cornerRadius = 32
     }
     
     private func setLabelRadius() {
@@ -31,18 +53,12 @@ class SelectCharacterViewController: UIViewController {
         selectCharacterCollectioView.dataSource = self
         selectCharacterCollectioView.layer.cornerRadius = 32
     }
-
 }
 
 extension SelectCharacterViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.selectCharacterViewModel.setCharacterSelected(index: indexPath.row)
         self.selectCharacterCollectioView.reloadData()
-        
-        print("\n")
-        for character in selectCharacterViewModel.getCharacterListSelected() {
-            print("\(character.name) está selecionado")
-        }
     }
     
 }
