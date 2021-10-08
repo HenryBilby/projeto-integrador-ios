@@ -28,8 +28,7 @@ class SelectCharacterViewController: UIViewController {
         if selectCharacterViewModel.getCharacterListSelected().count == 3 {
             performSegue(withIdentifier: "showCharactersSegue", sender: avancarButton)
         } else {
-            //TODO: Inserir alert dialog
-            print("Quantidade de personagens selecionados diferente de 3")
+            showDialog(message: "Favor selecionar 3 personages", title: "Atenção")
         }
     }
     
@@ -37,6 +36,17 @@ class SelectCharacterViewController: UIViewController {
         if let showSelectedCharacters = segue.destination as? ShowSelectedCharactersViewController ,segue.identifier == "showCharactersSegue" {
             showSelectedCharacters.selectedCharacters = selectCharacterViewModel.getCharacterListSelected()
         }
+    }
+    
+    private func showDialog(message :String, title: String) {
+        let dialogMessage = UIAlertController(title: title, message: message, preferredStyle: .alert)
+
+        let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+          })
+         
+        dialogMessage.addAction(ok)
+        
+        self.present(dialogMessage, animated: true, completion: nil)
     }
     
     private func setButtonRadius() {
