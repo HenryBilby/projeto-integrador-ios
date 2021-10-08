@@ -11,12 +11,14 @@ class CharacterElement {
     let id : Int
     let name: String
     let description: String
-    let thumbnail : Thumbnail
+    let image : String
+    var selected : Bool
     
-    init(id : Int, name: String, description: String, thumbnail : Thumbnail) {
+    init(id : Int, name: String, description: String, thumbnail : Thumbnail, selected : Bool) {
         self.id = id
         self.name = name
         self.description = description
-        self.thumbnail = thumbnail
+        self.image = "\(thumbnail.caminho).\(thumbnail.extensao)"
+        self.selected = selected
     }
 }

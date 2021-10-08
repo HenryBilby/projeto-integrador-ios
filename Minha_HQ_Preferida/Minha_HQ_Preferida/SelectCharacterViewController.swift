@@ -18,29 +18,43 @@ class SelectCharacterViewController: UIViewController {
         super.viewDidLoad()
         selectCharacterViewModel.loadCharacters()
         setLabelRadius()
-        selectCharacterCollectioView.delegate = self
-        selectCharacterCollectioView.dataSource = self
+        setCollectionView()
     }
     
     private func setLabelRadius() {
         selectCharacterLabel.layer.cornerRadius = 32
         selectCharacterLabel.layer.masksToBounds = true
     }
+    
+    private func setCollectionView() {
+        selectCharacterCollectioView.delegate = self
+        selectCharacterCollectioView.dataSource = self
+        selectCharacterCollectioView.layer.cornerRadius = 32
+    }
 
 }
 
 extension SelectCharacterViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.selectCharacterViewModel.setCharacterSelected(index: indexPath.row)
+        self.selectCharacterCollectioView.reloadData()
+        
+        print("\n")
+        for character in selectCharacterViewModel.getCharacterListSelected() {
+            print("\(character.name) está selecionado")
+        }
+    }
     
 }
 
 extension SelectCharacterViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return selectCharacterViewModel.getCharactersImages().count
+        return selectCharacterViewModel.getCharacterList().count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "characterCell", for: indexPath) as? CharacterCollectionViewCell {
-            cell.setup(with: selectCharacterViewModel.getCharactersImages()[indexPath.row])
+            cell.setup(with: selectCharacterViewModel.getCharacterList()[indexPath.row])
             return cell
         }
         return UICollectionViewCell()

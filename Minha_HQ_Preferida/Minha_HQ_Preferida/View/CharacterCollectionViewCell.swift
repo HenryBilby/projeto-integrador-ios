@@ -11,7 +11,16 @@ class CharacterCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageCharacter : UIImageView!
     
-    public func setup(with imagePath: String) {
-        imageCharacter.image = UIImage(named: imagePath)
+    public func setup(with character : CharacterElement) {
+        imageCharacter.image = UIImage(named: character.image)
+        
+        if (character.selected) {
+            imageCharacter.layer.borderColor = UIColor.red.cgColor
+            imageCharacter.layer.borderWidth = 5
+        } else {
+            imageCharacter.layer.borderColor = UIColor.clear.cgColor
+            imageCharacter.layer.borderWidth = 0
+        }
+
     }
 }
