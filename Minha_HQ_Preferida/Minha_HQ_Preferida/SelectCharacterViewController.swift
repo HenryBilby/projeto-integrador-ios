@@ -28,7 +28,7 @@ class SelectCharacterViewController: UIViewController {
         if selectCharacterViewModel.getCharacterListSelected().count == 3 {
             performSegue(withIdentifier: "showCharactersSegue", sender: avancarButton)
         } else {
-            showDialog(message: "Favor selecionar 3 personages", title: "Atenção")
+            showDialog(message: "Favor selecionar 3 personagens", title: "Atenção")
         }
     }
     

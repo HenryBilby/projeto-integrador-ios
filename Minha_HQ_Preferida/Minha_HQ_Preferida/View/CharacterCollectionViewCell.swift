@@ -13,6 +13,7 @@ class CharacterCollectionViewCell: UICollectionViewCell {
     
     public func setup(with character : CharacterElement) {
         imageCharacter.image = UIImage(named: character.image)
+        imageCharacter.layer.cornerRadius = 20
         
         if (character.selected) {
             imageCharacter.layer.borderColor = UIColor.red.cgColor
