@@ -6,7 +6,7 @@
 <div align="center">
 
 <a href="https://github.com/">
- <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/60993267?s=400&u=c1f849f90ceb9c25bd7765473b2b933b62c0ef11&v=4" width="100px;" alt=""/>
+<!--  <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/60993267?s=400&u=c1f849f90ceb9c25bd7765473b2b933b62c0ef11&v=4" width="100px;" alt=""/> -->
  <br />
   <p>
  <sub><b>Fernando Mesquita</b></sub></a>
@@ -19,7 +19,7 @@
 <div align="center">
 
 <a href="https://github.com/HenryBilby">
- <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/42849855?s=400&u=f2dfc70f52e7c272e7865b3582e6cc09fea8f576&v=4" width="100px;" alt=""/>
+<!--  <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/42849855?s=400&u=f2dfc70f52e7c272e7865b3582e6cc09fea8f576&v=4" width="100px;" alt=""/> -->
  <br />
   <p>
  <sub><b>Henry Miller</b></sub></a>
@@ -31,7 +31,7 @@
 (mailto:@gmail.com)
 
 <a href="https://github.com/federalmaycon">
- <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/50411651?s=400&u=9e39961f7f175034f1fdfaab536f180184326c74&v=4" width="100px;" alt=""/>
+<!--  <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/50411651?s=400&u=9e39961f7f175034f1fdfaab536f180184326c74&v=4" width="100px;" alt=""/> -->
  <br />
   <p>
  <sub><b>Maycon Anderson</b></sub></a>
@@ -43,7 +43,7 @@
 (mailto:@gmail.com)
 
 <a href="https://github.com/paulahiga">
- <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/50411651?s=400&u=9e39961f7f175034f1fdfaab536f180184326c74&v=4" width="100px;" alt=""/>
+<!--  <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/50411651?s=400&u=9e39961f7f175034f1fdfaab536f180184326c74&v=4" width="100px;" alt=""/> -->
  <br />
   <p>
  <sub><b>Paula Higa Matsumoto</b></sub></a>
@@ -55,7 +55,7 @@
 (mailto:@gmail.com)  
   
 <a href="https://github.com/sarafelix25">
- <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/50411651?s=400&u=9e39961f7f175034f1fdfaab536f180184326c74&v=4" width="100px;" alt=""/>
+<!--  <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/50411651?s=400&u=9e39961f7f175034f1fdfaab536f180184326c74&v=4" width="100px;" alt=""/> -->
  <br />
   <p>
  <sub><b>Sara Felix</b></sub></a>
