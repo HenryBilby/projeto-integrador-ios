@@ -13,7 +13,7 @@
 <p>
 
 [![Linkedin Badge](https://img.shields.io/badge/--blue?style=flat-square&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/)
-[![Github Badge](https://img.shields.io/badge/--000?style=flat-square&logo=Github&logoColor=white)](https://github.com/)
+[![Github Badge](https://img.shields.io/badge/-Fernando_Mesquita-000?style=flat-square&logo=Github&logoColor=white)](https://github.com/)
 [![Gmail Badge](https://img.shields.io/badge/-@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:@gmail.com)](mailto:@gmail.com)
 
 <div align="center">
@@ -26,7 +26,7 @@
 <p>
 
 [![Linkedin Badge](https://img.shields.io/badge/--blue?style=flat-square&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/)
-[![Github Badge](https://img.shields.io/badge/--000?style=flat-square&logo=Github&logoColor=white)](https://github.com/HenryBilby)
+[![Github Badge](https://img.shields.io/badge/-Henry_Miller-000?style=flat-square&logo=Github&logoColor=white)](https://github.com/HenryBilby)
 [![Gmail Badge](https://img.shields.io/badge/-@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:@gmail.com)](mailto:@gmail.com)
 
 <a href="https://github.com/federalmaycon">
@@ -37,7 +37,7 @@
 <p>
 
 [![Linkedin Badge](https://img.shields.io/badge/--blue?style=flat-square&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/)
-[![Github Badge](https://img.shields.io/badge/--000?style=flat-square&logo=Github&logoColor=white)](https://github.com/federalmaycon)
+[![Github Badge](https://img.shields.io/badge/-Maycon_Anderson-000?style=flat-square&logo=Github&logoColor=white)](https://github.com/federalmaycon)
 [![Gmail Badge](https://img.shields.io/badge/-@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:@gmail.com)](mailto:@gmail.com)
 
 <a href="https://github.com/paulahiga">
@@ -48,7 +48,7 @@
 <p>
 
 [![Linkedin Badge](https://img.shields.io/badge/--blue?style=flat-square&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/)
-[![Github Badge](https://img.shields.io/badge/--000?style=flat-square&logo=Github&logoColor=white)](https://github.com/paulahiga/)
+[![Github Badge](https://img.shields.io/badge/-Paula_Higa-000?style=flat-square&logo=Github&logoColor=white)](https://github.com/paulahiga)
 [![Gmail Badge](https://img.shields.io/badge/-@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:@gmail.com)](mailto:@gmail.com)  
   
 <a href="https://github.com/sarafelix25">
