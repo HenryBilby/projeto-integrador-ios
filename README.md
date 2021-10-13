@@ -27,8 +27,7 @@
 
 [![Linkedin Badge](https://img.shields.io/badge/--blue?style=flat-square&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/)
 [![Github Badge](https://img.shields.io/badge/--000?style=flat-square&logo=Github&logoColor=white)](https://github.com/HenryBilby)
-[![Gmail Badge](https://img.shields.io/badge/-@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:@gmail.com)]
-(mailto:@gmail.com)
+[![Gmail Badge](https://img.shields.io/badge/-@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:@gmail.com)](mailto:@gmail.com)
 
 <a href="https://github.com/federalmaycon">
 <!--  <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/50411651?s=400&u=9e39961f7f175034f1fdfaab536f180184326c74&v=4" width="100px;" alt=""/> -->
@@ -39,8 +38,7 @@
 
 [![Linkedin Badge](https://img.shields.io/badge/--blue?style=flat-square&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/)
 [![Github Badge](https://img.shields.io/badge/--000?style=flat-square&logo=Github&logoColor=white)](https://github.com/federalmaycon)
-[![Gmail Badge](https://img.shields.io/badge/-@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:@gmail.com)]
-(mailto:@gmail.com)
+[![Gmail Badge](https://img.shields.io/badge/-@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:@gmail.com)](mailto:@gmail.com)
 
 <a href="https://github.com/paulahiga">
 <!--  <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/50411651?s=400&u=9e39961f7f175034f1fdfaab536f180184326c74&v=4" width="100px;" alt=""/> -->
@@ -51,8 +49,7 @@
 
 [![Linkedin Badge](https://img.shields.io/badge/--blue?style=flat-square&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/)
 [![Github Badge](https://img.shields.io/badge/--000?style=flat-square&logo=Github&logoColor=white)](https://github.com/paulahiga/)
-[![Gmail Badge](https://img.shields.io/badge/-@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:@gmail.com)]
-(mailto:@gmail.com)  
+[![Gmail Badge](https://img.shields.io/badge/-@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:@gmail.com)](mailto:@gmail.com)  
   
 <a href="https://github.com/sarafelix25">
 <!--  <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/50411651?s=400&u=9e39961f7f175034f1fdfaab536f180184326c74&v=4" width="100px;" alt=""/> -->
