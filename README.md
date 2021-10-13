@@ -12,9 +12,9 @@
  <sub><b>Fernando Mesquita</b></sub></a>
 <p>
 
-[![Linkedin Badge](https://img.shields.io/badge/-Michel_Santos-blue?style=flat-square&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/)
-[![Github Badge](https://img.shields.io/badge/-Michel_Santos-000?style=flat-square&logo=Github&logoColor=white)](https://github.com/)
-[![Gmail Badge](https://img.shields.io/badge/-michelsantos15@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:@gmail.com)](mailto:@gmail.com)
+[![Linkedin Badge](https://img.shields.io/badge/--blue?style=flat-square&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/)
+[![Github Badge](https://img.shields.io/badge/--000?style=flat-square&logo=Github&logoColor=white)](https://github.com/)
+[![Gmail Badge](https://img.shields.io/badge/-@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:@gmail.com)](mailto:@gmail.com)
 
 <div align="center">
 
@@ -25,9 +25,9 @@
  <sub><b>Henry Miller</b></sub></a>
 <p>
 
-[![Linkedin Badge](https://img.shields.io/badge/-Mízia_Lima-blue?style=flat-square&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/)
-[![Github Badge](https://img.shields.io/badge/-Mízia_Lima-000?style=flat-square&logo=Github&logoColor=white)](https://github.com/HenryBilby)
-[![Gmail Badge](https://img.shields.io/badge/-mizia.alima@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:@gmail.com)]
+[![Linkedin Badge](https://img.shields.io/badge/--blue?style=flat-square&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/)
+[![Github Badge](https://img.shields.io/badge/--000?style=flat-square&logo=Github&logoColor=white)](https://github.com/HenryBilby)
+[![Gmail Badge](https://img.shields.io/badge/-@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:@gmail.com)]
 (mailto:@gmail.com)
 
 <a href="https://github.com/federalmaycon">
