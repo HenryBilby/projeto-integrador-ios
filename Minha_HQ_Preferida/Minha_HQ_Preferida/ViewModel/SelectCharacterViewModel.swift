@@ -8,6 +8,7 @@
 import Foundation
 
 class SelectCharacterViewModel {
+    
     private let serviceCharacter = ServiceCharacter()
     private var characterList : [CharacterElement] = []
     

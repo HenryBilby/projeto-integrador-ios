@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D082D1752717627D00C748C2 /* FavoriteCharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D082D1742717627D00C748C2 /* FavoriteCharacterTableViewCell.swift */; };
 		E0874211270F39EF00BFE8F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0874210270F39EF00BFE8F9 /* AppDelegate.swift */; };
 		E0874213270F39EF00BFE8F9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0874212270F39EF00BFE8F9 /* SceneDelegate.swift */; };
 		E0874215270F39EF00BFE8F9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0874214270F39EF00BFE8F9 /* LoginViewController.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D082D1742717627D00C748C2 /* FavoriteCharacterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCharacterTableViewCell.swift; sourceTree = "<group>"; };
 		E087420D270F39EF00BFE8F9 /* Minha_HQ_Preferida.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Minha_HQ_Preferida.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0874210270F39EF00BFE8F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0874212270F39EF00BFE8F9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				E0874255270F9EDE00BFE8F9 /* CharacterCollectionViewCell.swift */,
+				D082D1742717627D00C748C2 /* FavoriteCharacterTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0874256270F9EDE00BFE8F9 /* CharacterCollectionViewCell.swift in Sources */,
+				D082D1752717627D00C748C2 /* FavoriteCharacterTableViewCell.swift in Sources */,
 				E0874244270F4A5500BFE8F9 /* MarvelApiKey.swift in Sources */,
 				E0874215270F39EF00BFE8F9 /* LoginViewController.swift in Sources */,
 				E087424A270F7C2100BFE8F9 /* ServiceLogin.swift in Sources */,
