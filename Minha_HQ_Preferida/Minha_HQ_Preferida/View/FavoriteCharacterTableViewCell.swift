@@ -11,26 +11,20 @@ class FavoriteCharacterTableViewCell: UITableViewCell {
     
     @IBOutlet weak var imageFavorite : UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var descricptionLabel: UILabel!
-    
-    var selectedCharacters: CharacterElement?
-    
+    @IBOutlet weak var descriptionLabel: UILabel!
     
     public func setup(with selectedCharacters: CharacterElement){
         imageFavorite.image = UIImage(named: selectedCharacters.image)
         nameLabel.text = selectedCharacters.name
-        descricptionLabel.text = selectedCharacters.description
+        descriptionLabel.text = selectedCharacters.description
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         imageFavorite.layer.cornerRadius = 20
-        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
     }
-    
 }

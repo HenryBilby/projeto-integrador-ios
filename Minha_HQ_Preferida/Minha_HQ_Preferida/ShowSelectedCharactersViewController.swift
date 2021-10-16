@@ -34,7 +34,7 @@ class ShowSelectedCharactersViewController: UIViewController {
 
 extension ShowSelectedCharactersViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.favoriteTableView.reloadData()
+        print(selectedCharacters[indexPath.row].name)
     }
 }
 
