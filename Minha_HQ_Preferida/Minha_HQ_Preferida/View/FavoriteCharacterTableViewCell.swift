@@ -13,10 +13,10 @@ class FavoriteCharacterTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
-    public func setup(with selectedCharacters: CharacterElement){
-        imageFavorite.image = UIImage(named: selectedCharacters.image)
-        nameLabel.text = selectedCharacters.name
-        descriptionLabel.text = selectedCharacters.description
+    public func setup(with selectedCharacter: CharacterElement){
+        imageFavorite.image = UIImage(named: selectedCharacter.image)
+        nameLabel.text = selectedCharacter.name
+        descriptionLabel.text = selectedCharacter.description
     }
     
     override func awakeFromNib() {
