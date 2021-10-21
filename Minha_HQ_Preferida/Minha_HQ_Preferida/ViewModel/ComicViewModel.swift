@@ -9,6 +9,7 @@ import UIKit
 
 class ComicViewModel {
     
+    var comicSelected: ComicElement?
     private var comicList: [ComicElement] = []
     private let serviceComic = ServiceComic()
     
@@ -23,7 +24,7 @@ class ComicViewModel {
     }
     
     public func setComicSelected( index: Int) {
-        let comicListSelectedCount = getComicListSelected().count
+        comicSelected = comicList[index]
     }
     
     public func loadComics() {
@@ -36,9 +37,6 @@ class ComicViewModel {
     }
     
     public func searchComics(searchText: String) {
-        // jogar no service só o filter (linha 35)
-        comicList = getComicList().filter({ (comic) -> Bool in
-            return comic.title.lowercased().contains(searchText.lowercased())
-        })
+
     }
 }
