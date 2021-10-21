@@ -9,18 +9,18 @@ import UIKit
 
 class ComicCollectionViewController : UIViewController {
     
-    @IBOutlet weak var searchComic: UISearchBar!
-    @IBOutlet weak var selectComic: UICollectionView!
+    public var character: CharacterElement?
     
-    let selectComicViewModel = ComicViewModel()
+    @IBOutlet private weak var searchComic: UISearchBar!
+    @IBOutlet private weak var selectComic: UICollectionView!
     
-    var selectedComicViewModel: [ComicElement] = []
+    private let selectComicViewModel = ComicViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         selectComicViewModel.loadComics()
         setCollectionView()
-    
+        print(character?.name)
     }
     
     private func setCollectionView() {
@@ -30,19 +30,14 @@ class ComicCollectionViewController : UIViewController {
         
         searchComic.delegate = self
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let comicCollection = segue.destination as? ComicCollectionViewController, segue.identifier == "comicCollectionSegue" {
-//            comicCollection.selectedComicViewModel = sender as? [ComicElement]
-        }
-    }
 }
 
 extension ComicCollectionViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.selectComicViewModel.setComicSelected(index: indexPath.row)
-        self.selectComic.reloadData()
+        // lembra de add o identificador no segue
+        performSegue(withIdentifier: "", sender: selectComicViewModel.comicSelected)
     }
 }
 

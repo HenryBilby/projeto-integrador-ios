@@ -20,6 +20,12 @@ class ShowSelectedCharactersViewController: UIViewController {
         setTableView()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let controller = segue.destination as? ComicCollectionViewController {
+            controller.character = sender as? CharacterElement
+        }
+    }
+    
     private func setLabel() {
         titleLabel.layer.cornerRadius = 32
         titleLabel.layer.masksToBounds = true
@@ -34,7 +40,7 @@ class ShowSelectedCharactersViewController: UIViewController {
 
 extension ShowSelectedCharactersViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(selectedCharacters[indexPath.row].name)
+        performSegue(withIdentifier: "comicCollectionSegue", sender:selectedCharacters[indexPath.row] )
     }
 }
 
