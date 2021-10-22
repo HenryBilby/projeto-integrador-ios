@@ -37,7 +37,7 @@ extension ComicCollectionViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.selectComicViewModel.setComicSelected(index: indexPath.row)
         // lembra de add o identificador no segue
-        performSegue(withIdentifier: "", sender: selectComicViewModel.comicSelected)
+        performSegue(withIdentifier: "goToDetail", sender: selectComicViewModel.comicSelected)
     }
 }
 

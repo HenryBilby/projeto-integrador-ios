@@ -14,6 +14,7 @@ class ComicElement {
     var description: String
     var image: String
     var selected : Bool
+//    var publicado: String
     
     init(number: String, title: String, description: String, thumbnail : Thumbnail, selected: Bool) {
         self.number = number

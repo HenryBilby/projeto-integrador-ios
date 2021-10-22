@@ -12,6 +12,7 @@
 		9BDFF0CB271CD64900EB5AFB /* ComicElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDFF0CA271CD64900EB5AFB /* ComicElement.swift */; };
 		9BDFF0CD271CD7A500EB5AFB /* ComicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDFF0CC271CD7A500EB5AFB /* ComicViewModel.swift */; };
 		9BDFF0D3271CE89C00EB5AFB /* ServiceComic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDFF0D2271CE89C00EB5AFB /* ServiceComic.swift */; };
+		D030C8C82723482F008D653E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D030C8C72723482F008D653E /* DetailViewController.swift */; };
 		D082D1752717627D00C748C2 /* FavoriteCharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D082D1742717627D00C748C2 /* FavoriteCharacterTableViewCell.swift */; };
 		E0874211270F39EF00BFE8F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0874210270F39EF00BFE8F9 /* AppDelegate.swift */; };
 		E0874213270F39EF00BFE8F9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0874212270F39EF00BFE8F9 /* SceneDelegate.swift */; };
@@ -57,6 +58,7 @@
 		9BDFF0CA271CD64900EB5AFB /* ComicElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicElement.swift; sourceTree = "<group>"; };
 		9BDFF0CC271CD7A500EB5AFB /* ComicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicViewModel.swift; sourceTree = "<group>"; };
 		9BDFF0D2271CE89C00EB5AFB /* ServiceComic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceComic.swift; sourceTree = "<group>"; };
+		D030C8C72723482F008D653E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		D082D1742717627D00C748C2 /* FavoriteCharacterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCharacterTableViewCell.swift; sourceTree = "<group>"; };
 		E087420D270F39EF00BFE8F9 /* Minha_HQ_Preferida.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Minha_HQ_Preferida.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0874210270F39EF00BFE8F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				E087424D270F827F00BFE8F9 /* SelectCharacterViewController.swift */,
 				E08742592710798300BFE8F9 /* ShowSelectedCharactersViewController.swift */,
 				9BA723CE271CBA2200C2303F /* ComicCollectionViewController.swift */,
+				D030C8C72723482F008D653E /* DetailViewController.swift */,
 			);
 			path = Minha_HQ_Preferida;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				E0874215270F39EF00BFE8F9 /* LoginViewController.swift in Sources */,
 				E087424A270F7C2100BFE8F9 /* ServiceLogin.swift in Sources */,
 				9BDFF0CB271CD64900EB5AFB /* ComicElement.swift in Sources */,
+				D030C8C82723482F008D653E /* DetailViewController.swift in Sources */,
 				9BDFF0CD271CD7A500EB5AFB /* ComicViewModel.swift in Sources */,
 				E087425A2710798300BFE8F9 /* ShowSelectedCharactersViewController.swift in Sources */,
 				E0874252270F905D00BFE8F9 /* ServiceCharacter.swift in Sources */,
