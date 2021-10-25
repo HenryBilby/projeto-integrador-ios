@@ -15,19 +15,37 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var escritorLabel: UILabel!
     @IBOutlet weak var lapisLabel: UILabel!
     @IBOutlet weak var artistaLabel: UILabel!
-    @IBOutlet weak var descricaoText: UITextView!
+    @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var voltarButton: UIButton!
     
     
+    var comicElement: ComicElement?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        carregaInformacoesComic(with selectedComic: ComicElement)
+        carregaInformacoesComic()
         super.viewWillAppear(true)
+        setButtonRadius()
         // Do any additional setup after loading the view.
     }
     
-    func carregaInformacoesComic(with selectedComic: ComicElement) {
-        imageViewController.image = UIImage(named: selectedComic.image )
-                                            
+    
+    @IBAction func backButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func carregaInformacoesComic() {
+        if let image = comicElement?.image {
+            imageViewController.image = UIImage(named: image)
+        }
+        titleLabel.text = comicElement?.title
+        publicadoLabel.text = comicElement?.publicado
+        escritorLabel.text = comicElement?.escritor
+        lapisLabel.text = comicElement?.lapis
+        artistaLabel.text = comicElement?.artistaCapa
+        descriptionTextView.text = comicElement?.description
+    }
+    private func setButtonRadius() {
+        voltarButton.layer.cornerRadius = 32
     }
 }
