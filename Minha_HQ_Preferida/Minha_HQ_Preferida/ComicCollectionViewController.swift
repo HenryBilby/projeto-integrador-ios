@@ -15,19 +15,25 @@ class ComicCollectionViewController : UIViewController {
     @IBOutlet private weak var selectComic: UICollectionView!
     
     private let selectComicViewModel = ComicViewModel()
+    var selectedComic: ComicElement?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         selectComicViewModel.loadComics()
         setCollectionView()
-        print(character?.name)
+        
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let controller = segue.destination as? DetailViewController {
+            controller.comicElement = sender as? ComicElement
+        }
+    }
     private func setCollectionView() {
         selectComic.dataSource = self
         selectComic.delegate = self
         selectComic.layer.cornerRadius = 32
-        
+        searchComic.layer.cornerRadius = 32
         searchComic.delegate = self
     }
 }
@@ -35,9 +41,7 @@ class ComicCollectionViewController : UIViewController {
 extension ComicCollectionViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.selectComicViewModel.setComicSelected(index: indexPath.row)
-        // lembra de add o identificador no segue
-        performSegue(withIdentifier: "", sender: selectComicViewModel.comicSelected)
+        performSegue(withIdentifier: "goToDetail", sender: selectComicViewModel.getComicList()[indexPath.row])
     }
 }
 
