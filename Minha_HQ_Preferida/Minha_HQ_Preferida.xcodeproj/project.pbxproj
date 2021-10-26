@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B3AEB7F2723645000561AEF /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3AEB7E2723645000561AEF /* DetailViewController.swift */; };
 		9BA723CF271CBA2200C2303F /* ComicCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA723CE271CBA2200C2303F /* ComicCollectionViewController.swift */; };
 		9BA723D1271CD08B00C2303F /* ComicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA723D0271CD08B00C2303F /* ComicCollectionViewCell.swift */; };
 		9BDFF0CB271CD64900EB5AFB /* ComicElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDFF0CA271CD64900EB5AFB /* ComicElement.swift */; };
@@ -52,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9B3AEB7E2723645000561AEF /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		9BA723CE271CBA2200C2303F /* ComicCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicCollectionViewController.swift; sourceTree = "<group>"; };
 		9BA723D0271CD08B00C2303F /* ComicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicCollectionViewCell.swift; sourceTree = "<group>"; };
 		9BDFF0CA271CD64900EB5AFB /* ComicElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicElement.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				E087424D270F827F00BFE8F9 /* SelectCharacterViewController.swift */,
 				E08742592710798300BFE8F9 /* ShowSelectedCharactersViewController.swift */,
 				9BA723CE271CBA2200C2303F /* ComicCollectionViewController.swift */,
+				9B3AEB7E2723645000561AEF /* DetailViewController.swift */,
 			);
 			path = Minha_HQ_Preferida;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				E0874215270F39EF00BFE8F9 /* LoginViewController.swift in Sources */,
 				E087424A270F7C2100BFE8F9 /* ServiceLogin.swift in Sources */,
 				9BDFF0CB271CD64900EB5AFB /* ComicElement.swift in Sources */,
+				9B3AEB7F2723645000561AEF /* DetailViewController.swift in Sources */,
 				9BDFF0CD271CD7A500EB5AFB /* ComicViewModel.swift in Sources */,
 				E087425A2710798300BFE8F9 /* ShowSelectedCharactersViewController.swift in Sources */,
 				E0874252270F905D00BFE8F9 /* ServiceCharacter.swift in Sources */,
