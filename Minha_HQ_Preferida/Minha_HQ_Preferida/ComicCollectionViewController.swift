@@ -21,7 +21,7 @@ class ComicCollectionViewController : UIViewController {
         super.viewDidLoad()
         selectComicViewModel.loadComics()
         setCollectionView()
-        print(character?.name)
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -41,8 +41,6 @@ class ComicCollectionViewController : UIViewController {
 extension ComicCollectionViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        self.selectComicViewModel.setComicSelected(index: indexPath.row)
-        // lembra de add o identificador no segue
         performSegue(withIdentifier: "goToDetail", sender: selectComicViewModel.getComicList()[indexPath.row])
     }
 }

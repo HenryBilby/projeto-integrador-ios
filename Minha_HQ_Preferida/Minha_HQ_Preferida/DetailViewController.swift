@@ -35,15 +35,16 @@ class DetailViewController: UIViewController {
     }
     
     func carregaInformacoesComic() {
-        if let image = comicElement?.image {
-            imageViewController.image = UIImage(named: image)
+        if let comic = comicElement {
+            imageViewController.image = UIImage(named: comic.image)
+            titleLabel.text = comic.title
+            publicadoLabel.text = comic.publicado
+            escritorLabel.text = comic.escritor
+            lapisLabel.text = comic.lapis
+            artistaLabel.text = comic.artistaCapa
+            descriptionTextView.text = comic.description
+            
         }
-        titleLabel.text = comicElement?.title
-        publicadoLabel.text = comicElement?.publicado
-        escritorLabel.text = comicElement?.escritor
-        lapisLabel.text = comicElement?.lapis
-        artistaLabel.text = comicElement?.artistaCapa
-        descriptionTextView.text = comicElement?.description
     }
     private func setButtonRadius() {
         voltarButton.layer.cornerRadius = 32
