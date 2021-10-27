@@ -9,9 +9,47 @@ import Foundation
 
 class ServiceCharacter {
     
-    public func getCharacterList(completion: ([CharacterElement]?, String)->Void) {
+    public func getCharacterList(completion: @escaping ([CharacterElement]?, String)->Void) {
         
-        let characterList : [CharacterElement]?
+        var characterList : [CharacterElement] = []
+        
+        guard let url = URL(string: MarvelApiKey().urlCharacter) else {
+            return completion(characterList, "Erro ao criar URL")
+        }
+        
+        URLSession.shared.dataTask(with: url) {data, response, error in
+            if error == nil {
+                guard let res = response as? HTTPURLResponse else {
+                    return completion(characterList, "Erro no response")
+                }
+                
+                if res.statusCode == 200 {
+                    guard let data = data else {
+                        return completion(characterList, "Erro no data")
+                    }
+                    
+                    do {
+                        print("Dados da api: ")
+                        print(data)
+                        
+                        let list = try JSONDecoder().decode(Data.self, from: data)
+                        print (list)
+                        
+                        
+                    } catch let error {
+                        print("Erro ao carregar os personagens: \(error)")
+                        completion(nil, "Erro ao carregar os personagens.")
+                    }
+                    
+                } else {
+                    return completion(characterList, "Erro de retorno do servidor, status code: \(res.statusCode)")
+                }
+            } else {
+                if let error = error {
+                    return completion(characterList, error.localizedDescription)
+                }
+            }
+        }.resume()
         
         do {
             characterList = [
