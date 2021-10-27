@@ -37,6 +37,8 @@ class ComicViewModel {
     }
     
     public func searchComics(searchText: String) {
-
+        serviceComic.searchComicList(searchText: searchText) { list in
+            self.comicList = list
+        }
     }
 }

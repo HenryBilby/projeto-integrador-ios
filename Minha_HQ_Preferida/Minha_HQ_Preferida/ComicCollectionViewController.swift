@@ -66,6 +66,6 @@ extension ComicCollectionViewController:
 extension ComicCollectionViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//                ComicViewModel.searchComics = searchText
+        selectComicViewModel.searchComics(searchText: searchText)
     }
 }

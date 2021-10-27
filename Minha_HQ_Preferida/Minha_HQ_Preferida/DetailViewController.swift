@@ -26,7 +26,6 @@ class DetailViewController: UIViewController {
         carregaInformacoesComic()
         super.viewWillAppear(true)
         setButtonRadius()
-        // Do any additional setup after loading the view.
     }
     
     

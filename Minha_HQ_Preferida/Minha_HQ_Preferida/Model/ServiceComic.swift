@@ -32,6 +32,6 @@ class ServiceComic {
     
     public func searchComicList(searchText: String,
                                 completion: ([ComicElement]) -> Void) {
-        
+        // lista de revistinhas
     }
 }
