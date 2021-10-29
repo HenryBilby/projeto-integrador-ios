@@ -7,21 +7,23 @@
 
 import Foundation
 
-struct Data : Codable {
-    var data : Characters
+struct DataCharacter : Codable {
+    let data : Characters
 }
 
 struct Characters : Codable {
-    var results : [Character]
+    let results : [Character]
 }
 
 struct Character : Codable {
     let id : Int
     let name: String
     let description: String
-    let thumbnail : Thumbnail1
+    var thumbnail : Thumbnail
+    var selected : Bool?
 }
 
-struct Thumbnail1 : Codable {
-    let path : String
+struct Thumbnail : Codable {
+    var path : String
+    let `extension`: String
 }

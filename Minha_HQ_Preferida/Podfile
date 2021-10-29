@@ -1,0 +1,20 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '11.0'
+
+target 'Minha_HQ_Preferida' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for Minha_HQ_Preferida
+  pod 'Alamofire', '~> 5.4'
+
+  target 'Minha_HQ_PreferidaTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'Minha_HQ_PreferidaUITests' do
+    # Pods for testing
+  end
+
+end

@@ -7,36 +7,49 @@
 
 import Foundation
 
+protocol SelectCharacterDelegate {
+    func finishLoadCharacters()
+}
+
 class SelectCharacterViewModel {
     
-    private let serviceCharacter = ServiceCharacter()
-    private var characterList : [CharacterElement] = []
+    public var delegate : SelectCharacterDelegate?
     
-    public func getCharacterList() -> [CharacterElement] {
+    private let serviceCharacter = ServiceCharacter()
+    private var characterList : [Character] = []
+    
+    public func getCharacterList() -> [Character] {
         return self.characterList
     }
     
-    public func getCharacterListSelected() -> [CharacterElement] {
-        return self.characterList.filter { characterElement in
-            return characterElement.selected
+    public func getCharacterListSelected() -> [Character] {
+        return self.characterList.filter { character in
+            if let selected = character.selected{
+                return selected
+            }
+            return false
         }
     }
     
     public func setCharacterSelected( index: Int) {
         let characterListSelectedCount = getCharacterListSelected().count
         
-        if characterListSelectedCount < 3 {
-            self.characterList[index].selected = !self.characterList[index].selected
-        } else if characterListSelectedCount == 3 && self.characterList[index].selected {
-            self.characterList[index].selected = false
+        if let selected = self.characterList[index].selected {
+            if characterListSelectedCount < 3 {
+                self.characterList[index].selected = !selected
+            } else if characterListSelectedCount == 3 && selected {
+                self.characterList[index].selected = false
+            }
         }
     }
     
     public func loadCharacters() {
         serviceCharacter.getCharacterList { characterList, mensagem in
-            print(mensagem)
             if let list = characterList {
-                self.characterList = list
+                DispatchQueue.main.async {
+                    self.characterList = list
+                    self.delegate?.finishLoadCharacters()
+                }
             }
         }
         

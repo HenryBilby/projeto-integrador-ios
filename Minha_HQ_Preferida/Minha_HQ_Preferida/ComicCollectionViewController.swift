@@ -9,7 +9,7 @@ import UIKit
 
 class ComicCollectionViewController : UIViewController {
     
-    public var character: CharacterElement?
+    public var character: Character?
     
     @IBOutlet private weak var searchComic: UISearchBar!
     @IBOutlet private weak var selectComic: UICollectionView!
