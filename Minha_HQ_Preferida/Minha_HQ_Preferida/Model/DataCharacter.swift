@@ -21,6 +21,7 @@ struct Character : Codable {
     let description: String
     var thumbnail : Thumbnail
     var selected : Bool?
+    var image : String?
 }
 
 struct Thumbnail : Codable {

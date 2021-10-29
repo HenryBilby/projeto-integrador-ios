@@ -13,10 +13,9 @@ class CharacterCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageCharacter : UIImageView!
     
     public func setup(with character : Character) {
-        print("Path da imagem: \(character.thumbnail.path) \(character.thumbnail.extension)")
-        
-        let imageUrl = "\(character.thumbnail.path).\(character.thumbnail.extension)"
-        loadImageFromAPI(with: imageUrl)
+        if let urlImage = character.image {
+            loadImageFromAPI(with: urlImage)
+        }
 
         imageCharacter.layer.cornerRadius = 20
         

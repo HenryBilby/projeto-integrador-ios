@@ -8,60 +8,35 @@
 import Foundation
 import Alamofire
 
+typealias ClosureDataWithMessage = ([Character]?, String)->Void
+
 class ServiceCharacter {
     
-    public func getCharacterList(completion: @escaping ([Character]?, String)->Void) {
-        
+    public func getCharacterList(completion: @escaping ClosureDataWithMessage) {
         var characterList : [Character] = []
         
         guard let url = URL(string: MarvelApiKey().urlCharacter) else {
             return completion(characterList, "Erro ao criar URL")
         }
         
-//        AF.request("https://httpbin.org/get").responseDecodable(of: DataCharacter.self) { response in
-//            if let characters = response.value?.data.results
-//            debugPrint("Response: \(response)")
-//        }
-        
-        
-        URLSession.shared.dataTask(with: url) {data, response, error in
-            if error == nil {
-                guard let res = response as? HTTPURLResponse else {
-                    return completion(characterList, "Erro no response")
-                }
+        AF.request(url).responseDecodable(of: DataCharacter.self) { response in
+            if let characters = response.value?.data.results {
                 
-                if res.statusCode == 200 {
-                    guard let data = data else {
-                        return completion(characterList, "Erro no data")
+                for var character in characters {
+                    if !character.thumbnail.path.contains("https") {
+                        character.thumbnail.path = self.changePathFromHttpToHttps(path: character.thumbnail.path)
                     }
                     
-                    do {
-                        let dataCharacter = try JSONDecoder().decode(DataCharacter.self, from: data)
-                        
-                        for var character in dataCharacter.data.results {
-                            character.selected = false
-                            print("Extensao: \(character.thumbnail.extension)")
-                            
-                            if !character.thumbnail.path.contains("https") {
-                                character.thumbnail.path = self.changePathFromHttpToHttps(path: character.thumbnail.path)
-                            }
-                            characterList.append(character)
-                            
-                        }
-                        completion(characterList, "Sucesso ao carregar os personagens.")
-                        
-                    } catch let error {
-                        print("Erro ao carregar os personagens: \(error)")
-                        completion(nil, "Erro ao carregar os personagens.")
-                    }
-                    
-                } else {
-                    return completion(characterList, "Erro de retorno do servidor, status code: \(res.statusCode)")
+                    character.selected = false
+                    character.image = "\(character.thumbnail.path).\(character.thumbnail.extension)"
+
+                    characterList.append(character)
                 }
+
+                completion(characterList, "Sucesso ao carregar os personagens.")
+
             } else {
-                if let error = error {
-                    return completion(characterList, error.localizedDescription)
-                }
+                return completion(characterList, "Erro na obtenção dos dados)")
             }
         }.resume()
     }

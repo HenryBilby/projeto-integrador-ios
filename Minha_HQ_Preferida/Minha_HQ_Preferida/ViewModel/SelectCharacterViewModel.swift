@@ -32,14 +32,14 @@ class SelectCharacterViewModel {
     }
     
     public func setCharacterSelected( index: Int) {
-        let characterListSelectedCount = getCharacterListSelected().count
+        guard let selected = self.characterList[index].selected else { return }
         
-        if let selected = self.characterList[index].selected {
-            if characterListSelectedCount < 3 {
-                self.characterList[index].selected = !selected
-            } else if characterListSelectedCount == 3 && selected {
-                self.characterList[index].selected = false
-            }
+        let characterListSelectedCount = getCharacterListSelected().count
+
+        if characterListSelectedCount < 3 {
+            self.characterList[index].selected = !selected
+        } else if characterListSelectedCount == 3 && selected {
+            self.characterList[index].selected = false
         }
     }
     
