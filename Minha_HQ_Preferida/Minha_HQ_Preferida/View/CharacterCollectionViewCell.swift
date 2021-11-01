@@ -6,22 +6,37 @@
 //
 
 import UIKit
+import Alamofire
 
 class CharacterCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageCharacter : UIImageView!
     
-    public func setup(with character : CharacterElement) {
-        imageCharacter.image = UIImage(named: character.image)
-        imageCharacter.layer.cornerRadius = 20
-        
-        if (character.selected) {
-            imageCharacter.layer.borderColor = UIColor.red.cgColor
-            imageCharacter.layer.borderWidth = 5
-        } else {
-            imageCharacter.layer.borderColor = UIColor.clear.cgColor
-            imageCharacter.layer.borderWidth = 0
+    public func setup(with character : Character) {
+        if let urlImage = character.image {
+            loadImageFromAPI(with: urlImage)
         }
 
+        imageCharacter.layer.cornerRadius = 20
+        
+        if let selected = character.selected {
+            if (selected) {
+                imageCharacter.layer.borderColor = UIColor.red.cgColor
+                imageCharacter.layer.borderWidth = 5
+            } else {
+                imageCharacter.layer.borderColor = UIColor.clear.cgColor
+                imageCharacter.layer.borderWidth = 0
+            }
+            
+        }
+
+    }
+    
+    private func loadImageFromAPI(with url : String) {
+        AF.request(url).responseData { response in
+            if let data = response.data {
+                self.imageCharacter.image = UIImage(data: data)
+            }
+        }
     }
 }

@@ -18,6 +18,7 @@ class SelectCharacterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        selectCharacterViewModel.delegate = self
         selectCharacterViewModel.loadCharacters()
         setLabelRadius()
         setButtonRadius()
@@ -62,6 +63,12 @@ class SelectCharacterViewController: UIViewController {
         selectCharacterCollectioView.delegate = self
         selectCharacterCollectioView.dataSource = self
         selectCharacterCollectioView.layer.cornerRadius = 32
+    }
+}
+
+extension SelectCharacterViewController : SelectCharacterDelegate {
+    func finishLoadCharacters() {
+        self.selectCharacterCollectioView.reloadData()
     }
 }
 

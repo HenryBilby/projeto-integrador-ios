@@ -13,8 +13,10 @@ class FavoriteCharacterTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
-    public func setup(with selectedCharacter: CharacterElement){
-        imageFavorite.image = UIImage(named: selectedCharacter.image)
+    public func setup(with selectedCharacter: Character){
+        if let image = selectedCharacter.image {
+            imageFavorite.image = UIImage(named: image)
+        }
         nameLabel.text = selectedCharacter.name
         descriptionLabel.text = selectedCharacter.description
     }

@@ -24,7 +24,7 @@ class ComicElement {
         self.number = number
         self.title = title
         self.description = description
-        self.image = "\(thumbnail.caminho).\(thumbnail.extensao)"
+        self.image = "\(thumbnail.path).\(thumbnail.extension)"
         self.selected = selected
         self.publicado = publicado
         self.escritor = escritor

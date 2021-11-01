@@ -12,7 +12,7 @@ class ShowSelectedCharactersViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var favoriteTableView: UITableView!
     
-    public var selectedCharacters : [CharacterElement] = []
+    public var selectedCharacters : [Character] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +22,7 @@ class ShowSelectedCharactersViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let controller = segue.destination as? ComicCollectionViewController {
-            controller.character = sender as? CharacterElement
+            controller.character = sender as? Character
         }
     }
     
