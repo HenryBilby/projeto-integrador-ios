@@ -20,9 +20,13 @@ class ComicCollectionViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //TODO: O loadComics deverá ser realizada com o Id do character.
-        //selectComicViewModel.loadComics(id: character?.id)
+        
+        
+        if let id = character?.id {
+            selectComicViewModel.loadComics(id: id)
+        }
         print("Character id: \(character?.id)")
-        selectComicViewModel.loadComics()
+//        selectComicViewModel.loadComics()
         setCollectionView()
         
     }

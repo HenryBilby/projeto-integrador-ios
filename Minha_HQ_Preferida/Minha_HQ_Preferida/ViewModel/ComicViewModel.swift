@@ -27,8 +27,8 @@ class ComicViewModel {
         comicSelected = comicList[index]
     }
     
-    public func loadComics() {
-        serviceComic.getComicList { comicList, mensagem in
+    public func loadComics(id: Int) {
+        serviceComic.getComicList(id: id) { comicList, mensagem in
             print(mensagem)
             if let list = comicList {
                 self.comicList = list

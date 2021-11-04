@@ -6,10 +6,44 @@
 //
 
 import UIKit
+import Alamofire
 
 class ServiceComic {
     
-    public func getComicList(completion: ([ComicElement]?, String)->Void) {
+    public func getComicList(id: Int, completion: ([ComicElement]?, String)->Void) {
+        
+        print ("Character id na ServiceComic: \(id)")
+        
+        let url = "https://gateway.marvel.com/v1/public/characters/\(id)/comics?ts=1635292800&apikey=9d0e0a847010d456c3ff3466d2fc46d6&hash=af9ddc224a4c344082c1d0c90e167187"
+        
+        print (url)
+        
+//        guard let urlFull = URL(string: MarvelApiKey().urlCharacter) else {
+//            return completion(characterList, "Erro ao criar URL")
+//        }
+//
+//        AF.request(urlFull).responseDecodable(of: ComicElement.self) { response in
+//            if let characters = response.value?.data.results {
+//
+//                for var character in characters {
+//                    if !character.thumbnail.path.contains("https") {
+//                        character.thumbnail.path = self.changePathFromHttpToHttps(path: character.thumbnail.path)
+//                    }
+//
+//                    character.selected = false
+//                    character.image = "\(character.thumbnail.path).\(character.thumbnail.extension)"
+//
+//                    characterList.append(character)
+//                }
+//
+//                completion(characterList, "Sucesso ao carregar os personagens.")
+//
+//            } else {
+//                return completion(characterList, "Erro na obtenção dos dados)")
+//            }
+//        }.resume()
+        
+        
         
         let comicList : [ComicElement]?
         

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ComicElement {
+class ComicElement: Codable {
     
     var number: String
     var title: String
