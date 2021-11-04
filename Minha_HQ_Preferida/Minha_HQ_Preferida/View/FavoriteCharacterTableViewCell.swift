@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class FavoriteCharacterTableViewCell: UITableViewCell {
     
@@ -14,8 +15,8 @@ class FavoriteCharacterTableViewCell: UITableViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     
     public func setup(with selectedCharacter: Character){
-        if let image = selectedCharacter.image {
-            imageFavorite.image = UIImage(named: image)
+        if let urlimage = selectedCharacter.image {
+            loadImageFavoriteFromAPI(with: urlimage)
         }
         nameLabel.text = selectedCharacter.name
         descriptionLabel.text = selectedCharacter.description
@@ -28,5 +29,14 @@ class FavoriteCharacterTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    private func loadImageFavoriteFromAPI(with url : String) {
+        AF.request(url).responseData { response in
+            if let data = response.data {
+                self.imageFavorite.image = UIImage(data: data)
+                
+            }
+        }
     }
 }
