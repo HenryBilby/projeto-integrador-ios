@@ -14,21 +14,21 @@ class ComicElement {
     var description: String
     var image: String
     var selected : Bool
-    var publicado: String
-    var escritor: String
-    var lapis: String
-    var artistaCapa: String
+    var date: String
+    var writer: String
+    var letterer: String
+    var editor: String
     
     
-    init(number: String, title: String, description: String, thumbnail : Thumbnail, selected: Bool, publicado: String, escritor: String, lapis: String, artistaCapa: String) {
+    init(number: String, title: String, description: String, thumbnail : Thumbnail, selected: Bool, date: String, writer: String, letterer: String, editor: String) {
         self.number = number
         self.title = title
         self.description = description
         self.image = "\(thumbnail.path).\(thumbnail.extension)"
         self.selected = selected
-        self.publicado = publicado
-        self.escritor = escritor
-        self.lapis = lapis
-        self.artistaCapa = artistaCapa
+        self.date = date
+        self.writer = writer
+        self.letterer = letterer
+        self.editor = editor
     }
 }

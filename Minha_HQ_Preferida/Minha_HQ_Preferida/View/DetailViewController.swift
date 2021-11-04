@@ -38,10 +38,10 @@ class DetailViewController: UIViewController {
         if let comic = comicElement {
             imageViewController.image = UIImage(named: comic.image)
             titleLabel.text = comic.title
-            publicadoLabel.text = comic.publicado
-            escritorLabel.text = comic.escritor
-            lapisLabel.text = comic.lapis
-            artistaLabel.text = comic.artistaCapa
+            publicadoLabel.text = comic.date
+            escritorLabel.text = comic.writer
+            lapisLabel.text = comic.letterer
+            artistaLabel.text = comic.editor
             descriptionTextView.text = comic.description
             
         }
