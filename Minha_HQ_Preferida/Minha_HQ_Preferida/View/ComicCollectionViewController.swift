@@ -14,8 +14,7 @@ class ComicCollectionViewController : UIViewController {
     @IBOutlet private weak var searchComic: UISearchBar!
     @IBOutlet private weak var comicCollectionView: UICollectionView!
     
-    private let selectComicViewModel = ComicViewModel()
-    var selectedComic: ComicElement?
+    private let comicViewModel = ComicViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +33,7 @@ class ComicCollectionViewController : UIViewController {
     private func setDelegates() {
         comicCollectionView.delegate = self
         searchComic.delegate = self
-        selectComicViewModel.delegate = self
+        comicViewModel.delegate = self
     }
     
     private func setDataSources() {
@@ -49,33 +48,56 @@ class ComicCollectionViewController : UIViewController {
     
     private func loadComics() {
         if let id = character?.id {
-            selectComicViewModel.loadComics(id: id)
+            print("Carregando comics pelo id: \(id)")
+            comicViewModel.loadComics(id: id)
         }
+    }
+    
+    private func showDialog(message :String, title: String, status: RequestAPIStatusType) {
+        let dialogMessage = UIAlertController(title: title, message: message, preferredStyle: .alert)
+
+        let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+            
+            switch status {
+                case .sucess:
+                    self.comicCollectionView.reloadData()
+                case .error:
+                    self.navigationController?.popViewController(animated: true)
+            }
+        })
+         
+        dialogMessage.addAction(ok)
+        
+        self.present(dialogMessage, animated: true, completion: nil)
     }
 }
 
 extension ComicCollectionViewController : ComicDelegate {
-    func finishLoadComics() {
-        comicCollectionView.reloadData()
+    func sucessLoadComics(type: RequestAPIStatusType) {
+        showDialog(message: "Quadrinhos carregados com sucesso!", title: "Sucesso", status: .sucess)
+    }
+    
+    func errorLoadComics(type: RequestAPIStatusType) {
+        showDialog(message: "Erro ao carregar os quadrinhos, favor selecionar outro personagem.", title: "Erro", status: .error)
     }
 }
 
 extension ComicCollectionViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "goToDetail", sender: selectComicViewModel.getComicList()[indexPath.row])
+        performSegue(withIdentifier: "goToDetail", sender: comicViewModel.getComicList()[indexPath.row])
     }
 }
 
 extension ComicCollectionViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return selectComicViewModel.getComicList().count
+        return comicViewModel.getComicList().count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "comicCell", for: indexPath) as? ComicCollectionViewCell {
-            cell.setup(with: selectComicViewModel.getComicList()[indexPath.row])
+            cell.setup(with: comicViewModel.getComicList()[indexPath.row])
             return cell
         }
         
@@ -84,8 +106,19 @@ extension ComicCollectionViewController: UICollectionViewDataSource {
 }
 
 extension ComicCollectionViewController: UISearchBarDelegate {
+        
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let searchText = searchBar.text {
+            if searchText.isEmpty {
+                loadComics()
+            } else {
+                comicViewModel.searchComics(searchText: searchText)
+                comicCollectionView.reloadData()
+            }
+        }
+    }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//                ComicViewModel.searchComics = searchText
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        loadComics()
     }
 }

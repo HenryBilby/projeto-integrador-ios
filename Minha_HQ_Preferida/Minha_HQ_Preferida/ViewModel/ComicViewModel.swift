@@ -8,14 +8,14 @@
 import UIKit
 
 protocol ComicDelegate {
-    func finishLoadComics()
+    func sucessLoadComics(type: RequestAPIStatusType)
+    func errorLoadComics(type: RequestAPIStatusType)
 }
 
 class ComicViewModel {
     
     public var delegate : ComicDelegate?
     
-    var comicSelected: ComicElement?
     private var comicList: [ComicElement] = []
     private let serviceComic = ServiceComic()
     
@@ -23,28 +23,33 @@ class ComicViewModel {
         return self.comicList
     }
     
-    public func getComicListSelected() -> [ComicElement] {
-        return self.comicList.filter { comicElement in
-            return comicElement.selected
-        }
-    }
-    
-    public func setComicSelected( index: Int) {
-        comicSelected = comicList[index]
-    }
-    
     public func loadComics(id: Int) {
-        serviceComic.getComicList(id: id) { comicList, mensagem in
-            if let list = comicList {
-                DispatchQueue.main.async {
-                    self.comicList = list
-                    self.delegate?.finishLoadComics()
+        serviceComic.getComicList(id: id) { comicList, status in
+            DispatchQueue.main.async {
+                switch status {
+                case .sucess:
+                    if let list = comicList, !list.isEmpty {
+                            self.comicList = list
+                            self.delegate?.sucessLoadComics(type: status)
+                    } else {
+                        self.delegate?.errorLoadComics(type: .error)
+                    }
+                case .error:
+                    self.delegate?.errorLoadComics(type: status)
                 }
             }
+            
+            
         }
     }
     
     public func searchComics(searchText: String) {
-
+        let list = self.comicList.filter({ comic in
+            return comic.description.contains(searchText) || comic.title.contains(searchText)
+        })
+        
+        if !list.isEmpty {
+            self.comicList = list
+        }
     }
 }

@@ -16,7 +16,7 @@ class ComicCollectionViewCell: UICollectionViewCell {
     
     public func setup(with selectedComic: ComicElement) {
         loadImageFromAPI(with: selectedComic.image)
-        titleComic.text = "\(selectedComic.title) \(selectedComic.number)"
+        titleComic.text = "\(selectedComic.title) \(selectedComic.id)"
     }
     
     override func awakeFromNib() {

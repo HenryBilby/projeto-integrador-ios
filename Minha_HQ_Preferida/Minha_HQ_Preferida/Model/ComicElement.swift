@@ -8,20 +8,19 @@
 import UIKit
 
 class ComicElement: Codable {
+    let id: Int
+    let title: String
+    let description: String
+    let image: String
+    let selected : Bool
+    let date: String
+    let writer: String
+    let letterer: String
+    let editor: String
     
-    var number: String
-    var title: String
-    var description: String
-    var image: String
-    var selected : Bool
-    var date: String
-    var writer: String
-    var letterer: String
-    var editor: String
     
-    
-    init(number: String, title: String, description: String, thumbnail : Thumbnail, selected: Bool, date: String, writer: String, letterer: String, editor: String) {
-        self.number = number
+    init(id: Int, title: String, description: String, thumbnail : Thumbnail, selected: Bool, date: String, writer: String, letterer: String, editor: String) {
+        self.id = id
         self.title = title
         self.description = description
         self.image = "\(thumbnail.path).\(thumbnail.extension)"
