@@ -138,6 +138,16 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		E0426CE12735EC5C002BB00E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				E0874249270F7C2100BFE8F9 /* ServiceLogin.swift */,
+				E0874251270F905D00BFE8F9 /* ServiceCharacter.swift */,
+				9BDFF0D2271CE89C00EB5AFB /* ServiceComic.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		E0874204270F39EF00BFE8F9 = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +173,7 @@
 		E087420F270F39EF00BFE8F9 /* Minha_HQ_Preferida */ = {
 			isa = PBXGroup;
 			children = (
+				E0426CE12735EC5C002BB00E /* Services */,
 				E0874248270F678F00BFE8F9 /* View */,
 				E0874247270F676D00BFE8F9 /* ViewModel */,
 				E0874240270F483D00BFE8F9 /* Model */,
@@ -199,9 +210,6 @@
 			children = (
 				9BDFF0CA271CD64900EB5AFB /* ComicElement.swift */,
 				E0874243270F4A5500BFE8F9 /* MarvelApiKey.swift */,
-				E0874249270F7C2100BFE8F9 /* ServiceLogin.swift */,
-				E0874251270F905D00BFE8F9 /* ServiceCharacter.swift */,
-				9BDFF0D2271CE89C00EB5AFB /* ServiceComic.swift */,
 				E087429D2729FE0700BFE8F9 /* DataCharacter.swift */,
 				E0776B9327356B1A00110C18 /* DataComic.swift */,
 			);

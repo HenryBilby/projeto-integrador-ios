@@ -7,15 +7,15 @@
 
 import Foundation
 
-struct DataComic : Codable {
+struct DataComic : Decodable {
     let data : Comics
 }
 
-struct Comics : Codable {
+struct Comics : Decodable {
     let results : [Comic]
 }
 
-struct Comic : Codable {
+struct Comic : Decodable {
     let id : Int
     let title: String
     let description: String
@@ -24,16 +24,16 @@ struct Comic : Codable {
     let creators : Creators
 }
 
-struct Date : Codable {
+struct Date : Decodable {
     let type : String
     let date : String
 }
 
-struct Creators : Codable {
+struct Creators : Decodable {
     let items : [Item]
 }
 
-struct Item : Codable {
+struct Item : Decodable {
     let name : String
     let role : String
 }
