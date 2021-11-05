@@ -10,7 +10,7 @@ import Alamofire
 
 class ServiceComic {
     
-    public func getComicList(id: Int, completion: ([ComicElement]?, String)->Void) {
+    public func getComicList(id: Int, completion: @escaping ([ComicElement]?, String)->Void) {
         
         print ("Character id na ServiceComic: \(id)")
         
@@ -18,54 +18,48 @@ class ServiceComic {
         
         print (url)
         
-//        guard let urlFull = URL(string: MarvelApiKey().urlCharacter) else {
-//            return completion(characterList, "Erro ao criar URL")
-//        }
-//
-//        AF.request(urlFull).responseDecodable(of: ComicElement.self) { response in
-//            if let characters = response.value?.data.results {
-//
-//                for var character in characters {
-//                    if !character.thumbnail.path.contains("https") {
-//                        character.thumbnail.path = self.changePathFromHttpToHttps(path: character.thumbnail.path)
-//                    }
-//
-//                    character.selected = false
-//                    character.image = "\(character.thumbnail.path).\(character.thumbnail.extension)"
-//
-//                    characterList.append(character)
-//                }
-//
-//                completion(characterList, "Sucesso ao carregar os personagens.")
-//
-//            } else {
-//                return completion(characterList, "Erro na obtenção dos dados)")
-//            }
-//        }.resume()
+        var comicList : [ComicElement] = []
         
-        
-        
-        let comicList : [ComicElement]?
-        
-        do {
-            comicList = [
-                .init(number: "#70", title: "O Espetacular Homem Aranha (2018)", description: "PRELÚDIO DE GUERRA SINISTRO! A Guerra Sinistra vira a vida de Spidey de cabeça para baixo, mas o fato de que KING'S RANSOM e CHAMELEON CONSPIRACY já fizeram isso, pode lhe dar uma ideia de como isso vai ser difícil para Peter Parker.", thumbnail: Thumbnail(path: "setenta", extension: "jpg"), selected: false, date: "07 de julho de 2021", writer: "Nick Spencer", letterer: "Federico Vicenti", editor: "Mark Bagle"),
-                .init(number: "#36", title: "O Espetacular Homem-Aranha (2020)", description: "", thumbnail: Thumbnail(path: "trintaeseis", extension: "jpg"), selected: false, date: "07 de julho de 2021", writer: "Nick Spencer", letterer: "Federico Vicenti", editor: "Mark Bagle"),
-                .init(number: "#1", title: "O Espetacular Homem-Aranha (2019)", description: "", thumbnail: Thumbnail(path: "um", extension: "jpg"), selected: false, date: "07 de julho de 2021", writer: "Nick Spencer", letterer: "Federico Vicenti", editor: "Mark Bagle"),
-                .init(number: "#301", title: "O Espetacular Homem-Aranha (2017)", description: "", thumbnail: Thumbnail(path: "trezentoseum", extension: "jpg"), selected: false, date: "07 de julho de 2021", writer: "Nick Spencer", letterer: "Federico Vicenti", editor: "Mark Bagle"),
-                .init(number: "#60", title: "O Incrível Homem-Aranha (2018)", description: "", thumbnail: Thumbnail(path: "sessenta", extension: "jpg"), selected: false, date: "07 de julho de 2021", writer: "Nick Spencer", letterer: "Federico Vicenti", editor: "Mark Bagle"),
-                .init(number: "#4", title: "O Espetacular Homem-Aranha  (2017)", description: "", thumbnail: Thumbnail(path: "quatro", extension: "jpg"), selected: false, date: "07 de julho de 2021", writer: "Nick Spencer", letterer: "Federico Vicenti", editor: "Mark Bagle"),
-            ]
-            
-            completion(comicList, "Sucesso ao carregar os personagens.")
-        } catch let error {
-            print("Erro ao carregar os personagens: \(error)")
-            completion(nil, "Erro ao carregar os personagens.")
+        guard let urlFull = URL(string: url) else {
+            return completion(comicList, "Erro ao criar URL")
         }
+
+        AF.request(urlFull).responseDecodable(of: DataComic.self) { response in
+            
+            if let code = response.response?.statusCode, code != 200 {
+                print ("Status code é: \(code)")
+                return completion(comicList, "Erro na obtenção dos dados")
+            }
+            
+            if let comics = response.value?.data.results {
+
+                for var comic in comics {
+                    if !comic.thumbnail.path.contains("https") {
+                        comic.thumbnail.path = self.changePathFromHttpToHttps(path: comic.thumbnail.path)
+                    }
+                    
+                    let comic = ComicElement(number: "#70", title: comic.title, description: comic.description, thumbnail: comic.thumbnail, selected: false, date: "07 de julho de 2021", writer: "Nick Spencer", letterer: "Federico Vicenti", editor: "Mark Bagle")
+                    
+                    comicList.append(comic)
+                }
+                completion(comicList, "Sucesso ao carregar os quadrinhos.")
+
+            } else {
+                print ("Erro na obtenção dos dados")
+                return completion(comicList, "Erro na obtenção dos dados")
+            }
+        }.resume()
     }
     
     public func searchComicList(searchText: String,
                                 completion: ([ComicElement]) -> Void) {
         
+    }
+    
+    private func changePathFromHttpToHttps( path: String) -> String {
+        if let index = path.firstIndex(of: ":") {
+            return "https" + path.suffix(from: index)
+        }
+        return path
     }
 }

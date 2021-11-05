@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol ComicDelegate {
+    func finishLoadComics()
+}
+
 class ComicViewModel {
+    
+    public var delegate : ComicDelegate?
     
     var comicSelected: ComicElement?
     private var comicList: [ComicElement] = []
@@ -29,9 +35,11 @@ class ComicViewModel {
     
     public func loadComics(id: Int) {
         serviceComic.getComicList(id: id) { comicList, mensagem in
-            print(mensagem)
             if let list = comicList {
-                self.comicList = list
+                DispatchQueue.main.async {
+                    self.comicList = list
+                    self.delegate?.finishLoadComics()
+                }
             }
         }
     }

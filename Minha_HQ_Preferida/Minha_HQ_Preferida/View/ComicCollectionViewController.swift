@@ -12,23 +12,17 @@ class ComicCollectionViewController : UIViewController {
     public var character: Character?
     
     @IBOutlet private weak var searchComic: UISearchBar!
-    @IBOutlet private weak var selectComic: UICollectionView!
+    @IBOutlet private weak var comicCollectionView: UICollectionView!
     
     private let selectComicViewModel = ComicViewModel()
     var selectedComic: ComicElement?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //TODO: O loadComics deverá ser realizada com o Id do character.
-        
-        
-        if let id = character?.id {
-            selectComicViewModel.loadComics(id: id)
-        }
-        print("Character id: \(character?.id)")
-//        selectComicViewModel.loadComics()
+        setDelegates()
+        setDataSources()
+        loadComics()
         setCollectionView()
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -36,12 +30,33 @@ class ComicCollectionViewController : UIViewController {
             controller.comicElement = sender as? ComicElement
         }
     }
-    private func setCollectionView() {
-        selectComic.dataSource = self
-        selectComic.delegate = self
-        selectComic.layer.cornerRadius = 32
-        searchComic.layer.cornerRadius = 32
+    
+    private func setDelegates() {
+        comicCollectionView.delegate = self
         searchComic.delegate = self
+        selectComicViewModel.delegate = self
+    }
+    
+    private func setDataSources() {
+        comicCollectionView.dataSource = self
+    }
+    
+    private func setCollectionView() {
+        comicCollectionView.dataSource = self
+        comicCollectionView.layer.cornerRadius = 32
+        searchComic.layer.cornerRadius = 32
+    }
+    
+    private func loadComics() {
+        if let id = character?.id {
+            selectComicViewModel.loadComics(id: id)
+        }
+    }
+}
+
+extension ComicCollectionViewController : ComicDelegate {
+    func finishLoadComics() {
+        comicCollectionView.reloadData()
     }
 }
 
@@ -52,8 +67,7 @@ extension ComicCollectionViewController: UICollectionViewDelegate {
     }
 }
 
-extension ComicCollectionViewController:
-    UICollectionViewDataSource {
+extension ComicCollectionViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return selectComicViewModel.getComicList().count
@@ -63,7 +77,6 @@ extension ComicCollectionViewController:
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "comicCell", for: indexPath) as? ComicCollectionViewCell {
             cell.setup(with: selectComicViewModel.getComicList()[indexPath.row])
             return cell
-            
         }
         
         return UICollectionViewCell()
