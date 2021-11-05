@@ -35,7 +35,32 @@ class ServiceComic {
                         comic.thumbnail.path = self.changePathFromHttpToHttps(path: comic.thumbnail.path)
                     }
                     
-                    let comic = ComicElement(id: comic.id, title: comic.title, description: comic.description, thumbnail: comic.thumbnail, selected: false, date: "07 de julho de 2021", writer: "Nick Spencer", letterer: "Federico Vicenti", editor: "Mark Bagle")
+                    var data = ""
+                    for date in comic.dates {
+                        if date.type == "onsaleDate" {
+                            data = date.date
+                            break
+                        }
+                    }
+                    
+                    var writer = ""
+                    var letterer = ""
+                    var editor = ""
+
+                    for item in comic.creators.items {
+
+                        if item.role.lowercased() == "writer" {
+                            writer.append("\(item.name), ")
+                            
+                        } else if item.role.lowercased() == "letterer" {
+                            letterer.append("\(item.name), ")
+                            
+                        } else if item.role.lowercased() == "editor" {
+                            editor.append("\(item.name), ")
+                        }
+                    }
+                    
+                    let comic = ComicElement(id: comic.id, title: comic.title, description: comic.description, thumbnail: comic.thumbnail, selected: false, date: data, writer: writer, letterer: letterer, editor: editor)
                     
                     comicList.append(comic)
                 }

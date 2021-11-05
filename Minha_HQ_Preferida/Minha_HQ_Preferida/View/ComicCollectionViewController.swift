@@ -13,6 +13,7 @@ class ComicCollectionViewController : UIViewController {
     
     @IBOutlet private weak var searchComic: UISearchBar!
     @IBOutlet private weak var comicCollectionView: UICollectionView!
+    @IBOutlet weak var loadingActivityIndicator: UIActivityIndicatorView!
     
     private let comicViewModel = ComicViewModel()
     
@@ -48,7 +49,7 @@ class ComicCollectionViewController : UIViewController {
     
     private func loadComics() {
         if let id = character?.id {
-            print("Carregando comics pelo id: \(id)")
+            loadingActivityIndicator.startAnimating()
             comicViewModel.loadComics(id: id)
         }
     }
@@ -74,10 +75,16 @@ class ComicCollectionViewController : UIViewController {
 
 extension ComicCollectionViewController : ComicDelegate {
     func sucessLoadComics(type: RequestAPIStatusType) {
+        if loadingActivityIndicator.isAnimating {
+            loadingActivityIndicator.stopAnimating()
+        }
         showDialog(message: "Quadrinhos carregados com sucesso!", title: "Sucesso", status: .sucess)
     }
     
     func errorLoadComics(type: RequestAPIStatusType) {
+        if loadingActivityIndicator.isAnimating {
+            loadingActivityIndicator.stopAnimating()
+        }
         showDialog(message: "Erro ao carregar os quadrinhos, favor selecionar outro personagem.", title: "Erro", status: .error)
     }
 }

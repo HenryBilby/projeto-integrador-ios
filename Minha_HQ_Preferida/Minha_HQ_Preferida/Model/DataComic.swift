@@ -21,7 +21,6 @@ struct Comic : Codable {
     let description: String
     let dates : [Date]
     var thumbnail : Thumbnail
-    var image : String?
     let creators : Creators
 }
 
