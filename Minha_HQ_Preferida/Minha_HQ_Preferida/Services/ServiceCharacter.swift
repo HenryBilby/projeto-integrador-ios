@@ -15,7 +15,7 @@ class ServiceCharacter {
     public func getCharacterList(completion: @escaping ClosureDataWithMessage) {
         var characterList : [Character] = []
         
-        guard let url = URL(string: MarvelApiKey().urlCharacter) else {
+        guard let url = URL(string: MarvelApiKey.urlCharacter) else {
             return completion(characterList, "Erro ao criar URL")
         }
         

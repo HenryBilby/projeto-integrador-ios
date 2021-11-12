@@ -7,9 +7,15 @@
 
 import UIKit
 
+protocol ComicDelegate {
+    func sucessLoadComics(type: RequestAPIStatusType)
+    func errorLoadComics(type: RequestAPIStatusType)
+}
+
 class ComicViewModel {
     
-    var comicSelected: ComicElement?
+    public var delegate : ComicDelegate?
+    
     private var comicList: [ComicElement] = []
     private let serviceComic = ServiceComic()
     
@@ -17,26 +23,33 @@ class ComicViewModel {
         return self.comicList
     }
     
-    public func getComicListSelected() -> [ComicElement] {
-        return self.comicList.filter { comicElement in
-            return comicElement.selected
-        }
-    }
-    
-    public func setComicSelected( index: Int) {
-        comicSelected = comicList[index]
-    }
-    
-    public func loadComics() {
-        serviceComic.getComicList { comicList, mensagem in
-            print(mensagem)
-            if let list = comicList {
-                self.comicList = list
+    public func loadComics(id: Int) {
+        serviceComic.getComicList(id: id) { comicList, status in
+            DispatchQueue.main.async {
+                switch status {
+                case .sucess:
+                    if let list = comicList, !list.isEmpty {
+                            self.comicList = list
+                            self.delegate?.sucessLoadComics(type: status)
+                    } else {
+                        self.delegate?.errorLoadComics(type: .error)
+                    }
+                case .error:
+                    self.delegate?.errorLoadComics(type: status)
+                }
             }
+            
+            
         }
     }
     
     public func searchComics(searchText: String) {
-
+        let list = self.comicList.filter({ comic in
+            return comic.description.contains(searchText) || comic.title.contains(searchText)
+        })
+        
+        if !list.isEmpty {
+            self.comicList = list
+        }
     }
 }

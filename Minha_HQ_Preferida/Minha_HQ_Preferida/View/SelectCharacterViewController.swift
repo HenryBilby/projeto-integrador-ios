@@ -13,6 +13,7 @@ class SelectCharacterViewController: UIViewController {
     @IBOutlet weak var avancarButton: UIButton!
     @IBOutlet weak var selectCharacterCollectioView: UICollectionView!
     
+    @IBOutlet weak var loadingActivityIndicator: UIActivityIndicatorView!
     
     let selectCharacterViewModel = SelectCharacterViewModel()
     
@@ -20,6 +21,7 @@ class SelectCharacterViewController: UIViewController {
         super.viewDidLoad()
         selectCharacterViewModel.delegate = self
         selectCharacterViewModel.loadCharacters()
+        loadingActivityIndicator.startAnimating()
         setLabelRadius()
         setButtonRadius()
         setCollectionView()
@@ -68,6 +70,10 @@ class SelectCharacterViewController: UIViewController {
 
 extension SelectCharacterViewController : SelectCharacterDelegate {
     func finishLoadCharacters() {
+        if self.loadingActivityIndicator.isAnimating {
+            self.loadingActivityIndicator.stopAnimating()
+        }
+        
         self.selectCharacterCollectioView.reloadData()
     }
 }

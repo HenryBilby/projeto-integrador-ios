@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class DetailViewController: UIViewController {
     
@@ -26,7 +27,6 @@ class DetailViewController: UIViewController {
         carregaInformacoesComic()
         super.viewWillAppear(true)
         setButtonRadius()
-        // Do any additional setup after loading the view.
     }
     
     
@@ -34,9 +34,9 @@ class DetailViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    func carregaInformacoesComic() {
+    private func carregaInformacoesComic() {
         if let comic = comicElement {
-            imageViewController.image = UIImage(named: comic.image)
+            loadImageFromAPI(with : comic.image)
             titleLabel.text = comic.title
             publicadoLabel.text = comic.date
             escritorLabel.text = comic.writer
@@ -46,6 +46,15 @@ class DetailViewController: UIViewController {
             
         }
     }
+    
+    private func loadImageFromAPI(with url : String) {
+        AF.request(url).responseData { response in
+            if let data = response.data {
+                self.imageViewController.image = UIImage(data: data)
+            }
+        }
+    }
+    
     private func setButtonRadius() {
         voltarButton.layer.cornerRadius = 32
     }

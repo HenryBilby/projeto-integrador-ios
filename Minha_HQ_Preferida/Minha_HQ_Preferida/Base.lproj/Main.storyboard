@@ -59,7 +59,9 @@
                             <constraint firstItem="zq8-N4-DOt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tKF-bG-FE5"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="ZOC-s7-kVb"/>
+                    <navigationItem key="navigationItem" id="ZOC-s7-kVb">
+                        <barButtonItem key="backBarButtonItem" title="Login" id="WBE-s5-Tr0"/>
+                    </navigationItem>
                     <connections>
                         <segue destination="IQH-Ds-LY3" kind="show" identifier="selectCharacterSegue" id="iU2-dc-AMU"/>
                     </connections>
@@ -95,6 +97,11 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
+                                <activityIndicatorView key="backgroundView" opaque="NO" contentMode="center" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" id="l6U-gm-tDl">
+                                    <rect key="frame" x="0.0" y="0.0" width="382" height="578"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="color" red="0.8078432083" green="0.20392158630000001" blue="0.1607843041" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </activityIndicatorView>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="characterCell" id="oxB-Gc-x9p" customClass="CharacterCollectionViewCell" customModule="Minha_HQ_Preferida" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="191" height="191"/>
@@ -152,9 +159,12 @@
                             <constraint firstItem="I1s-re-t7n" firstAttribute="trailing" secondItem="epJ-Vv-A1A" secondAttribute="trailing" constant="16" id="xMW-Bd-Zje"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="XId-eN-5GE"/>
+                    <navigationItem key="navigationItem" id="XId-eN-5GE">
+                        <barButtonItem key="backBarButtonItem" title="Selecionar 3 Personagens" id="huF-1x-lWN"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="avancarButton" destination="X83-aC-54h" id="bQ5-If-jB8"/>
+                        <outlet property="loadingActivityIndicator" destination="l6U-gm-tDl" id="jg3-Ws-UKl"/>
                         <outlet property="selectCharacterCollectioView" destination="epJ-Vv-A1A" id="hZD-b0-F1g"/>
                         <outlet property="selectCharacterLabel" destination="vIW-Rd-iMw" id="Nfh-53-gxA"/>
                         <segue destination="0WD-1X-z03" kind="show" identifier="showCharactersSegue" id="KBQ-XL-FHl"/>
@@ -259,7 +269,9 @@
                             <constraint firstItem="XTa-e6-SI1" firstAttribute="trailing" secondItem="yh3-8M-xmk" secondAttribute="trailing" constant="16" id="mR8-M7-9ls"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="qwu-Q7-ZYw"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="qwu-Q7-ZYw">
+                        <barButtonItem key="backBarButtonItem" title="Selecionar HQ por personagem" id="Pnx-jZ-NAR"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="favoriteTableView" destination="yh3-8M-xmk" id="Lj8-en-xbd"/>
                         <outlet property="titleLabel" destination="Ads-pm-uOv" id="6q4-IR-TcC"/>
@@ -290,6 +302,11 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
+                                <activityIndicatorView key="backgroundView" opaque="NO" contentMode="center" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" id="0Np-KB-Lek">
+                                    <rect key="frame" x="0.0" y="0.0" width="382" height="666"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="color" red="0.8078432083" green="0.20392158630000001" blue="0.1607843041" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </activityIndicatorView>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="comicCell" id="LdH-7F-puu" customClass="ComicCollectionViewCell" customModule="Minha_HQ_Preferida" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="181" height="191"/>
@@ -356,11 +373,14 @@
                             <constraint firstItem="kIE-n6-0hW" firstAttribute="bottom" secondItem="xcL-zq-f31" secondAttribute="bottom" constant="16" id="wwc-XA-juS"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="i6P-hm-TZy"/>
+                    <navigationItem key="navigationItem" id="i6P-hm-TZy">
+                        <barButtonItem key="backBarButtonItem" title="Listar Quadrinhos" id="hUJ-ph-MLz"/>
+                    </navigationItem>
                     <connections>
+                        <outlet property="comicCollectionView" destination="xcL-zq-f31" id="UtL-4T-upI"/>
+                        <outlet property="loadingActivityIndicator" destination="0Np-KB-Lek" id="K0p-9q-SWd"/>
                         <outlet property="searchComic" destination="fFu-vR-tIE" id="3Ru-EG-1m6"/>
-                        <outlet property="selectComic" destination="xcL-zq-f31" id="UtL-4T-upI"/>
-                        <segue destination="TT3-ub-ueo" kind="presentation" identifier="goToDetail" id="mN3-Fy-De6"/>
+                        <segue destination="TT3-ub-ueo" kind="presentation" identifier="goToDetail" modalPresentationStyle="fullScreen" id="mN3-Fy-De6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6m3-sh-0Pr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -372,74 +392,74 @@
             <objects>
                 <viewController id="TT3-ub-ueo" customClass="DetailViewController" customModule="Minha_HQ_Preferida" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QMf-pe-UY9">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BxZ-Sa-nB7">
-                                <rect key="frame" x="16" y="16" width="382" height="350"/>
+                                <rect key="frame" x="16" y="60" width="382" height="350"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="350" id="Ait-sg-PHe"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Publicado:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="avD-E1-ud9">
-                                <rect key="frame" x="16" y="410" width="382" height="24"/>
+                                <rect key="frame" x="16" y="454" width="382" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="1" green="0.88774658350000002" blue="0.079973059760000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="titulo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q1t-F7-HvH">
-                                <rect key="frame" x="16" y="376" width="298" height="29"/>
+                                <rect key="frame" x="16" y="420" width="298" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="textColor" systemColor="systemGroupedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Publicado" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nke-EM-e2G">
-                                <rect key="frame" x="16" y="439" width="382" height="24"/>
+                                <rect key="frame" x="16" y="483" width="382" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" systemColor="systemGroupedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Escritor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b02-2E-4E7">
-                                <rect key="frame" x="16" y="497" width="382" height="24"/>
+                                <rect key="frame" x="16" y="541" width="382" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" systemColor="systemGroupedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lapis" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fnq-uI-IxE">
-                                <rect key="frame" x="16" y="555" width="382" height="24"/>
+                                <rect key="frame" x="16" y="599" width="382" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" systemColor="systemGroupedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artista" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lJj-CQ-edF">
-                                <rect key="frame" x="16" y="613" width="382" height="24"/>
+                                <rect key="frame" x="16" y="657" width="382" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" systemColor="systemGroupedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Escritor:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAH-ap-TGz">
-                                <rect key="frame" x="16" y="468" width="382" height="24"/>
+                                <rect key="frame" x="16" y="512" width="382" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="1" green="0.88774658350000002" blue="0.079973059760000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lápis:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eXC-nF-CDW">
-                                <rect key="frame" x="16" y="526" width="382" height="24"/>
+                                <rect key="frame" x="16" y="570" width="382" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="1" green="0.88774658350000002" blue="0.079973059760000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artista da Capa:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1yP-wx-AZO">
-                                <rect key="frame" x="16" y="584" width="382" height="24"/>
+                                <rect key="frame" x="16" y="628" width="382" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="1" green="0.88774658350000002" blue="0.079973059760000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="VhT-Qe-Q7L">
-                                <rect key="frame" x="349" y="431.5" width="22" height="20"/>
+                                <rect key="frame" x="349" y="475.5" width="22" height="20"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eaD-7E-fQB">
-                                <rect key="frame" x="131" y="757" width="153" height="66"/>
+                                <rect key="frame" x="131" y="811" width="153" height="66"/>
                                 <color key="backgroundColor" red="1" green="0.88774658350000002" blue="0.079973059760000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="153" id="bNF-9f-YON"/>
@@ -453,7 +473,7 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="UNb-gX-FUr">
-                                <rect key="frame" x="16" y="642" width="382" height="110"/>
+                                <rect key="frame" x="16" y="686" width="382" height="120"/>
                                 <color key="backgroundColor" red="0.74372632579999998" green="0.19629566970000001" blue="0.040774384990000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
