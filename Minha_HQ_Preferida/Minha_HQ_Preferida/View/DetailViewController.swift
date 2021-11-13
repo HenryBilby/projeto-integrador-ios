@@ -32,9 +32,7 @@ class DetailViewController: UIViewController {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
            favoriteComic.isUserInteractionEnabled = true
            favoriteComic.addGestureRecognizer(tapGestureRecognizer)
-        
-        
-//        favoriteComic.tintColor = .orange
+
     }
     
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
@@ -73,16 +71,4 @@ class DetailViewController: UIViewController {
     private func setButtonRadius() {
         voltarButton.layer.cornerRadius = 32
     }
-    
-//    func setupFavoriteBtn() {
-//        let tapFavoriteComic = UITapGestureRecognizer(target: self, action: #selector(favoriteComic.tappedMe))
-//        favoriteComic.addGestureRecognizer(tapFavoriteComic)
-//        favoriteComic.isUserInteractionEnabled = true
-//    }
-//
-//    @objc func tappedMe()
-//    {
-//        print("Tapped on Image")
-//    }
-
 }
