@@ -457,6 +457,7 @@
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="VhT-Qe-Q7L">
                                 <rect key="frame" x="349" y="475.5" width="22" height="20"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eaD-7E-fQB">
                                 <rect key="frame" x="131" y="811" width="153" height="66"/>
@@ -508,13 +509,13 @@
                             <constraint firstItem="UNb-gX-FUr" firstAttribute="leading" secondItem="SoU-pD-BVp" secondAttribute="leading" constant="16" id="YZK-SL-u0n"/>
                             <constraint firstItem="b02-2E-4E7" firstAttribute="leading" secondItem="SoU-pD-BVp" secondAttribute="leading" constant="16" id="bVg-hO-nw7"/>
                             <constraint firstItem="SoU-pD-BVp" firstAttribute="trailing" secondItem="Q1t-F7-HvH" secondAttribute="trailing" constant="100" id="cTm-2h-DO7"/>
+                            <constraint firstItem="SoU-pD-BVp" firstAttribute="trailing" secondItem="VhT-Qe-Q7L" secondAttribute="trailing" constant="43" id="cr5-7n-9b2"/>
                             <constraint firstItem="SoU-pD-BVp" firstAttribute="trailing" secondItem="BxZ-Sa-nB7" secondAttribute="trailing" constant="16" id="csB-gE-fDb"/>
                             <constraint firstItem="BxZ-Sa-nB7" firstAttribute="leading" secondItem="SoU-pD-BVp" secondAttribute="leading" constant="16" id="d2p-5U-aWd"/>
                             <constraint firstItem="EAH-ap-TGz" firstAttribute="leading" secondItem="SoU-pD-BVp" secondAttribute="leading" constant="16" id="dAv-jT-Fxh"/>
                             <constraint firstItem="SoU-pD-BVp" firstAttribute="trailing" secondItem="fnq-uI-IxE" secondAttribute="trailing" constant="16" id="ege-me-wjR"/>
                             <constraint firstItem="VhT-Qe-Q7L" firstAttribute="top" secondItem="BxZ-Sa-nB7" secondAttribute="bottom" constant="66" id="fTt-p9-Ddc"/>
                             <constraint firstItem="SoU-pD-BVp" firstAttribute="trailing" secondItem="eXC-nF-CDW" secondAttribute="trailing" constant="16" id="guR-5X-hWb"/>
-                            <constraint firstItem="VhT-Qe-Q7L" firstAttribute="leading" secondItem="Q1t-F7-HvH" secondAttribute="trailing" constant="35" id="pPJ-Dj-rLj"/>
                             <constraint firstItem="avD-E1-ud9" firstAttribute="top" secondItem="Q1t-F7-HvH" secondAttribute="bottom" constant="5" id="plc-Tv-jTN"/>
                             <constraint firstItem="BxZ-Sa-nB7" firstAttribute="top" secondItem="SoU-pD-BVp" secondAttribute="top" constant="16" id="rcG-qE-LTp"/>
                             <constraint firstItem="eaD-7E-fQB" firstAttribute="leading" secondItem="SoU-pD-BVp" secondAttribute="leading" constant="131" id="tvf-cb-3So"/>
@@ -528,6 +529,7 @@
                         <outlet property="artistaLabel" destination="lJj-CQ-edF" id="K6w-q8-Cor"/>
                         <outlet property="descriptionTextView" destination="UNb-gX-FUr" id="I6r-rS-4td"/>
                         <outlet property="escritorLabel" destination="b02-2E-4E7" id="lA3-XA-cQe"/>
+                        <outlet property="favoriteComic" destination="VhT-Qe-Q7L" id="WyE-ig-JOR"/>
                         <outlet property="imageViewController" destination="BxZ-Sa-nB7" id="D77-jk-KB9"/>
                         <outlet property="lapisLabel" destination="fnq-uI-IxE" id="fIU-mJ-wod"/>
                         <outlet property="publicadoLabel" destination="Nke-EM-e2G" id="u7t-gr-CIu"/>

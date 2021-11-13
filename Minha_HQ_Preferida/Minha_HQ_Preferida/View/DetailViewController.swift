@@ -10,6 +10,7 @@ import Alamofire
 
 class DetailViewController: UIViewController {
     
+    @IBOutlet weak var favoriteComic: UIImageView!
     @IBOutlet weak var imageViewController: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var publicadoLabel: UILabel!
@@ -27,6 +28,20 @@ class DetailViewController: UIViewController {
         carregaInformacoesComic()
         super.viewWillAppear(true)
         setButtonRadius()
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+           favoriteComic.isUserInteractionEnabled = true
+           favoriteComic.addGestureRecognizer(tapGestureRecognizer)
+        
+        
+//        favoriteComic.tintColor = .orange
+    }
+    
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        let tappedImage = tapGestureRecognizer.view as? UIImageView
+        favoriteComic.tintColor = .yellow
+        print("A comic foi favoritada")
     }
     
     
@@ -58,4 +73,16 @@ class DetailViewController: UIViewController {
     private func setButtonRadius() {
         voltarButton.layer.cornerRadius = 32
     }
+    
+//    func setupFavoriteBtn() {
+//        let tapFavoriteComic = UITapGestureRecognizer(target: self, action: #selector(favoriteComic.tappedMe))
+//        favoriteComic.addGestureRecognizer(tapFavoriteComic)
+//        favoriteComic.isUserInteractionEnabled = true
+//    }
+//
+//    @objc func tappedMe()
+//    {
+//        print("Tapped on Image")
+//    }
+
 }
