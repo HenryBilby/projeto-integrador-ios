@@ -11,7 +11,7 @@ class ComicCollectionViewController : UIViewController {
     
     public var character: Character?
     
-    @IBOutlet private weak var searchComic: UISearchBar!
+    @IBOutlet private weak var comicSearch: UISearchBar!
     @IBOutlet private weak var comicCollectionView: UICollectionView!
     @IBOutlet weak var loadingActivityIndicator: UIActivityIndicatorView!
     
@@ -33,7 +33,7 @@ class ComicCollectionViewController : UIViewController {
     
     private func setDelegates() {
         comicCollectionView.delegate = self
-        searchComic.delegate = self
+        comicSearch.delegate = self
         comicViewModel.delegate = self
     }
     
@@ -44,7 +44,7 @@ class ComicCollectionViewController : UIViewController {
     private func setCollectionView() {
         comicCollectionView.dataSource = self
         comicCollectionView.layer.cornerRadius = 32
-        searchComic.layer.cornerRadius = 32
+        comicSearch.layer.cornerRadius = 32
     }
     
     private func loadComics() {
@@ -56,17 +56,17 @@ class ComicCollectionViewController : UIViewController {
     
     private func showDialog(message :String, title: String, status: RequestAPIStatusType) {
         let dialogMessage = UIAlertController(title: title, message: message, preferredStyle: .alert)
-
+        
         let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
             
             switch status {
-                case .sucess:
-                    self.comicCollectionView.reloadData()
-                case .error:
-                    self.navigationController?.popViewController(animated: true)
+            case .sucess:
+                self.comicCollectionView.reloadData()
+            case .error:
+                self.navigationController?.popViewController(animated: true)
             }
         })
-         
+        
         dialogMessage.addAction(ok)
         
         self.present(dialogMessage, animated: true, completion: nil)
@@ -113,7 +113,7 @@ extension ComicCollectionViewController: UICollectionViewDataSource {
 }
 
 extension ComicCollectionViewController: UISearchBarDelegate {
-        
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let searchText = searchBar.text {
             if searchText.isEmpty {

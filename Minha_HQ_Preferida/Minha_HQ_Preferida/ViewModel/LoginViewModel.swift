@@ -9,13 +9,13 @@ import Foundation
 
 class LoginViewModel {
     
-    let serviceLogin = ServiceLogin()
+    let serviceLogin = LoginService()
     
     public func loginWithFacebookIsValid() -> Bool {
-        return serviceLogin.loginWithFacebookIsValid()
+        return serviceLogin.facebookLoginIsValid()
     }
     
     public func loginWithGoogleIsValid() -> Bool {
-        return serviceLogin.loginWithGoogleIsValid()
+        return serviceLogin.googleLoginIsValid()
     }
 }

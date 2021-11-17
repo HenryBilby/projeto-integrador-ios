@@ -7,14 +7,13 @@
 
 import Foundation
 
-
-class ServiceLogin{
+class LoginService {
     
-    public func loginWithFacebookIsValid() -> Bool {
+    public func facebookLoginIsValid() -> Bool {
         return true
     }
     
-    public func loginWithGoogleIsValid() -> Bool {
+    public func googleLoginIsValid() -> Bool {
         return true
     }
 }

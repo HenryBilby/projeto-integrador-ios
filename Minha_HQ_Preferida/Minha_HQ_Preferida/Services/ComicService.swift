@@ -5,31 +5,31 @@
 //  Created by Sara on 17/10/21.
 //
 
-import UIKit
 import Alamofire
+import UIKit
 
 enum RequestAPIStatusType {
     case sucess
     case error
 }
 
-class ServiceComic {
+class ComicService {
     
-    public func getComicList(id: Int, completion: @escaping ([ComicElement]?, RequestAPIStatusType)->Void) {
+    public func getComicList(id: Int, completion: @escaping ([ComicElement]?, RequestAPIStatusType) -> Void) {
         var comicList : [ComicElement] = []
         
-        guard let urlFull = URL(string: MarvelApiKey.getUrlComicByCharacter(characterId: id)) else {
+        guard let fullURL = URL(string: MarvelApiKey.getURLComicByCharacter(characterId: id)) else {
             return completion(nil, .error)
         }
-
-        AF.request(urlFull).responseDecodable(of: DataComic.self) { response in
+        
+        AF.request(fullURL).responseDecodable(of: DataComic.self) { response in
             
             if let code = response.response?.statusCode, code != 200 {
                 return completion(nil, .error)
             }
             
             if let comics = response.value?.data.results {
-
+                
                 for var comic in comics {
                     if !comic.thumbnail.path.contains("https") {
                         comic.thumbnail.path = self.changePathFromHttpToHttps(path: comic.thumbnail.path)
@@ -46,9 +46,9 @@ class ServiceComic {
                     var writer = ""
                     var letterer = ""
                     var editor = ""
-
+                    
                     for item in comic.creators.items {
-
+                        
                         if item.role.lowercased() == "writer" {
                             writer.append("\(item.name), ")
                             
@@ -60,12 +60,20 @@ class ServiceComic {
                         }
                     }
                     
-                    let comic = ComicElement(id: comic.id, title: comic.title, description: comic.description, thumbnail: comic.thumbnail, selected: false, date: data, writer: writer, letterer: letterer, editor: editor)
+                    let comic = ComicElement(id: comic.id,
+                                             title: comic.title,
+                                             description: comic.description,
+                                             thumbnail: comic.thumbnail,
+                                             selected: false,
+                                             date: data,
+                                             writer: writer,
+                                             letterer: letterer,
+                                             editor: editor)
                     
                     comicList.append(comic)
                 }
                 completion(comicList, .sucess)
-
+                
             } else {
                 print ("Erro na obtenção dos dados")
                 return completion(nil, .error)

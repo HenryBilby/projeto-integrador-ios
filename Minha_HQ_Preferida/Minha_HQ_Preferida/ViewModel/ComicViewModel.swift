@@ -17,7 +17,7 @@ class ComicViewModel {
     public var delegate : ComicDelegate?
     
     private var comicList: [ComicElement] = []
-    private let serviceComic = ServiceComic()
+    private let serviceComic = ComicService()
     
     public func getComicList() -> [ComicElement] {
         return self.comicList
