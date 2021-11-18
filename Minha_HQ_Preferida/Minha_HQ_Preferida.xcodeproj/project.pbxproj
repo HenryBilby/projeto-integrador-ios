@@ -16,6 +16,8 @@
 		9BDFF0D3271CE89C00EB5AFB /* ComicService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDFF0D2271CE89C00EB5AFB /* ComicService.swift */; };
 		A9E1CE0661B6D33B131A4806 /* Pods_Minha_HQ_Preferida.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 336B46EA13B2D8BC8E32C865 /* Pods_Minha_HQ_Preferida.framework */; };
 		D030C8C82723482F008D653E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D030C8C72723482F008D653E /* DetailViewController.swift */; };
+		D05A6354274483A6003FF240 /* FavoriteListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05A6353274483A6003FF240 /* FavoriteListCollectionViewCell.swift */; };
+		D05A63572745BD97003FF240 /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D05A63552745BD97003FF240 /* CoreData.xcdatamodeld */; };
 		D082D1752717627D00C748C2 /* FavoriteCharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D082D1742717627D00C748C2 /* FavoriteCharacterTableViewCell.swift */; };
 		E0776B9427356B1A00110C18 /* DataComic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0776B9327356B1A00110C18 /* DataComic.swift */; };
 		E0874211270F39EF00BFE8F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0874210270F39EF00BFE8F9 /* AppDelegate.swift */; };
@@ -68,6 +70,8 @@
 		9BDFF0CC271CD7A500EB5AFB /* ComicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicViewModel.swift; sourceTree = "<group>"; };
 		9BDFF0D2271CE89C00EB5AFB /* ComicService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicService.swift; sourceTree = "<group>"; };
 		D030C8C72723482F008D653E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		D05A6353274483A6003FF240 /* FavoriteListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListCollectionViewCell.swift; sourceTree = "<group>"; };
+		D05A63562745BD97003FF240 /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
 		D082D1742717627D00C748C2 /* FavoriteCharacterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCharacterTableViewCell.swift; sourceTree = "<group>"; };
 		D120561145A2381DAE5A9BCA /* Pods-Minha_HQ_PreferidaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Minha_HQ_PreferidaTests.release.xcconfig"; path = "Target Support Files/Pods-Minha_HQ_PreferidaTests/Pods-Minha_HQ_PreferidaTests.release.xcconfig"; sourceTree = "<group>"; };
 		DE03C9EF74E4F0AF15521965 /* Pods-Minha_HQ_PreferidaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Minha_HQ_PreferidaTests.debug.xcconfig"; path = "Target Support Files/Pods-Minha_HQ_PreferidaTests/Pods-Minha_HQ_PreferidaTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -151,6 +155,7 @@
 		E0874204270F39EF00BFE8F9 = {
 			isa = PBXGroup;
 			children = (
+				D05A63552745BD97003FF240 /* CoreData.xcdatamodeld */,
 				E087420F270F39EF00BFE8F9 /* Minha_HQ_Preferida */,
 				E0874226270F39F100BFE8F9 /* Minha_HQ_PreferidaTests */,
 				E0874230270F39F100BFE8F9 /* Minha_HQ_PreferidaUITests */,
@@ -236,6 +241,7 @@
 				E0874255270F9EDE00BFE8F9 /* CharacterCollectionViewCell.swift */,
 				D082D1742717627D00C748C2 /* FavoriteCharacterTableViewCell.swift */,
 				9BA723D0271CD08B00C2303F /* ComicCollectionViewCell.swift */,
+				D05A6353274483A6003FF240 /* FavoriteListCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -499,9 +505,11 @@
 				9BDFF0CB271CD64900EB5AFB /* ComicElement.swift in Sources */,
 				E087429E2729FE0700BFE8F9 /* CharacterData.swift in Sources */,
 				D030C8C82723482F008D653E /* DetailViewController.swift in Sources */,
+				D05A6354274483A6003FF240 /* FavoriteListCollectionViewCell.swift in Sources */,
 				9BDFF0CD271CD7A500EB5AFB /* ComicViewModel.swift in Sources */,
 				E087425A2710798300BFE8F9 /* ShowSelectedCharactersViewController.swift in Sources */,
-				E0874252270F905D00BFE8F9 /* CharacterService.swift in Sources */,
+				E0874252270F905D00BFE8F9 /* ServiceCharacter.swift in Sources */,
+				D05A63572745BD97003FF240 /* CoreData.xcdatamodeld in Sources */,
 				E087424C270F804B00BFE8F9 /* LoginViewModel.swift in Sources */,
 				E0874211270F39EF00BFE8F9 /* AppDelegate.swift in Sources */,
 				9BA723D1271CD08B00C2303F /* ComicCollectionViewCell.swift in Sources */,
@@ -874,6 +882,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D05A63552745BD97003FF240 /* CoreData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D05A63562745BD97003FF240 /* CoreData.xcdatamodel */,
+			);
+			currentVersion = D05A63562745BD97003FF240 /* CoreData.xcdatamodel */;
+			path = CoreData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E0874205270F39EF00BFE8F9 /* Project object */;
 }

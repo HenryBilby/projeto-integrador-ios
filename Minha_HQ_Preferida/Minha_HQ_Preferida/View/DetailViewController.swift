@@ -10,7 +10,7 @@ import Alamofire
 
 class DetailViewController: UIViewController {
     
-    @IBOutlet weak var favoriteComic: UIImageView!
+    @IBOutlet weak var favoriteComic: UIButton!
     @IBOutlet weak var imageViewController: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var publicadoLabel: UILabel!
@@ -19,6 +19,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var artistaLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var voltarButton: UIButton!
+   
     
     
     var comicElement: ComicElement?

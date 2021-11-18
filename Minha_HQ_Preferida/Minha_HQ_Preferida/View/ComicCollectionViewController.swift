@@ -14,6 +14,7 @@ class ComicCollectionViewController : UIViewController {
     @IBOutlet private weak var comicSearch: UISearchBar!
     @IBOutlet private weak var comicCollectionView: UICollectionView!
     @IBOutlet weak var loadingActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var listaPersonagemFavoritoButton: UIButton!
     
     private let comicViewModel = ComicViewModel()
     
