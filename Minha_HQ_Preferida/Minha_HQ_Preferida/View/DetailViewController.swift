@@ -21,7 +21,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var voltarButton: UIButton!
    
     
-    
+    let viewModel: FavoritoViewModel = .init()
     var comicElement: ComicElement?
     
     override func viewDidLoad() {
@@ -41,8 +41,26 @@ class DetailViewController: UIViewController {
         let tappedImage = tapGestureRecognizer.view as? UIImageView
         favoriteComic.tintColor = .yellow
         print("A comic foi favoritada")
+        print(imageViewController)
+                
+        let nome = titleLabel.text
+        
+        if let comic = comicElement {
+            loadImageFromAPI(with: comic.image)
+            viewModel.adicionarFavorito(nome: nome, imagem: comic.image)
+        }
     }
     
+    
+    @IBAction func adicionarButton(_ sender: Any) {
+        
+        print(imageViewController)
+//        let nome = titleLabel.text
+//        let imagem = imageViewController.image
+//
+//        viewModel.adicionarFavorito(nome: nome, imagem: String?)
+        
+    }
     
     @IBAction func backButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
