@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DataCharacter : Codable {
+struct CharacterData : Codable {
     let data : Characters
 }
 

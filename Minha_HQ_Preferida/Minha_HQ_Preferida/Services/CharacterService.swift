@@ -5,21 +5,21 @@
 //  Created by Henry Bilby on 07/10/21.
 //
 
-import Foundation
 import Alamofire
+import Foundation
 
-typealias ClosureDataWithMessage = ([Character]?, String)->Void
+typealias ClosureDataWithMessage = ([Character]?, String) -> Void
 
-class ServiceCharacter {
+class CharacterService {
     
     public func getCharacterList(completion: @escaping ClosureDataWithMessage) {
         var characterList : [Character] = []
         
-        guard let url = URL(string: MarvelApiKey.urlCharacter) else {
+        guard let url = URL(string: MarvelApiKey.characterURL) else {
             return completion(characterList, "Erro ao criar URL")
         }
         
-        AF.request(url).responseDecodable(of: DataCharacter.self) { response in
+        AF.request(url).responseDecodable(of: CharacterData.self) { response in
             if let characters = response.value?.data.results {
                 
                 for var character in characters {
@@ -29,16 +29,17 @@ class ServiceCharacter {
                     
                     character.selected = false
                     character.image = "\(character.thumbnail.path).\(character.thumbnail.extension)"
-
+                    
                     characterList.append(character)
                 }
-
+                
                 completion(characterList, "Sucesso ao carregar os personagens.")
-
+                
             } else {
-                return completion(characterList, "Erro na obtenção dos dados)")
+                return completion(characterList, "Erro na obtenção dos dados")
             }
-        }.resume()
+        }
+        .resume()
     }
     
     private func changePathFromHttpToHttps( path: String) -> String {

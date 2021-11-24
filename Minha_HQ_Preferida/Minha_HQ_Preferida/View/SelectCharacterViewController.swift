@@ -8,9 +8,9 @@
 import UIKit
 
 class SelectCharacterViewController: UIViewController {
-
+    
     @IBOutlet weak var selectCharacterLabel: UILabel!
-    @IBOutlet weak var avancarButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var selectCharacterCollectioView: UICollectionView!
     
     @IBOutlet weak var loadingActivityIndicator: UIActivityIndicatorView!
@@ -29,7 +29,7 @@ class SelectCharacterViewController: UIViewController {
     
     @IBAction func actionAvancarButton(_ sender: Any) {
         if selectCharacterViewModel.getCharacterListSelected().count == 3 {
-            performSegue(withIdentifier: "showCharactersSegue", sender: avancarButton)
+            performSegue(withIdentifier: "showCharactersSegue", sender: nextButton)
         } else {
             showDialog(message: "Favor selecionar 3 personagens", title: "Atenção")
         }
@@ -43,17 +43,17 @@ class SelectCharacterViewController: UIViewController {
     
     private func showDialog(message :String, title: String) {
         let dialogMessage = UIAlertController(title: title, message: message, preferredStyle: .alert)
-
+        
         let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
-          })
-         
+        })
+        
         dialogMessage.addAction(ok)
         
         self.present(dialogMessage, animated: true, completion: nil)
     }
     
     private func setButtonRadius() {
-        avancarButton.layer.cornerRadius = 32
+        nextButton.layer.cornerRadius = 32
     }
     
     private func setLabelRadius() {

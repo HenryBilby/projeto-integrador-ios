@@ -10,6 +10,7 @@ import Alamofire
 
 class DetailViewController: UIViewController {
     
+    @IBOutlet weak var favoriteComic: UIButton!
     @IBOutlet weak var imageViewController: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var publicadoLabel: UILabel!
@@ -18,8 +19,9 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var artistaLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var voltarButton: UIButton!
+   
     
-    
+    let viewModel: FavoritoViewModel = .init()
     var comicElement: ComicElement?
     
     override func viewDidLoad() {
@@ -27,8 +29,38 @@ class DetailViewController: UIViewController {
         carregaInformacoesComic()
         super.viewWillAppear(true)
         setButtonRadius()
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+           favoriteComic.isUserInteractionEnabled = true
+           favoriteComic.addGestureRecognizer(tapGestureRecognizer)
+
     }
     
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        let tappedImage = tapGestureRecognizer.view as? UIImageView
+        favoriteComic.tintColor = .yellow
+        print("A comic foi favoritada")
+        print(imageViewController)
+                
+        let nome = titleLabel.text
+        
+        if let comic = comicElement {
+            loadImageFromAPI(with: comic.image)
+            viewModel.adicionarFavorito(nome: nome, imagem: comic.image)
+        }
+    }
+    
+    
+    @IBAction func adicionarButton(_ sender: Any) {
+        
+        print(imageViewController)
+//        let nome = titleLabel.text
+//        let imagem = imageViewController.image
+//
+//        viewModel.adicionarFavorito(nome: nome, imagem: String?)
+        
+    }
     
     @IBAction func backButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)

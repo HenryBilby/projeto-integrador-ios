@@ -15,7 +15,7 @@ class SelectCharacterViewModel {
     
     public var delegate : SelectCharacterDelegate?
     
-    private let serviceCharacter = ServiceCharacter()
+    private let serviceCharacter = CharacterService()
     private var characterList : [Character] = []
     
     public func getCharacterList() -> [Character] {
