@@ -14,7 +14,6 @@ protocol SelectCharacterDelegate {
 class SelectCharacterViewModel {
     
     public var delegate : SelectCharacterDelegate?
-    
     private let serviceCharacter = CharacterService()
     private var characterList : [Character] = []
     
@@ -35,7 +34,7 @@ class SelectCharacterViewModel {
         guard let selected = self.characterList[index].selected else { return }
         
         let characterListSelectedCount = getCharacterListSelected().count
-
+        
         if characterListSelectedCount < 3 {
             self.characterList[index].selected = !selected
         } else if characterListSelectedCount == 3 && selected {
@@ -52,6 +51,5 @@ class SelectCharacterViewModel {
                 }
             }
         }
-        
     }
 }

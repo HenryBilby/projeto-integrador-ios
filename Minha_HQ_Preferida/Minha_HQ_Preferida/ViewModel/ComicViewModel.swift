@@ -15,7 +15,6 @@ protocol ComicDelegate {
 class ComicViewModel {
     
     public var delegate : ComicDelegate?
-    
     private var comicList: [ComicElement] = []
     private let serviceComic = ComicService()
     
@@ -29,8 +28,8 @@ class ComicViewModel {
                 switch status {
                 case .sucess:
                     if let list = comicList, !list.isEmpty {
-                            self.comicList = list
-                            self.delegate?.sucessLoadComics(type: status)
+                        self.comicList = list
+                        self.delegate?.sucessLoadComics(type: status)
                     } else {
                         self.delegate?.errorLoadComics(type: .error)
                     }
@@ -38,8 +37,6 @@ class ComicViewModel {
                     self.delegate?.errorLoadComics(type: status)
                 }
             }
-            
-            
         }
     }
     

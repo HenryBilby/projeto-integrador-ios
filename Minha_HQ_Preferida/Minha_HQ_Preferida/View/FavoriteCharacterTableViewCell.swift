@@ -35,7 +35,6 @@ class FavoriteCharacterTableViewCell: UITableViewCell {
         AF.request(url).responseData { response in
             if let data = response.data {
                 self.imageFavorite.image = UIImage(data: data)
-                
             }
         }
     }

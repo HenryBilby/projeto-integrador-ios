@@ -10,19 +10,17 @@ import UIKit
 class LoginViewController: UIViewController {
     
     let loginViewModel = LoginViewModel()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-
+    
     @IBAction func actionLoginWithFacebook(_ sender: Any) {
         if loginViewModel.loginWithFacebookIsValid() {
             performSegue(withIdentifier: "selectCharacterSegue", sender: sender)
         }
     }
-    
     
     @IBAction func actionLoginWithGoogle(_ sender: Any) {
         if loginViewModel.loginWithGoogleIsValid(){
@@ -32,8 +30,6 @@ class LoginViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "selectCharacterSegue" {
-            
         }
     }
 }
-

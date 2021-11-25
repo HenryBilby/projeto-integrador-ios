@@ -19,7 +19,16 @@ class ComicElement: Codable {
     let editor: String
     
     
-    init(id: Int, title: String, description: String, thumbnail : Thumbnail, selected: Bool, date: String, writer: String, letterer: String, editor: String) {
+    init(id: Int,
+         title: String,
+         description: String,
+         thumbnail : Thumbnail,
+         selected: Bool,
+         date: String,
+         writer: String,
+         letterer: String,
+         editor: String) {
+        
         self.id = id
         self.title = title
         self.description = description
