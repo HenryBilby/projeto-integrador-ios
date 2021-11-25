@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_heroes" translatesAutoresizingMaskIntoConstraints="NO" id="zq8-N4-DOt">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Obh-li-c8K">
                                 <rect key="frame" x="107" y="458" width="200" height="54"/>
@@ -50,11 +50,11 @@
                         <color key="backgroundColor" red="0.8078432083" green="0.20392158630000001" blue="0.1607843041" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="Obh-li-c8K" firstAttribute="top" secondItem="fM8-RO-ENb" secondAttribute="bottom" constant="16" id="2YD-qs-4QZ"/>
-                            <constraint firstItem="zq8-N4-DOt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="5Nj-IG-gD2"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zq8-N4-DOt" secondAttribute="bottom" id="Il9-UV-ZXp"/>
+                            <constraint firstItem="zq8-N4-DOt" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="FCy-sZ-edL"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zq8-N4-DOt" secondAttribute="trailing" id="XWb-1T-lAK"/>
                             <constraint firstItem="Obh-li-c8K" firstAttribute="centerX" secondItem="zq8-N4-DOt" secondAttribute="centerX" id="dkt-Cm-qPY"/>
                             <constraint firstItem="fM8-RO-ENb" firstAttribute="centerX" secondItem="zq8-N4-DOt" secondAttribute="centerX" id="gN9-rg-et1"/>
+                            <constraint firstItem="zq8-N4-DOt" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="hpQ-WI-HL7"/>
                             <constraint firstItem="fM8-RO-ENb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="300" id="p6M-7E-lAz"/>
                             <constraint firstItem="zq8-N4-DOt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tKF-bG-FE5"/>
                         </constraints>
