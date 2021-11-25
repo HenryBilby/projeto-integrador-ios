@@ -44,10 +44,6 @@ class CoreDataService {
     }
     
     private func saveContext() {
-        do {
-            try context.save()
-        } catch {
-            
-        }
+        try? context.save()
     }
 }

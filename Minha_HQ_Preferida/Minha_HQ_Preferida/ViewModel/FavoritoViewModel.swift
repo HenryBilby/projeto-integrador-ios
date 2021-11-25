@@ -11,6 +11,7 @@ import UIKit
 protocol FavoritoViewModelDelegate{
     func recarregaDados()
 }
+
 class FavoritoViewModel{
     
     var favorito: [Favorito] = []
