@@ -21,23 +21,10 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_heroes" translatesAutoresizingMaskIntoConstraints="NO" id="zq8-N4-DOt">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Obh-li-c8K">
-                                <rect key="frame" x="107" y="458" width="200" height="54"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="pRN-o4-UAM"/>
-                                    <constraint firstAttribute="height" constant="54" id="sDA-1Z-ZbH"/>
-                                </constraints>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" backgroundImage="google"/>
-                                <connections>
-                                    <action selector="actionLoginWithGoogle:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tvv-LG-Fc7"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fM8-RO-ENb">
-                                <rect key="frame" x="107" y="388" width="200" height="54"/>
+                                <rect key="frame" x="107" y="367" width="200" height="75"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="eCf-OR-XxA"/>
-                                    <constraint firstAttribute="height" constant="54" id="sw8-DQ-lZu"/>
+                                    <constraint firstAttribute="width" constant="200" id="dyC-eR-U1r"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" backgroundImage="facebook"/>
@@ -45,24 +32,34 @@
                                     <action selector="actionLoginWithFacebook:" destination="BYZ-38-t0r" eventType="touchUpInside" id="efm-kX-JdM"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J6H-5x-gC8" customClass="GIDSignInButton">
+                                <rect key="frame" x="107" y="461" width="200" height="52"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="N6q-De-3D5"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.8078432083" green="0.20392158630000001" blue="0.1607843041" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="Obh-li-c8K" firstAttribute="top" secondItem="fM8-RO-ENb" secondAttribute="bottom" constant="16" id="2YD-qs-4QZ"/>
-                            <constraint firstItem="zq8-N4-DOt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="5Nj-IG-gD2"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zq8-N4-DOt" secondAttribute="bottom" id="Il9-UV-ZXp"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zq8-N4-DOt" secondAttribute="trailing" id="XWb-1T-lAK"/>
-                            <constraint firstItem="Obh-li-c8K" firstAttribute="centerX" secondItem="zq8-N4-DOt" secondAttribute="centerX" id="dkt-Cm-qPY"/>
-                            <constraint firstItem="fM8-RO-ENb" firstAttribute="centerX" secondItem="zq8-N4-DOt" secondAttribute="centerX" id="gN9-rg-et1"/>
-                            <constraint firstItem="fM8-RO-ENb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="300" id="p6M-7E-lAz"/>
-                            <constraint firstItem="zq8-N4-DOt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tKF-bG-FE5"/>
+                            <constraint firstItem="J6H-5x-gC8" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="461" id="0h1-bV-SLe"/>
+                            <constraint firstItem="J6H-5x-gC8" firstAttribute="centerX" secondItem="zq8-N4-DOt" secondAttribute="centerX" id="9AJ-Rp-0cg"/>
+                            <constraint firstItem="zq8-N4-DOt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="BqX-r3-YSP"/>
+                            <constraint firstItem="J6H-5x-gC8" firstAttribute="top" secondItem="fM8-RO-ENb" secondAttribute="bottom" constant="19" id="Cfz-uw-T1f"/>
+                            <constraint firstItem="fM8-RO-ENb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="279" id="FAS-yE-YP4"/>
+                            <constraint firstItem="fM8-RO-ENb" firstAttribute="leading" secondItem="J6H-5x-gC8" secondAttribute="leading" id="SGe-eb-PG7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="J6H-5x-gC8" secondAttribute="bottom" constant="349" id="luc-rc-C0Z"/>
+                            <constraint firstItem="zq8-N4-DOt" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="mtk-Dy-P3V"/>
+                            <constraint firstItem="J6H-5x-gC8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rr3-wa-1wU"/>
+                            <constraint firstItem="zq8-N4-DOt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="uMh-5w-59J"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ZOC-s7-kVb">
                         <barButtonItem key="backBarButtonItem" title="Login" id="WBE-s5-Tr0"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="signInButton" destination="J6H-5x-gC8" id="Csv-du-hM2"/>
                         <segue destination="IQH-Ds-LY3" kind="show" identifier="selectCharacterSegue" id="iU2-dc-AMU"/>
                     </connections>
                 </viewController>
@@ -697,12 +694,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="63L-ik-n12"/>
         <segue reference="djq-ny-S1R"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="facebook" width="1041" height="178"/>
-        <image name="google" width="1035" height="176"/>
         <image name="login_heroes" width="550" height="707"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">

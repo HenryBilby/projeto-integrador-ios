@@ -23,8 +23,7 @@ class FavoriteHQViewController: UIViewController {
         
     }
     
-        
-    }
+}
 
 extension FavoriteHQViewController: FavoritoViewModelDelegate {
     func recarregaDados() {
