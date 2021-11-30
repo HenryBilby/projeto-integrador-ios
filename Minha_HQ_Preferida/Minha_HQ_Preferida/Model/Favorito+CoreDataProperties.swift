@@ -11,12 +11,11 @@ import CoreData
 
 
 extension Favorito {
-
+    
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Favorito> {
         return NSFetchRequest<Favorito>(entityName: "Favorito")
     }
-
+    
     @NSManaged public var imagem: String?
     @NSManaged public var nome: String?
-
 }

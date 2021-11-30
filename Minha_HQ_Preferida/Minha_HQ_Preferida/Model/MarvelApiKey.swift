@@ -11,9 +11,7 @@ struct MarvelApiKey {
     private static let timestamp = "1635292800"
     private static let apikey = "9d0e0a847010d456c3ff3466d2fc46d6"
     private static let hash = "af9ddc224a4c344082c1d0c90e167187"
-
     private static let path = "&ts=\(timestamp)&apikey=\(apikey)&hash=\(hash)"
-    
     public static let characterURL = "https://gateway.marvel.com/v1/public/characters?limit=100\(path)"
     
     public static func getURLComicByCharacter(characterId: Int) -> String {

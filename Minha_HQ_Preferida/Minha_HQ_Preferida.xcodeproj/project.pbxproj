@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4126518C27564D6300AA58D9 /* Favorito+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4126518A27564D6300AA58D9 /* Favorito+CoreDataProperties.swift */; };
+		4126518D27564D6300AA58D9 /* Favorito+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4126518B27564D6300AA58D9 /* Favorito+CoreDataClass.swift */; };
 		9BA723CF271CBA2200C2303F /* ComicCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA723CE271CBA2200C2303F /* ComicCollectionViewController.swift */; };
 		9BA723D1271CD08B00C2303F /* ComicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA723D0271CD08B00C2303F /* ComicCollectionViewCell.swift */; };
 		9BDFF0CB271CD64900EB5AFB /* ComicElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDFF0CA271CD64900EB5AFB /* ComicElement.swift */; };
@@ -21,8 +23,6 @@
 		D0C81FF3274857B100548A1C /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C81FF2274857B100548A1C /* CoreDataService.swift */; };
 		D0C81FF52748842400548A1C /* FavoritoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C81FF42748842400548A1C /* FavoritoTableViewCell.swift */; };
 		D0DE7B9F2745D4BC00B45DBC /* FavoriteHQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DE7B9E2745D4BC00B45DBC /* FavoriteHQViewController.swift */; };
-		D0DE7BA62745D6EB00B45DBC /* Favorito+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DE7BA42745D6EB00B45DBC /* Favorito+CoreDataClass.swift */; };
-		D0DE7BA72745D6EB00B45DBC /* Favorito+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DE7BA52745D6EB00B45DBC /* Favorito+CoreDataProperties.swift */; };
 		E0776B9427356B1A00110C18 /* DataComic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0776B9327356B1A00110C18 /* DataComic.swift */; };
 		E0874211270F39EF00BFE8F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0874210270F39EF00BFE8F9 /* AppDelegate.swift */; };
 		E0874213270F39EF00BFE8F9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0874212270F39EF00BFE8F9 /* SceneDelegate.swift */; };
@@ -64,6 +64,8 @@
 /* Begin PBXFileReference section */
 		336B46EA13B2D8BC8E32C865 /* Pods_Minha_HQ_Preferida.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Minha_HQ_Preferida.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		38CBC937B80D200A82E34275 /* Pods-Minha_HQ_Preferida.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Minha_HQ_Preferida.debug.xcconfig"; path = "Target Support Files/Pods-Minha_HQ_Preferida/Pods-Minha_HQ_Preferida.debug.xcconfig"; sourceTree = "<group>"; };
+		4126518A27564D6300AA58D9 /* Favorito+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Favorito+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4126518B27564D6300AA58D9 /* Favorito+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Favorito+CoreDataClass.swift"; sourceTree = "<group>"; };
 		584BE7C39A8DD6B95BA4F256 /* Pods-Minha_HQ_Preferida.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Minha_HQ_Preferida.release.xcconfig"; path = "Target Support Files/Pods-Minha_HQ_Preferida/Pods-Minha_HQ_Preferida.release.xcconfig"; sourceTree = "<group>"; };
 		9BA723CE271CBA2200C2303F /* ComicCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicCollectionViewController.swift; sourceTree = "<group>"; };
 		9BA723D0271CD08B00C2303F /* ComicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -78,8 +80,6 @@
 		D0C81FF2274857B100548A1C /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		D0C81FF42748842400548A1C /* FavoritoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritoTableViewCell.swift; sourceTree = "<group>"; };
 		D0DE7B9E2745D4BC00B45DBC /* FavoriteHQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteHQViewController.swift; sourceTree = "<group>"; };
-		D0DE7BA42745D6EB00B45DBC /* Favorito+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Favorito+CoreDataClass.swift"; path = "/Users/paulamatsumoto/Documents/projeto-integrador-ios/Minha_HQ_Preferida/Minha_HQ_Preferida/Model/Favorito+CoreDataClass.swift"; sourceTree = "<absolute>"; };
-		D0DE7BA52745D6EB00B45DBC /* Favorito+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Favorito+CoreDataProperties.swift"; path = "/Users/paulamatsumoto/Documents/projeto-integrador-ios/Minha_HQ_Preferida/Minha_HQ_Preferida/Model/Favorito+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		E0776B9327356B1A00110C18 /* DataComic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataComic.swift; sourceTree = "<group>"; };
 		E087420D270F39EF00BFE8F9 /* Minha_HQ_Preferida.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Minha_HQ_Preferida.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0874210270F39EF00BFE8F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -213,8 +213,8 @@
 		E0874240270F483D00BFE8F9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D0DE7BA42745D6EB00B45DBC /* Favorito+CoreDataClass.swift */,
-				D0DE7BA52745D6EB00B45DBC /* Favorito+CoreDataProperties.swift */,
+				4126518B27564D6300AA58D9 /* Favorito+CoreDataClass.swift */,
+				4126518A27564D6300AA58D9 /* Favorito+CoreDataProperties.swift */,
 				9BDFF0CA271CD64900EB5AFB /* ComicElement.swift */,
 				E0874243270F4A5500BFE8F9 /* MarvelApiKey.swift */,
 				E087429D2729FE0700BFE8F9 /* CharacterData.swift */,
@@ -455,13 +455,13 @@
 				9BDFF0D3271CE89C00EB5AFB /* ComicService.swift in Sources */,
 				E0874256270F9EDE00BFE8F9 /* CharacterCollectionViewCell.swift in Sources */,
 				D082D1752717627D00C748C2 /* FavoriteCharacterTableViewCell.swift in Sources */,
+				4126518C27564D6300AA58D9 /* Favorito+CoreDataProperties.swift in Sources */,
 				D0C81FF52748842400548A1C /* FavoritoTableViewCell.swift in Sources */,
 				E0776B9427356B1A00110C18 /* DataComic.swift in Sources */,
 				E0874244270F4A5500BFE8F9 /* MarvelApiKey.swift in Sources */,
-				D0DE7BA62745D6EB00B45DBC /* Favorito+CoreDataClass.swift in Sources */,
 				E0874215270F39EF00BFE8F9 /* LoginViewController.swift in Sources */,
+				4126518D27564D6300AA58D9 /* Favorito+CoreDataClass.swift in Sources */,
 				E087424A270F7C2100BFE8F9 /* LoginService.swift in Sources */,
-				D0DE7BA72745D6EB00B45DBC /* Favorito+CoreDataProperties.swift in Sources */,
 				9BDFF0CB271CD64900EB5AFB /* ComicElement.swift in Sources */,
 				E087429E2729FE0700BFE8F9 /* CharacterData.swift in Sources */,
 				D030C8C82723482F008D653E /* DetailViewController.swift in Sources */,

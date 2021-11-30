@@ -16,13 +16,11 @@ class FavoriteHQViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        hqFavoritaTableView.delegate = self
+        //        hqFavoritaTableView.delegate = self
         hqFavoritaTableView.dataSource = self
         viewModel.delegate = self
         viewModel.carregaDados()
-        
     }
-    
 }
 
 extension FavoriteHQViewController: FavoritoViewModelDelegate {
@@ -30,6 +28,7 @@ extension FavoriteHQViewController: FavoritoViewModelDelegate {
         hqFavoritaTableView.reloadData()
     }
 }
+
 extension FavoriteHQViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.quantidadeDeFavoritosNaLista()
@@ -42,11 +41,7 @@ extension FavoriteHQViewController: UITableViewDataSource {
             
             cell.setup(nome: nome, imagem: favorito.imagem ?? "")
             return cell
-             
         }
         return .init()
     }
-    
-    
 }
-

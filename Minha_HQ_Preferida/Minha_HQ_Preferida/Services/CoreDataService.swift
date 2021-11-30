@@ -9,15 +9,14 @@ import Foundation
 import UIKit
 
 class CoreDataService {
-
-     private var favorito: [Favorito] = []
-     private let context = ((UIApplication.shared.delegate)
-                   as! AppDelegate)
+    
+    private var favorito: [Favorito] = []
+    private let context = ((UIApplication.shared.delegate)
+                           as! AppDelegate)
         .persistentContainer
         .viewContext
-
-
-     func pegarListaFavoritoNoCoreData() -> [Favorito] {
+    
+    func pegarListaFavoritoNoCoreData() -> [Favorito] {
         do {
             favorito = try context.fetch(Favorito.fetchRequest())
             return favorito
@@ -25,31 +24,26 @@ class CoreDataService {
             print(error.localizedDescription)
             return []
         }
-     
     }
-
-     func adicionarFavoritoNoCoreData(nome: String?, imagem: String?) -> [Favorito] {
+    
+    func adicionarFavoritoNoCoreData(nome: String?, imagem: String?) -> [Favorito] {
         let favorito: Favorito = .init(context: context)
         favorito.nome = nome
         favorito.imagem = imagem
-
+        
         saveContext()
-
+        
         return pegarListaFavoritoNoCoreData()
     }
-
-     func removerFavoritoNoCoreData(favorito: Favorito) -> [Favorito] {
+    
+    func removerFavoritoNoCoreData(favorito: Favorito) -> [Favorito] {
         context.delete(favorito)
         saveContext()
-
+        
         return pegarListaFavoritoNoCoreData()
     }
-
+    
     private func saveContext() {
-        do {
-            try context.save()
-        } catch {
-
-        }
+        try? context.save()
     }
 }

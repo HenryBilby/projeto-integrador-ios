@@ -12,7 +12,6 @@ class SelectCharacterViewController: UIViewController {
     @IBOutlet weak var selectCharacterLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var selectCharacterCollectioView: UICollectionView!
-    
     @IBOutlet weak var loadingActivityIndicator: UIActivityIndicatorView!
     
     let selectCharacterViewModel = SelectCharacterViewModel()
@@ -83,7 +82,6 @@ extension SelectCharacterViewController: UICollectionViewDelegate {
         self.selectCharacterViewModel.setCharacterSelected(index: indexPath.row)
         self.selectCharacterCollectioView.reloadData()
     }
-    
 }
 
 extension SelectCharacterViewController: UICollectionViewDataSource {

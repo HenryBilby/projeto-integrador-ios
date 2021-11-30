@@ -108,7 +108,6 @@ extension ComicCollectionViewController: UICollectionViewDataSource {
             cell.setup(with: comicViewModel.getComicList()[indexPath.row])
             return cell
         }
-        
         return UICollectionViewCell()
     }
 }

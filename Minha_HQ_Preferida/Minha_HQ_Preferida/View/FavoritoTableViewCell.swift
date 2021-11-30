@@ -23,11 +23,10 @@ class FavoritoTableViewCell: UITableViewCell {
         
         // Configure the view for the selected state
     }
+    
     func setup(nome: String, imagem: String) {
         nomeLabel.text = "\(nome)"
-        //        imagemFavorito.image = imagem
-        
-        
+        loadImageFromAPI(with: imagem)
     }
     
     private func loadImageFromAPI(with url : String) {
