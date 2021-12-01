@@ -25,6 +25,7 @@ class FavoriteCharacterTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         imageFavorite.layer.cornerRadius = 20
+        imageFavorite.layer.masksToBounds = true
     }
     
     private func loadImageFavoriteFromAPI(with url : String) {

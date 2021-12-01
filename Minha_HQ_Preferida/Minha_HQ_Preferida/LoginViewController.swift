@@ -95,4 +95,5 @@ extension LoginViewController: GIDSignInDelegate {
             self.performSegue(withIdentifier: "selectCharacterSegue", sender: nil)
         }
     }
+
 }
