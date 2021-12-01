@@ -15,6 +15,10 @@ class ComicCollectionViewController : UIViewController {
     @IBOutlet private weak var comicCollectionView: UICollectionView!
     @IBOutlet weak var loadingActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var listaPersonagemFavoritoButton: UIButton!
+//        didSet {
+//            listaPersonagemFavoritoButton.titleLabel?.font = UIFont.systemFont(ofSize: 24)
+//        }
+//    }
     
     private let comicViewModel = ComicViewModel()
     
@@ -24,6 +28,7 @@ class ComicCollectionViewController : UIViewController {
         setDataSources()
         loadComics()
         setCollectionView()
+        setButtonRadius()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -45,7 +50,16 @@ class ComicCollectionViewController : UIViewController {
     private func setCollectionView() {
         comicCollectionView.dataSource = self
         comicCollectionView.layer.cornerRadius = 32
-        comicSearch.layer.cornerRadius = 32
+        comicCollectionView.layer.masksToBounds = true
+        
+        comicSearch.layer.cornerRadius = 28
+        comicSearch.layer.masksToBounds = true
+    }
+    
+    private func setButtonRadius() {
+        listaPersonagemFavoritoButton.layer.cornerRadius = 32
+        listaPersonagemFavoritoButton.layer.masksToBounds = true
+//        listaPersonagemFavoritoButton.titleLabel?.font = .systemFont(ofSize: 24.0)
     }
     
     private func loadComics() {

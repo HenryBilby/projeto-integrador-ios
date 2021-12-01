@@ -15,19 +15,26 @@ class FavoritoTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        imagemFavorito.layer.cornerRadius = 20
+        imagemFavorito.layer.masksToBounds = true
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
-        // Configure the view for the selected state
+        // comunicacao com a detail para fazer
     }
     
     func setup(nome: String, imagem: String) {
         nomeLabel.text = "\(nome)"
         loadImageFromAPI(with: imagem)
+    
+//        nomeLabel.layer.cornerRadius = 20
+//        nomeLabel.layer.masksToBounds = true
     }
+    
+    
     
     private func loadImageFromAPI(with url : String) {
         AF.request(url).responseData { response in

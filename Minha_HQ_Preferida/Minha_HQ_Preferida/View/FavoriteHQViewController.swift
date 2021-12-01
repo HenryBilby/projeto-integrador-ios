@@ -9,18 +9,42 @@ import UIKit
 
 class FavoriteHQViewController: UIViewController {
     
-    
+    @IBOutlet weak var listaHQ: UILabel!
+    @IBOutlet weak var voltarBtn: UIButton!
     @IBOutlet weak var hqFavoritaTableView: UITableView!
     
     let viewModel: FavoritoViewModel = .init()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        hqFavoritaTableView.delegate = self
         hqFavoritaTableView.dataSource = self
+        
         viewModel.delegate = self
         viewModel.carregaDados()
+        
+        setTableView()
+        setButtonRadius()
+        setLabelRadius()
     }
+    
+    @IBAction func close(_ sender: Any) {
+    dismiss(animated: true)
+    }
+    
+    private func setTableView(){
+        hqFavoritaTableView.layer.cornerRadius = 32
+    }
+    
+    private func setButtonRadius() {
+        voltarBtn.layer.cornerRadius = 32
+        voltarBtn.layer.masksToBounds = true
+    }
+    
+    private func setLabelRadius() {
+        listaHQ.layer.cornerRadius = 32
+        listaHQ.layer.masksToBounds = true
+    }
+
 }
 
 extension FavoriteHQViewController: FavoritoViewModelDelegate {

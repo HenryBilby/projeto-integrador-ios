@@ -52,7 +52,7 @@ class SelectCharacterViewController: UIViewController {
     }
     
     private func setButtonRadius() {
-        nextButton.layer.cornerRadius = 32
+        nextButton.layer.cornerRadius = 28
     }
     
     private func setLabelRadius() {
