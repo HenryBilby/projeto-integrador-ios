@@ -242,10 +242,10 @@
 				9BA723CE271CBA2200C2303F /* ComicCollectionViewController.swift */,
 				D030C8C72723482F008D653E /* DetailViewController.swift */,
 				E0874255270F9EDE00BFE8F9 /* CharacterCollectionViewCell.swift */,
-				D082D1742717627D00C748C2 /* FavoriteCharacterTableViewCell.swift */,
 				9BA723D0271CD08B00C2303F /* ComicCollectionViewCell.swift */,
 				D0DE7B9E2745D4BC00B45DBC /* FavoriteHQViewController.swift */,
 				D0C81FF42748842400548A1C /* FavoritoTableViewCell.swift */,
+				D082D1742717627D00C748C2 /* FavoriteCharacterTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

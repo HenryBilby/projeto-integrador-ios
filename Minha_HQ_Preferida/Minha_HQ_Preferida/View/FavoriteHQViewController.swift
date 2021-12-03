@@ -12,6 +12,7 @@ class FavoriteHQViewController: UIViewController {
     @IBOutlet weak var listaHQ: UILabel!
     @IBOutlet weak var voltarBtn: UIButton!
     @IBOutlet weak var hqFavoritaTableView: UITableView!
+    @IBOutlet weak var hqFavoritaCollectionView: UICollectionView!
     
     let viewModel: FavoritoViewModel = .init()
     
@@ -25,6 +26,7 @@ class FavoriteHQViewController: UIViewController {
         setTableView()
         setButtonRadius()
         setLabelRadius()
+        setCollectionView()
     }
     
     @IBAction func close(_ sender: Any) {
@@ -32,7 +34,13 @@ class FavoriteHQViewController: UIViewController {
     }
     
     private func setTableView(){
-        hqFavoritaTableView.layer.cornerRadius = 32
+        hqFavoritaTableView.layer.cornerRadius = 16
+        hqFavoritaTableView.layer.masksToBounds = true
+    }
+    
+    private func setCollectionView() {
+        hqFavoritaCollectionView.layer.cornerRadius = 32
+        hqFavoritaCollectionView.layer.masksToBounds = true
     }
     
     private func setButtonRadius() {
@@ -44,7 +52,19 @@ class FavoriteHQViewController: UIViewController {
         listaHQ.layer.cornerRadius = 32
         listaHQ.layer.masksToBounds = true
     }
-
+    
+/*
+ 
+ comunicação entre Lista de HQs e Detail
+ 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let controller = segue.destination as? DetailViewController {
+            controller.viewModel = sender as? FavoritoViewModel
+        }
+    }
+ 
+ */
+    
 }
 
 extension FavoriteHQViewController: FavoritoViewModelDelegate {
@@ -69,3 +89,15 @@ extension FavoriteHQViewController: UITableViewDataSource {
         return .init()
     }
 }
+
+/*
+ 
+comunicação entre Lista de HQs e Detail
+ 
+extension FavoriteHQViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "goBackDetail", sender: viewModel.favorito[indexPath.row])
+    }
+}
+ 
+*/

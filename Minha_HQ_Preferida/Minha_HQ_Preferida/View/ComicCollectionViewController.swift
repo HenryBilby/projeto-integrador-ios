@@ -15,11 +15,7 @@ class ComicCollectionViewController : UIViewController {
     @IBOutlet private weak var comicCollectionView: UICollectionView!
     @IBOutlet weak var loadingActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var listaPersonagemFavoritoButton: UIButton!
-//        didSet {
-//            listaPersonagemFavoritoButton.titleLabel?.font = UIFont.systemFont(ofSize: 24)
-//        }
-//    }
-    
+
     private let comicViewModel = ComicViewModel()
     
     override func viewDidLoad() {
@@ -59,7 +55,6 @@ class ComicCollectionViewController : UIViewController {
     private func setButtonRadius() {
         listaPersonagemFavoritoButton.layer.cornerRadius = 32
         listaPersonagemFavoritoButton.layer.masksToBounds = true
-//        listaPersonagemFavoritoButton.titleLabel?.font = .systemFont(ofSize: 24.0)
     }
     
     private func loadComics() {
