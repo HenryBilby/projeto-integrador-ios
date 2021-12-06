@@ -52,19 +52,6 @@ class FavoriteHQViewController: UIViewController {
         listaHQ.layer.cornerRadius = 32
         listaHQ.layer.masksToBounds = true
     }
-    
-/*
- 
- comunicação entre Lista de HQs e Detail
- 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let controller = segue.destination as? DetailViewController {
-            controller.viewModel = sender as? FavoritoViewModel
-        }
-    }
- 
- */
-    
 }
 
 extension FavoriteHQViewController: FavoritoViewModelDelegate {
@@ -89,15 +76,3 @@ extension FavoriteHQViewController: UITableViewDataSource {
         return .init()
     }
 }
-
-/*
- 
-comunicação entre Lista de HQs e Detail
- 
-extension FavoriteHQViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "goBackDetail", sender: viewModel.favorito[indexPath.row])
-    }
-}
- 
-*/
