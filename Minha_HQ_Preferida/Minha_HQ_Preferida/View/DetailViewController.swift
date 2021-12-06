@@ -20,7 +20,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var voltarButton: UIButton!
     
-    let viewModel: FavoritoViewModel = .init()
+    var viewModel: FavoritoViewModel = .init()
     var comicElement: ComicElement?
     
     override func viewDidLoad() {
@@ -36,10 +36,6 @@ class DetailViewController: UIViewController {
     
     @IBAction func adicionarButton(_ sender: Any) {
         print(imageViewController)
-        //        let nome = titleLabel.text
-        //        let imagem = imageViewController.image
-        //
-        //        viewModel.adicionarFavorito(nome: nome, imagem: String?)
     }
     
     @IBAction func backButton(_ sender: Any) {

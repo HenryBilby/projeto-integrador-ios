@@ -16,7 +16,7 @@ class FavoritoTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        imagemFavorito.layer.cornerRadius = 20
+        imagemFavorito.layer.cornerRadius = 16
         imagemFavorito.layer.masksToBounds = true
     }
     
@@ -29,9 +29,7 @@ class FavoritoTableViewCell: UITableViewCell {
     func setup(nome: String, imagem: String) {
         nomeLabel.text = "\(nome)"
         loadImageFromAPI(with: imagem)
-    
-//        nomeLabel.layer.cornerRadius = 20
-//        nomeLabel.layer.masksToBounds = true
+
     }
     
     
