@@ -26,7 +26,15 @@ class FirebaseService {
             completion(true)
         }
     }
-
-
+    
+    func deslogarDoFirebase() -> Bool {
+        do {
+            try Auth.auth().signOut()
+            print(">>>>> Usuário fez logout")
+            return true
+        } catch {
+            print(">>>>> Erro ao fazer logout")
+            return false
+        }
+    }
 }
-
