@@ -16,15 +16,7 @@ protocol UserInfoViewModelDelegate {
 class UserInfoViewModel {
     let service: FirebaseService = .init()
     var delegate: UserInfoViewModelDelegate?
-    
-    
-    
-    func efetuarLogout() {
-        if service.deslogarDoFirebase() {
-            delegate?.efetuaLogout()
-        }
-    }
-    
+
     private func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }

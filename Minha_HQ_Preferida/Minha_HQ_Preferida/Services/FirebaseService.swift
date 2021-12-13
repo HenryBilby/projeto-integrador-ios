@@ -26,30 +26,7 @@ class FirebaseService {
             completion(true)
         }
     }
-    func pegarDadosDoUsuarioLogado() {
-        let firebaseAuth = Auth.auth()
-        let usuarioAtual = firebaseAuth.currentUser
-        
-        guard let usuarioAtual = usuarioAtual  else { return }
-        
-        print(">>>>> Informações do usuário logado")
-        print(">>>>> nome: \(usuarioAtual.displayName)")
-        print(">>>>> email: \(usuarioAtual.email)")
-        print(">>>>> foto: \(usuarioAtual.photoURL)")
-        print(">>>>> phoneNumber: \(usuarioAtual.phoneNumber)")
-    }
-    
-    
-    
-    func deslogarDoFirebase() -> Bool {
-        do {
-            try Auth.auth().signOut()
-            print(">>>>> Usuário fez logout")
-            return true
-        } catch {
-            print(">>>>> Erro ao fazer logout")
-            return false
-        }
-    }
+
+
 }
 

@@ -37,22 +37,10 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController: GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser, withError error: Error!) {
-        print(">>>>> User email: \(user.profile.email)")
+        loginViewModel.loginWithGoogleIsValid()
         
-        guard
-            let authentication = user.authentication,
-            let idToken = authentication.idToken else { return }
-        
-        let credential = GoogleAuthProvider.credential(
-            withIDToken: idToken,
-            accessToken: authentication.accessToken
-        )
-        
-        Auth.auth().signIn(with: credential) { authResult, error in
-            if let error = error { return }
             print(">>>>> Usuario logado no Firebase")
             self.performSegue(withIdentifier: "selectCharacterSegue", sender: nil)
         }
     }
-}
 
