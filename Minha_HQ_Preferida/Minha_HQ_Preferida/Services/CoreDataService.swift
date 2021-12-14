@@ -37,6 +37,8 @@ class CoreDataService {
 
         return pegarListaFavoritoNoCoreData()
     }
+    
+    
 
      func removerFavoritoNoCoreData(favorito: Favorito) -> [Favorito] {
         context.delete(favorito)

@@ -29,6 +29,11 @@ class FavoritoViewModel{
           favorito = service.adicionarFavoritoNoCoreData(nome: nome, imagem: imagem)
         delegate?.recarregaDados()
     }
+    func removerFavorito(em posicao: Int) {
+        favorito = service.removerFavoritoNoCoreData(favorito: favorito[posicao])
+        delegate?.recarregaDados()
+    }
+    
     
     func quantidadeDeFavoritosNaLista() -> Int {
         return favorito.count
