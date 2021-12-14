@@ -16,7 +16,7 @@ class CharacterCollectionViewCell: UICollectionViewCell {
         if let urlImage = character.image {
             loadImageFromAPI(with: urlImage)
         }
-
+        
         imageCharacter.layer.cornerRadius = 20
         
         if let selected = character.selected {
@@ -27,9 +27,7 @@ class CharacterCollectionViewCell: UICollectionViewCell {
                 imageCharacter.layer.borderColor = UIColor.clear.cgColor
                 imageCharacter.layer.borderWidth = 0
             }
-            
-        }
-
+        }   
     }
     
     private func loadImageFromAPI(with url : String) {

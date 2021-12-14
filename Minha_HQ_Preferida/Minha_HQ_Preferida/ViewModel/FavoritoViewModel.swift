@@ -11,22 +11,21 @@ import UIKit
 protocol FavoritoViewModelDelegate{
     func recarregaDados()
 }
-class FavoritoViewModel{
 
+class FavoritoViewModel{
+    
     var favorito: [Favorito] = []
     var delegate: FavoritoViewModelDelegate?
-
+    
     private let service: CoreDataService = .init()
-
+    
     func carregaDados() {
-       favorito = service.pegarListaFavoritoNoCoreData()
+        favorito = service.pegarListaFavoritoNoCoreData()
         delegate?.recarregaDados()
     }
     
-
     func adicionarFavorito(nome: String?, imagem: String?) {
-
-          favorito = service.adicionarFavoritoNoCoreData(nome: nome, imagem: imagem)
+        favorito = service.adicionarFavoritoNoCoreData(nome: nome, imagem: imagem)
         delegate?.recarregaDados()
     }
     func removerFavorito(em posicao: Int) {

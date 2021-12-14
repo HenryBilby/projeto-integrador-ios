@@ -24,18 +24,14 @@ class FavoriteCharacterTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        imageFavorite.layer.cornerRadius = 20
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+        imageFavorite.layer.cornerRadius = 16
+        imageFavorite.layer.masksToBounds = true
     }
     
     private func loadImageFavoriteFromAPI(with url : String) {
         AF.request(url).responseData { response in
             if let data = response.data {
                 self.imageFavorite.image = UIImage(data: data)
-                
             }
         }
     }
