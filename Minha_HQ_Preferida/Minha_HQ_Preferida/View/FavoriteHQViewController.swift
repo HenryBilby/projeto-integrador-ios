@@ -12,16 +12,19 @@ class FavoriteHQViewController: UIViewController {
     @IBOutlet weak var listaHQ: UILabel!
     @IBOutlet weak var voltarBtn: UIButton!
     @IBOutlet weak var hqFavoritaTableView: UITableView!
+    
     @IBOutlet weak var hqFavoritaCollectionView: UICollectionView!
     
     let viewModel: FavoritoViewModel = .init()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        hqFavoritaTableView.delegate = self
         hqFavoritaTableView.dataSource = self
         
         viewModel.delegate = self
         viewModel.carregaDados()
+        setButtonRadius()
         
         setTableView()
         setButtonRadius()
@@ -75,4 +78,16 @@ extension FavoriteHQViewController: UITableViewDataSource {
         }
         return .init()
     }
+}
+
+extension FavoriteHQViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        viewModel.removerFavorito(em: indexPath.row)
+    }
+
 }

@@ -23,6 +23,10 @@
 		D0C81FF3274857B100548A1C /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C81FF2274857B100548A1C /* CoreDataService.swift */; };
 		D0C81FF52748842400548A1C /* FavoritoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C81FF42748842400548A1C /* FavoritoTableViewCell.swift */; };
 		D0DE7B9F2745D4BC00B45DBC /* FavoriteHQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DE7B9E2745D4BC00B45DBC /* FavoriteHQViewController.swift */; };
+		D0DE7BA62745D6EB00B45DBC /* Favorito+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DE7BA42745D6EB00B45DBC /* Favorito+CoreDataClass.swift */; };
+		D0DE7BA72745D6EB00B45DBC /* Favorito+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DE7BA52745D6EB00B45DBC /* Favorito+CoreDataProperties.swift */; };
+		D0DF0FE9275FCAC000F0E238 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DF0FE8275FCAC000F0E238 /* FirebaseService.swift */; };
+		D0DF0FEB275FD0A200F0E238 /* UserInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DF0FEA275FD0A200F0E238 /* UserInfoViewModel.swift */; };
 		E0776B9427356B1A00110C18 /* DataComic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0776B9327356B1A00110C18 /* DataComic.swift */; };
 		E0874211270F39EF00BFE8F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0874210270F39EF00BFE8F9 /* AppDelegate.swift */; };
 		E0874213270F39EF00BFE8F9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0874212270F39EF00BFE8F9 /* SceneDelegate.swift */; };
@@ -80,6 +84,10 @@
 		D0C81FF2274857B100548A1C /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		D0C81FF42748842400548A1C /* FavoritoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritoTableViewCell.swift; sourceTree = "<group>"; };
 		D0DE7B9E2745D4BC00B45DBC /* FavoriteHQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteHQViewController.swift; sourceTree = "<group>"; };
+		D0DE7BA42745D6EB00B45DBC /* Favorito+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Favorito+CoreDataClass.swift"; path = "/Users/paulamatsumoto/Documents/projeto-integrador-ios/Minha_HQ_Preferida/Minha_HQ_Preferida/Model/Favorito+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		D0DE7BA52745D6EB00B45DBC /* Favorito+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Favorito+CoreDataProperties.swift"; path = "/Users/paulamatsumoto/Documents/projeto-integrador-ios/Minha_HQ_Preferida/Minha_HQ_Preferida/Model/Favorito+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		D0DF0FE8275FCAC000F0E238 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
+		D0DF0FEA275FD0A200F0E238 /* UserInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewModel.swift; sourceTree = "<group>"; };
 		E0776B9327356B1A00110C18 /* DataComic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataComic.swift; sourceTree = "<group>"; };
 		E087420D270F39EF00BFE8F9 /* Minha_HQ_Preferida.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Minha_HQ_Preferida.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0874210270F39EF00BFE8F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -147,6 +155,7 @@
 				E0874251270F905D00BFE8F9 /* CharacterService.swift */,
 				9BDFF0D2271CE89C00EB5AFB /* ComicService.swift */,
 				D0C81FF2274857B100548A1C /* CoreDataService.swift */,
+				D0DF0FE8275FCAC000F0E238 /* FirebaseService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -230,6 +239,7 @@
 				E087424F270F8F8A00BFE8F9 /* SelectCharacterViewModel.swift */,
 				9BDFF0CC271CD7A500EB5AFB /* ComicViewModel.swift */,
 				D0C81FF02745E28000548A1C /* FavoritoViewModel.swift */,
+				D0DF0FEA275FD0A200F0E238 /* UserInfoViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -462,11 +472,14 @@
 				E0874215270F39EF00BFE8F9 /* LoginViewController.swift in Sources */,
 				4126518D27564D6300AA58D9 /* Favorito+CoreDataClass.swift in Sources */,
 				E087424A270F7C2100BFE8F9 /* LoginService.swift in Sources */,
+				D0DF0FE9275FCAC000F0E238 /* FirebaseService.swift in Sources */,
+				D0DE7BA72745D6EB00B45DBC /* Favorito+CoreDataProperties.swift in Sources */,
 				9BDFF0CB271CD64900EB5AFB /* ComicElement.swift in Sources */,
 				E087429E2729FE0700BFE8F9 /* CharacterData.swift in Sources */,
 				D030C8C82723482F008D653E /* DetailViewController.swift in Sources */,
 				9BDFF0CD271CD7A500EB5AFB /* ComicViewModel.swift in Sources */,
 				D0DE7B9F2745D4BC00B45DBC /* FavoriteHQViewController.swift in Sources */,
+				D0DF0FEB275FD0A200F0E238 /* UserInfoViewModel.swift in Sources */,
 				E087425A2710798300BFE8F9 /* ShowSelectedCharactersViewController.swift in Sources */,
 				D0C81FF3274857B100548A1C /* CoreDataService.swift in Sources */,
 				E0874252270F905D00BFE8F9 /* CharacterService.swift in Sources */,
