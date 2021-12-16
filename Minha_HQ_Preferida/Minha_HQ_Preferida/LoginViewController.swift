@@ -31,36 +31,7 @@ class LoginViewController: UIViewController {
         
         GIDSignIn.sharedInstance().presentingViewController = self
         GIDSignIn.sharedInstance().delegate = self
-//        // colocar o botão na tela
-//
-//        let loginButton = FBLoginButton(frame: .zero, permissions: [.publicProfile])
-//        loginButton.center = view.center
-//        loginButton.delegate = self
-//
-//        self.view.addSubview(loginButton)
-//
-//        if let accessToken = AccessToken.current {
-//            // usuário já está logado no facebook
-//
-//            print("<<<<<usuário já logado com facebook")
-//            print(accessToken)
-//        }
-//
-//        if verificarSeUsuarioEstaLogado() {
-//            print("<<<<<usuário já logado com firebase")
-//            escondeCamposDeLogin()
-//        }
-//
     }
-//    private func verificarSeUsuarioEstaLogado() -> Bool {
-//
-//        if Auth.auth().currentUser != nil {
-//            return true
-//        }
-//
-//        return false
-//
-//    }
     private func escondeCamposDeLogin() {
     emailLabel.isHidden = true
     senhaLabel.isHidden = true
