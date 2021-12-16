@@ -149,8 +149,7 @@ class LoginViewController: UIViewController {
                     }
                     
                     print("Sucesso na criação de conta e login efetuado!")
-                    self.
-                    escondeCamposDeLogin()
+                    self.escondeCamposDeLogin()
         
                     
                 }
