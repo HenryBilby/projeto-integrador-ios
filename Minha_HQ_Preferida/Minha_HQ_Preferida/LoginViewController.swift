@@ -31,6 +31,84 @@ class LoginViewController: UIViewController {
         
         GIDSignIn.sharedInstance().presentingViewController = self
         GIDSignIn.sharedInstance().delegate = self
+//        // colocar o botão na tela
+//
+//        let loginButton = FBLoginButton(frame: .zero, permissions: [.publicProfile])
+//        loginButton.center = view.center
+//        loginButton.delegate = self
+//
+//        self.view.addSubview(loginButton)
+//
+//        if let accessToken = AccessToken.current {
+//            // usuário já está logado no facebook
+//
+//            print("<<<<<usuário já logado com facebook")
+//            print(accessToken)
+//        }
+//
+//        if verificarSeUsuarioEstaLogado() {
+//            print("<<<<<usuário já logado com firebase")
+//            escondeCamposDeLogin()
+//        }
+//
+    }
+//    private func verificarSeUsuarioEstaLogado() -> Bool {
+//
+//        if Auth.auth().currentUser != nil {
+//            return true
+//        }
+//
+//        return false
+//
+//    }
+    private func escondeCamposDeLogin() {
+    emailLabel.isHidden = true
+    senhaLabel.isHidden = true
+
+    emailTextField.isHidden = true
+    passwordTextField.isHidden = true
+
+    loginButton.isHidden = true
+    resetSenhaButton.isHidden = true
+
+    logoutButton.isHidden = false
+}
+    private func revelaCamposDeLogin() {
+        emailLabel.isHidden = false
+        senhaLabel.isHidden = false
+        
+        emailTextField.isHidden = false
+        passwordTextField.isHidden = false
+        
+        loginButton.isHidden = false
+        resetSenhaButton.isHidden = false
+        
+        logoutButton.isHidden = true
+    }
+    
+    @IBAction func resetSenhaButton(_ sender: Any) {
+        guard let email = emailTextField.text else { return }
+        
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+            if let error = error {
+                print("<<<<<Erro ao resetar senha")
+                return
+            }
+            
+            print("<<<<<email de resetar senha enviado com sucesso")
+        }
+        
+    }
+    @IBAction func logoutButtonAction(_ sender: Any) {
+        
+        do {
+            try Auth.auth().signOut()
+            revelaCamposDeLogin()
+            print("<<<<<Usuário efetuou logout com sucesso")
+
+        } catch {
+            print("<<<<<Erro ao deslogar")
+        }
     }
     
     @IBAction func loginButtonAction(_ sender: Any) {
@@ -46,7 +124,7 @@ class LoginViewController: UIViewController {
             }
             
             print(" O usuário fez login com sucesso!")
-
+            self.escondeCamposDeLogin()
         }
     }
     
@@ -60,7 +138,7 @@ class LoginViewController: UIViewController {
         
         let continuarAction = UIAlertAction(
             title: "Continuar",
-            style: .default) { _ in
+            style: .default) { [weak self] _ in
                 guard let self = self else { return }
               
                 Auth.auth().createUser(withEmail: email, password: password) { result, error in
@@ -71,6 +149,8 @@ class LoginViewController: UIViewController {
                     }
                     
                     print("Sucesso na criação de conta e login efetuado!")
+                    self.
+                    escondeCamposDeLogin()
         
                     
                 }
