@@ -8,6 +8,9 @@ import Foundation
 import UIKit
 import GoogleSignIn
 import FirebaseAuth
+import FacebookCore
+import FacebookLogin
+
 
 class LoginViewController: UIViewController {
     
@@ -21,6 +24,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var resetSenhaButton: UIButton!
     @IBOutlet weak var logoutButton: UIButton!
     
+    @IBOutlet weak var facebookButtonContainer: UIView!
     
     let loginViewModel = LoginViewModel()
 
@@ -31,6 +35,14 @@ class LoginViewController: UIViewController {
         
         GIDSignIn.sharedInstance().presentingViewController = self
         GIDSignIn.sharedInstance().delegate = self
+        
+        let facebookButton = FBLoginButton(frame: facebookButtonContainer.bounds, permissions: [.publicProfile])
+                
+        facebookButton.delegate = self
+                
+        self.facebookButtonContainer.backgroundColor = .clear
+                
+        self.facebookButtonContainer.addSubview(facebookButton)
     }
     
     @IBAction func loginButtonAction(_ sender: Any) {
@@ -61,7 +73,7 @@ class LoginViewController: UIViewController {
         let continuarAction = UIAlertAction(
             title: "Continuar",
             style: .default) { _ in
-                guard let self = self else { return }
+//                guard let self = self else { return }
               
                 Auth.auth().createUser(withEmail: email, password: password) { result, error in
                     
@@ -88,14 +100,59 @@ class LoginViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    @IBAction func actionLoginWithFacebook(_ sender: Any) {
-        if loginViewModel.loginWithFacebookIsValid() {
-            performSegue(withIdentifier: "selectCharacterSegue", sender: sender)
+    func loginFacebookNoFirebase(acessToken: String) {
+            let credential = FacebookAuthProvider.credential(withAccessToken: acessToken)
+            
+            Auth.auth().signIn(with: credential) { result, error in
+                if let error = error {
+                    print("Deu erro ao logar no Firebase \(error.localizedDescription)")
+                    return
+                }
+                
+                print("Usuario efetuou login no firebase: ")
+                
+                if let user = Auth.auth().currentUser {
+                    print("O usuario do firebase é: \(user)")
+                }
+            }
+            
         }
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "selectCharacterSegue" {
+        }
+    }
+}
+
+extension LoginViewController:LoginButtonDelegate {
+    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
+        print("<<<< Usuario efetuou login no facebook")
+        
+        switch result {
+        case .none:
+            print("<<<< um erro aconteceu")
+        case .some(let loginResult):
+            print("<<<< loginResult: ")
+            print(loginResult.grantedPermissions)
+            print(loginResult.declinedPermissions)
+            print(loginResult.isCancelled)
+            
+//            self.performSegue(withIdentifier: "selectCharacterSegue", sender: nil)
+            
+            if let token = loginResult.token?.tokenString {
+                print("Token is: \(token)")
+                loginFacebookNoFirebase(acessToken: token)
+            }
+        }
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
+        print("<<<< Usuario efetuou logout no facebook")
+        
+        do {
+            try Auth.auth().signOut()
+        } catch let error {
+            print(error.localizedDescription)
         }
     }
 }
