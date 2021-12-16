@@ -9,6 +9,7 @@ import UIKit
 import CoreData
 import Firebase
 import GoogleSignIn
+import FacebookCore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,12 +20,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
         GIDSignIn.sharedInstance().clientID = "1090917866945-t8gbnsang1vuq3633mg558cmet9ct6q4.apps.googleusercontent.com"
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
         return true
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        return GIDSignIn.sharedInstance().handle(url)
+        GIDSignIn.sharedInstance().handle(url)
+        ApplicationDelegate.shared.application(app, open: url, options: options)
+        return true
     }
     // MARK: UISceneSession Lifecycle
 

@@ -8,6 +8,9 @@ import Foundation
 import UIKit
 import GoogleSignIn
 import FirebaseAuth
+import FacebookCore
+import FacebookLogin
+
 
 class LoginViewController: UIViewController {
     
@@ -21,6 +24,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var resetSenhaButton: UIButton!
     @IBOutlet weak var logoutButton: UIButton!
     
+    @IBOutlet weak var facebookButtonContainer: UIView!
     
     let loginViewModel = LoginViewModel()
 
@@ -31,6 +35,14 @@ class LoginViewController: UIViewController {
         
         GIDSignIn.sharedInstance().presentingViewController = self
         GIDSignIn.sharedInstance().delegate = self
+        
+        let facebookButton = FBLoginButton(frame: facebookButtonContainer.bounds, permissions: [.publicProfile])
+                
+        facebookButton.delegate = self
+                
+        self.facebookButtonContainer.backgroundColor = .clear
+                
+        self.facebookButtonContainer.addSubview(facebookButton)
     }
     
     @IBAction func loginButtonAction(_ sender: Any) {
@@ -61,7 +73,6 @@ class LoginViewController: UIViewController {
         let continuarAction = UIAlertAction(
             title: "Continuar",
             style: .default) { _ in
-                guard let self = self else { return }
               
                 Auth.auth().createUser(withEmail: email, password: password) { result, error in
                     
@@ -88,23 +99,69 @@ class LoginViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    @IBAction func actionLoginWithFacebook(_ sender: Any) {
-        if loginViewModel.loginWithFacebookIsValid() {
-            performSegue(withIdentifier: "selectCharacterSegue", sender: sender)
+    func loginFirebase(credential: AuthCredential) {
+        Auth.auth().signIn(with: credential) { result, error in
+            if let error = error {
+                print("<<<< Erro ao logar no Firebase \(error.localizedDescription)")
+                return
+            }
+            
+            if let user = Auth.auth().currentUser {
+                self.performSegue(withIdentifier: "selectCharacterSegue", sender: user.displayName)
+            }
+        }
+    }
+    
+    func logoutFirebase(){
+        do {
+            try Auth.auth().signOut()
+            print("<<<< Usuario efetuou logout no firebase com sucesso")
+        } catch let error {
+            print(error.localizedDescription)
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "selectCharacterSegue" {
+        if let selecteCharactersViewController = segue.destination as? SelectCharacterViewController, segue.identifier == "selectCharacterSegue" {
+            selecteCharactersViewController.usuario = sender as? String
         }
+    }
+}
+
+extension LoginViewController:LoginButtonDelegate {
+    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
+        print("<<<< Usuario efetuou login no facebook")
+        
+        switch result {
+        case .none:
+            print("<<<< Erro ao efetuar login no Facebook")
+        case .some(let loginResult):
+            if let token = loginResult.token?.tokenString {
+                print("<<<< Token is: \(token)")
+                let credential = FacebookAuthProvider.credential(withAccessToken: token)
+                loginFirebase(credential: credential)
+            }
+        }
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
+        print("<<<< Usuario efetuou logout no facebook")
+        logoutFirebase()
     }
 }
 
 extension LoginViewController: GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser, withError error: Error!) {
-        loginViewModel.loginWithGoogleIsValid()
-        
-            print(">>>>> Usuario logado no Firebase")
-            self.performSegue(withIdentifier: "selectCharacterSegue", sender: nil)
-        }
+            guard
+                let authentication = user.authentication,
+                let idToken = authentication.idToken else { return }
+            
+            let credential = GoogleAuthProvider.credential(
+                withIDToken: idToken,
+                accessToken: authentication.accessToken
+            )
+
+            print("<<<< Usuario \(String(describing: user.profile.name)) efetuou login no Gmail")
+            loginFirebase(credential: credential)
     }
+}
