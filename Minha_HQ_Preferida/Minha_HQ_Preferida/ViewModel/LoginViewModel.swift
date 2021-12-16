@@ -18,4 +18,8 @@ class LoginViewModel {
     public func loginWithGoogleIsValid() -> Bool {
         return serviceLogin.googleLoginIsValid()
     }
+    
+    public func loginWithEmailIsValid() -> Bool {
+        return serviceLogin.emailLoginIsValid()
+    }
 }
