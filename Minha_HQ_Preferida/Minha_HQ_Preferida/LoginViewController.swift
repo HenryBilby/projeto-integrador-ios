@@ -73,7 +73,6 @@ class LoginViewController: UIViewController {
         let continuarAction = UIAlertAction(
             title: "Continuar",
             style: .default) { _ in
-//                guard let self = self else { return }
               
                 Auth.auth().createUser(withEmail: email, password: password) { result, error in
                     
@@ -100,26 +99,31 @@ class LoginViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    func loginFacebookNoFirebase(acessToken: String) {
-            let credential = FacebookAuthProvider.credential(withAccessToken: acessToken)
-            
-            Auth.auth().signIn(with: credential) { result, error in
-                if let error = error {
-                    print("Deu erro ao logar no Firebase \(error.localizedDescription)")
-                    return
-                }
-                
-                print("Usuario efetuou login no firebase: ")
-                
-                if let user = Auth.auth().currentUser {
-                    print("O usuario do firebase é: \(user)")
-                }
+    func loginFirebase(credential: AuthCredential) {
+        Auth.auth().signIn(with: credential) { result, error in
+            if let error = error {
+                print("<<<< Erro ao logar no Firebase \(error.localizedDescription)")
+                return
             }
             
+            if let user = Auth.auth().currentUser {
+                self.performSegue(withIdentifier: "selectCharacterSegue", sender: user.displayName)
+            }
         }
+    }
+    
+    func logoutFirebase(){
+        do {
+            try Auth.auth().signOut()
+            print("<<<< Usuario efetuou logout no firebase com sucesso")
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "selectCharacterSegue" {
+        if let selecteCharactersViewController = segue.destination as? SelectCharacterViewController, segue.identifier == "selectCharacterSegue" {
+            selecteCharactersViewController.usuario = sender as? String
         }
     }
 }
@@ -130,38 +134,34 @@ extension LoginViewController:LoginButtonDelegate {
         
         switch result {
         case .none:
-            print("<<<< um erro aconteceu")
+            print("<<<< Erro ao efetuar login no Facebook")
         case .some(let loginResult):
-            print("<<<< loginResult: ")
-            print(loginResult.grantedPermissions)
-            print(loginResult.declinedPermissions)
-            print(loginResult.isCancelled)
-            
-//            self.performSegue(withIdentifier: "selectCharacterSegue", sender: nil)
-            
             if let token = loginResult.token?.tokenString {
-                print("Token is: \(token)")
-                loginFacebookNoFirebase(acessToken: token)
+                print("<<<< Token is: \(token)")
+                let credential = FacebookAuthProvider.credential(withAccessToken: token)
+                loginFirebase(credential: credential)
             }
         }
     }
     
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
         print("<<<< Usuario efetuou logout no facebook")
-        
-        do {
-            try Auth.auth().signOut()
-        } catch let error {
-            print(error.localizedDescription)
-        }
+        logoutFirebase()
     }
 }
 
 extension LoginViewController: GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser, withError error: Error!) {
-        loginViewModel.loginWithGoogleIsValid()
-        
-            print(">>>>> Usuario logado no Firebase")
-            self.performSegue(withIdentifier: "selectCharacterSegue", sender: nil)
-        }
+            guard
+                let authentication = user.authentication,
+                let idToken = authentication.idToken else { return }
+            
+            let credential = GoogleAuthProvider.credential(
+                withIDToken: idToken,
+                accessToken: authentication.accessToken
+            )
+
+            print("<<<< Usuario \(String(describing: user.profile.name)) efetuou login no Gmail")
+            loginFirebase(credential: credential)
     }
+}

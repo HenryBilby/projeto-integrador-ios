@@ -16,6 +16,8 @@ class SelectCharacterViewController: UIViewController {
     
     let selectCharacterViewModel = SelectCharacterViewModel()
     
+    var usuario : String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         selectCharacterViewModel.delegate = self
@@ -24,6 +26,11 @@ class SelectCharacterViewController: UIViewController {
         setLabelRadius()
         setButtonRadius()
         setCollectionView()
+        
+        if let usuario = self.usuario {
+            print("<<<<<<  SelectCharacterViewController usuario: \(usuario)")
+        }
+        
     }
     
     @IBAction func actionAvancarButton(_ sender: Any) {

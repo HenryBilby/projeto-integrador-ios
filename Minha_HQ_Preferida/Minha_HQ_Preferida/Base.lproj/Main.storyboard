@@ -22,47 +22,56 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <view opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J6H-5x-gC8" customClass="GIDSignInButton">
+                            <view opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J6H-5x-gC8" customClass="GIDSignInButton">
                                 <rect key="frame" x="64" y="447" width="144" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" button="YES"/>
                                 </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="LkM-dR-vsX"/>
+                                    <constraint firstAttribute="width" constant="144" id="izk-Qt-jiu"/>
+                                </constraints>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite o seu e-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M6L-kc-zIx">
-                                <rect key="frame" x="64" y="271" width="286" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite o seu e-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M6L-kc-zIx">
+                                <rect key="frame" x="64" y="271" width="286" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Informe a senha" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mvc-lU-6An">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Informe a senha" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mvc-lU-6An">
                                 <rect key="frame" x="64" y="339" width="286" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5na-Ad-weG">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5na-Ad-weG">
                                 <rect key="frame" x="151" y="679" width="112.5" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="112.5" id="TkI-6N-b9D"/>
+                                    <constraint firstAttribute="height" constant="31" id="kQ3-Vf-NUS"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="resetar senha"/>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qwC-u3-7ad">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qwC-u3-7ad">
                                 <rect key="frame" x="31" y="824" width="67" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="lkJ-kG-Scu"/>
+                                    <constraint firstAttribute="width" constant="67" id="rx7-fn-WUR"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="logout"/>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nDV-9a-brX">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nDV-9a-brX">
                                 <rect key="frame" x="216" y="447" width="144" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemGray3Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="Syu-sQ-Bbe"/>
+                                    <constraint firstAttribute="width" constant="144" id="f0D-kU-YVb"/>
+                                </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecV-ec-NWA">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecV-ec-NWA">
                                 <rect key="frame" x="151" y="390" width="113" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Login">
@@ -75,6 +84,27 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.8078432083" green="0.20392158630000001" blue="0.1607843041" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="J6H-5x-gC8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="64" id="2sX-Tp-34d"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ecV-ec-NWA" secondAttribute="trailing" constant="150" id="5mI-Vh-Bpn"/>
+                            <constraint firstItem="5na-Ad-weG" firstAttribute="top" secondItem="J6H-5x-gC8" secondAttribute="bottom" constant="187" id="764-ZW-vlz"/>
+                            <constraint firstItem="nDV-9a-brX" firstAttribute="top" secondItem="ecV-ec-NWA" secondAttribute="bottom" constant="26" id="B3l-u9-xwf"/>
+                            <constraint firstItem="Mvc-lU-6An" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="64" id="CUy-cU-ZOT"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nDV-9a-brX" secondAttribute="trailing" constant="54" id="FGq-en-lHT"/>
+                            <constraint firstItem="Mvc-lU-6An" firstAttribute="top" secondItem="M6L-kc-zIx" secondAttribute="bottom" constant="34" id="KKm-LM-wdY"/>
+                            <constraint firstItem="ecV-ec-NWA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="151" id="QUQ-HP-U3P"/>
+                            <constraint firstItem="M6L-kc-zIx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="64" id="XUx-I0-EQ4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5na-Ad-weG" secondAttribute="trailing" constant="150.5" id="XeL-ms-FoL"/>
+                            <constraint firstItem="J6H-5x-gC8" firstAttribute="top" secondItem="ecV-ec-NWA" secondAttribute="bottom" constant="26" id="agP-hV-T7Z"/>
+                            <constraint firstItem="M6L-kc-zIx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="183" id="cWE-sa-5tN"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qwC-u3-7ad" secondAttribute="trailing" constant="316" id="ej1-qd-ZWT"/>
+                            <constraint firstItem="ecV-ec-NWA" firstAttribute="top" secondItem="Mvc-lU-6An" secondAttribute="bottom" constant="17" id="hdj-FN-fsl"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Mvc-lU-6An" secondAttribute="trailing" constant="64" id="ntw-2e-W9Q"/>
+                            <constraint firstItem="qwC-u3-7ad" firstAttribute="top" secondItem="J6H-5x-gC8" secondAttribute="bottom" constant="332" id="oa1-Mh-YcB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="M6L-kc-zIx" secondAttribute="trailing" constant="64" id="p3R-re-6em"/>
+                            <constraint firstItem="5na-Ad-weG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="151" id="p56-Eo-MsC"/>
+                            <constraint firstItem="qwC-u3-7ad" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="31" id="pZt-Jh-DAr"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ZOC-s7-kVb">
                         <barButtonItem key="backBarButtonItem" title="Login" id="WBE-s5-Tr0"/>
