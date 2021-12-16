@@ -16,4 +16,8 @@ class LoginService {
     public func googleLoginIsValid() -> Bool {
         return true
     }
+    
+    public func emailLoginIsValid() -> Bool {
+        return true
+    }
 }
