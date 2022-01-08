@@ -14,7 +14,6 @@ class ComicCollectionViewController : UIViewController {
     @IBOutlet private weak var comicSearch: UISearchBar!
     @IBOutlet private weak var comicCollectionView: UICollectionView!
     @IBOutlet weak var loadingActivityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var listaPersonagemFavoritoButton: UIButton!
 
     private let comicViewModel = ComicViewModel()
     
@@ -24,7 +23,6 @@ class ComicCollectionViewController : UIViewController {
         setDataSources()
         loadComics()
         setCollectionView()
-        setButtonRadius()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -50,11 +48,6 @@ class ComicCollectionViewController : UIViewController {
         
         comicSearch.layer.cornerRadius = 28
         comicSearch.layer.masksToBounds = true
-    }
-    
-    private func setButtonRadius() {
-        listaPersonagemFavoritoButton.layer.cornerRadius = 32
-        listaPersonagemFavoritoButton.layer.masksToBounds = true
     }
     
     private func loadComics() {

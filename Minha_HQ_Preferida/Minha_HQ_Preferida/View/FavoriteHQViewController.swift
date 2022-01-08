@@ -10,7 +10,6 @@ import UIKit
 class FavoriteHQViewController: UIViewController {
     
     @IBOutlet weak var listaHQ: UILabel!
-    @IBOutlet weak var voltarBtn: UIButton!
     @IBOutlet weak var hqFavoritaTableView: UITableView!
     
     @IBOutlet weak var hqFavoritaCollectionView: UICollectionView!
@@ -23,17 +22,15 @@ class FavoriteHQViewController: UIViewController {
         hqFavoritaTableView.dataSource = self
         
         viewModel.delegate = self
-        viewModel.carregaDados()
-        setButtonRadius()
         
         setTableView()
-        setButtonRadius()
         setLabelRadius()
         setCollectionView()
     }
     
-    @IBAction func close(_ sender: Any) {
-    dismiss(animated: true)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.carregaDados()
     }
     
     private func setTableView(){
@@ -44,11 +41,6 @@ class FavoriteHQViewController: UIViewController {
     private func setCollectionView() {
         hqFavoritaCollectionView.layer.cornerRadius = 32
         hqFavoritaCollectionView.layer.masksToBounds = true
-    }
-    
-    private func setButtonRadius() {
-        voltarBtn.layer.cornerRadius = 32
-        voltarBtn.layer.masksToBounds = true
     }
     
     private func setLabelRadius() {
