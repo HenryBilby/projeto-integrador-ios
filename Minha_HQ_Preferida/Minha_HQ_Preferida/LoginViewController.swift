@@ -14,9 +14,6 @@ import FacebookLogin
 
 class LoginViewController: UIViewController {
     
-    @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var senhaLabel: UILabel!
-    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
@@ -45,6 +42,51 @@ class LoginViewController: UIViewController {
         self.facebookButtonContainer.addSubview(facebookButton)
     }
     
+    private func escondeCamposDeLogin() {
+
+        emailTextField.isHidden = true
+        passwordTextField.isHidden = true
+
+        loginButton.isHidden = true
+        resetSenhaButton.isHidden = true
+
+        logoutButton.isHidden = false
+    }
+        private func revelaCamposDeLogin() {
+            
+            emailTextField.isHidden = false
+            passwordTextField.isHidden = false
+            
+            loginButton.isHidden = false
+            resetSenhaButton.isHidden = false
+            
+            logoutButton.isHidden = true
+        }
+    @IBAction func resetSenhaButton(_ sender: Any) {
+        guard let email = emailTextField.text else { return }
+                
+                Auth.auth().sendPasswordReset(withEmail: email) { error in
+                    if let error = error {
+                        print("Erro ao resetar senha")
+                        return
+                    }
+                    
+                    print("email de resetar senha enviado com sucesso")
+                }
+    }
+    
+    @IBAction func logoutButtonAction(_ sender: Any) {
+        do {
+            try Auth.auth().signOut()
+            revelaCamposDeLogin()
+            print("Usuário efetuou logout com sucesso")
+
+        } catch {
+            print("Erro ao deslogar")
+            
+        }
+    }
+    
     @IBAction func loginButtonAction(_ sender: Any) {
         guard let email = emailTextField.text,
               let password = passwordTextField.text else { return }
@@ -54,11 +96,13 @@ class LoginViewController: UIViewController {
             
             guard error == nil else {
                 self.criarNovaContaNoFirebase(email: email, password: password)
+                self.performSegue(withIdentifier: "selectCharacterSegue", sender: email)
                 return
             }
             
             print(" O usuário fez login com sucesso!")
-
+            self.performSegue(withIdentifier: "selectCharacterSegue", sender: email)
+            self.escondeCamposDeLogin()
         }
     }
     
@@ -82,7 +126,7 @@ class LoginViewController: UIViewController {
                     }
                     
                     print("Sucesso na criação de conta e login efetuado!")
-        
+                    self.escondeCamposDeLogin()
                     
                 }
             }
