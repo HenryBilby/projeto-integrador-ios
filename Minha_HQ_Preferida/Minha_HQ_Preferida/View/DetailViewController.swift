@@ -19,6 +19,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var artistaLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var voltarButton: UIButton!
+    @IBOutlet weak var compartilharFavoritoButton: UIButton!
     
     var viewModel: FavoritoViewModel = .init()
     var comicElement: ComicElement?
@@ -36,6 +37,12 @@ class DetailViewController: UIViewController {
     
     @IBAction func adicionarButton(_ sender: Any) {
         print(imageViewController)
+    }
+    @IBAction func compartilharButton(_ sender: UIButton) {
+        guard let nome = titleLabel.text else { return }
+        guard let imagem = imageViewController.image else { return }
+        let activityViewController = UIActivityViewController(activityItems: [imagem, nome], applicationActivities: nil)
+                present(activityViewController, animated: true, completion: nil)
     }
     
     @IBAction func backButton(_ sender: Any) {
