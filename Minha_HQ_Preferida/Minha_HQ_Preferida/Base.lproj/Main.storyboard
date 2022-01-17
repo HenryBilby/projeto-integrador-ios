@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iY8-bc-fEa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iY8-bc-fEa">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -468,10 +468,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="titulo" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q1t-F7-HvH">
-                                <rect key="frame" x="16" y="420" width="340" height="45"/>
+                                <rect key="frame" x="16" y="420" width="300" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="BvA-5i-4Db"/>
-                                    <constraint firstAttribute="width" constant="340" id="c1O-wE-6Tk"/>
+                                    <constraint firstAttribute="width" constant="300" id="c1O-wE-6Tk"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="textColor" systemColor="systemGroupedBackgroundColor"/>
@@ -558,6 +558,22 @@
                                     <action selector="backButton:" destination="TT3-ub-ueo" eventType="touchUpInside" id="JSB-YQ-4TB"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mDP-nP-SSq" userLabel="Compartilhar">
+                                <rect key="frame" x="345" y="417" width="30" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="dGf-tW-QYW"/>
+                                    <constraint firstAttribute="width" constant="30" id="lRD-Su-y3c"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemBackgroundColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="square.and.arrow.up" catalog="system" title=" ">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="adicionarButton:" destination="TT3-ub-ueo" eventType="touchUpInside" id="Xts-6R-sN2"/>
+                                    <action selector="compartilharButton:" destination="TT3-ub-ueo" eventType="touchUpInside" id="NZ1-eP-bqb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="SoU-pD-BVp"/>
                         <color key="backgroundColor" red="0.74372632575757569" green="0.19629566965851816" blue="0.040774384985452605" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -569,10 +585,12 @@
                             <constraint firstItem="b02-2E-4E7" firstAttribute="leading" secondItem="SoU-pD-BVp" secondAttribute="leading" constant="16" id="3Dz-g0-xzF"/>
                             <constraint firstItem="eaD-7E-fQB" firstAttribute="leading" secondItem="SoU-pD-BVp" secondAttribute="leading" constant="134" id="49V-XG-6vP"/>
                             <constraint firstItem="BxZ-Sa-nB7" firstAttribute="top" secondItem="QMf-pe-UY9" secondAttribute="top" id="4Q8-p0-F5M"/>
+                            <constraint firstItem="mDP-nP-SSq" firstAttribute="top" secondItem="BxZ-Sa-nB7" secondAttribute="bottom" constant="7" id="4cL-ua-yqf"/>
                             <constraint firstItem="Nke-EM-e2G" firstAttribute="top" secondItem="avD-E1-ud9" secondAttribute="bottom" constant="5" id="5V1-jS-vd8"/>
                             <constraint firstItem="EAH-ap-TGz" firstAttribute="top" secondItem="Nke-EM-e2G" secondAttribute="bottom" constant="5" id="5q7-yq-KGd"/>
                             <constraint firstItem="SoU-pD-BVp" firstAttribute="trailing" secondItem="b02-2E-4E7" secondAttribute="trailing" constant="16" id="8im-rP-Oqi"/>
                             <constraint firstItem="SoU-pD-BVp" firstAttribute="trailing" secondItem="UNb-gX-FUr" secondAttribute="trailing" constant="16" id="8r1-QF-Ev7"/>
+                            <constraint firstItem="avD-E1-ud9" firstAttribute="top" secondItem="mDP-nP-SSq" secondAttribute="bottom" constant="8" symbolic="YES" id="9jP-Fq-5DH"/>
                             <constraint firstItem="SoU-pD-BVp" firstAttribute="trailing" secondItem="fnq-uI-IxE" secondAttribute="trailing" constant="16" id="BOl-iq-9YX"/>
                             <constraint firstItem="SoU-pD-BVp" firstAttribute="trailing" secondItem="eaD-7E-fQB" secondAttribute="trailing" constant="134" id="DtX-pW-uAA"/>
                             <constraint firstItem="EAH-ap-TGz" firstAttribute="leading" secondItem="SoU-pD-BVp" secondAttribute="leading" constant="16" id="Ea4-YM-Zmy"/>
@@ -593,16 +611,19 @@
                             <constraint firstItem="eXC-nF-CDW" firstAttribute="top" secondItem="b02-2E-4E7" secondAttribute="bottom" constant="5" id="gSK-Rh-oNO"/>
                             <constraint firstItem="lJj-CQ-edF" firstAttribute="top" secondItem="1yP-wx-AZO" secondAttribute="bottom" constant="5" id="gnP-Wt-Sli"/>
                             <constraint firstItem="SoU-pD-BVp" firstAttribute="trailing" secondItem="Nke-EM-e2G" secondAttribute="trailing" constant="16" id="nda-HO-N2t"/>
+                            <constraint firstItem="mDP-nP-SSq" firstAttribute="leading" secondItem="Q1t-F7-HvH" secondAttribute="trailing" constant="29" id="nnd-bS-yQU"/>
                             <constraint firstItem="1yP-wx-AZO" firstAttribute="leading" secondItem="SoU-pD-BVp" secondAttribute="leading" constant="16" id="s3q-Ph-A6K"/>
                             <constraint firstItem="SoU-pD-BVp" firstAttribute="trailing" secondItem="lJj-CQ-edF" secondAttribute="trailing" constant="16" id="uW5-YC-f6L"/>
                             <constraint firstItem="1yP-wx-AZO" firstAttribute="top" secondItem="fnq-uI-IxE" secondAttribute="bottom" constant="5" id="wr5-il-F3O"/>
                             <constraint firstItem="fnq-uI-IxE" firstAttribute="top" secondItem="eXC-nF-CDW" secondAttribute="bottom" constant="5" id="xHv-GI-ovb"/>
+                            <constraint firstItem="dN6-Fb-3Tr" firstAttribute="leading" secondItem="mDP-nP-SSq" secondAttribute="trailing" id="xiR-kF-LrW"/>
                             <constraint firstItem="Nke-EM-e2G" firstAttribute="leading" secondItem="SoU-pD-BVp" secondAttribute="leading" constant="16" id="xqP-B4-e7e"/>
                             <constraint firstItem="Q1t-F7-HvH" firstAttribute="top" secondItem="BxZ-Sa-nB7" secondAttribute="bottom" constant="10" id="z7D-GK-O12"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="artistaLabel" destination="lJj-CQ-edF" id="K6w-q8-Cor"/>
+                        <outlet property="compartilharFavoritoButton" destination="mDP-nP-SSq" id="ZUa-sk-bjT"/>
                         <outlet property="descriptionTextView" destination="UNb-gX-FUr" id="I6r-rS-4td"/>
                         <outlet property="escritorLabel" destination="b02-2E-4E7" id="lA3-XA-cQe"/>
                         <outlet property="favoriteComic" destination="dN6-Fb-3Tr" id="FlK-aI-uLc"/>
@@ -747,6 +768,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="iY8-bc-fEa" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8ZE-XB-t5C">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.8078432083" green="0.20392158630000001" blue="0.1607843041" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="barTintColor" red="0.98039215800000001" green="0.88627451660000001" blue="0.35686278339999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -765,6 +787,7 @@
     <resources>
         <image name="login_heroes" width="550" height="707"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
