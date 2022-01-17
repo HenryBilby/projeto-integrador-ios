@@ -6,20 +6,17 @@
 //
 
 import Foundation
+import Firebase
 
 class LoginViewModel {
     
-    let serviceLogin = LoginService()
+    private let serviceLogin = LoginService()
     
-    public func loginWithFacebookIsValid() -> Bool {
-        return serviceLogin.facebookLoginIsValid()
+    public func loginFirebase(credential: AuthCredential) -> User? {
+        return serviceLogin.loginFirebase(credential: credential)
     }
     
-    public func loginWithGoogleIsValid() -> Bool {
-        return serviceLogin.googleLoginIsValid()
-    }
-    
-    public func loginWithEmailIsValid() -> Bool {
-        return serviceLogin.emailLoginIsValid()
+    public func logoutFirebase() {
+        serviceLogin.logoutFirebase()
     }
 }

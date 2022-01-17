@@ -42,6 +42,10 @@ class LoginViewController: UIViewController {
         self.facebookButtonContainer.addSubview(facebookButton)
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+
     private func escondeCamposDeLogin() {
 
         emailTextField.isHidden = true
@@ -143,31 +147,17 @@ class LoginViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    func loginFirebase(credential: AuthCredential) {
-        Auth.auth().signIn(with: credential) { result, error in
-            if let error = error {
-                print("<<<< Erro ao logar no Firebase \(error.localizedDescription)")
-                return
-            }
-            
-            if let user = Auth.auth().currentUser {
-                self.performSegue(withIdentifier: "selectCharacterSegue", sender: user.displayName)
-            }
-        }
-    }
-    
-    func logoutFirebase(){
-        do {
-            try Auth.auth().signOut()
-            print("<<<< Usuario efetuou logout no firebase com sucesso")
-        } catch let error {
-            print(error.localizedDescription)
-        }
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let selecteCharactersViewController = segue.destination as? SelectCharacterViewController, segue.identifier == "selectCharacterSegue" {
             selecteCharactersViewController.usuario = sender as? String
+        }
+    }
+
+    private func goToNextScreen(with user: User?) {
+        if let user = user {
+            self.performSegue(withIdentifier: "selectCharacterSegue", sender: user.displayName)
+        } else {
+            self.performSegue(withIdentifier: "selectCharacterSegue", sender: nil)
         }
     }
 }
@@ -183,14 +173,16 @@ extension LoginViewController:LoginButtonDelegate {
             if let token = loginResult.token?.tokenString {
                 print("<<<< Token is: \(token)")
                 let credential = FacebookAuthProvider.credential(withAccessToken: token)
-                loginFirebase(credential: credential)
+
+                let user = loginViewModel.loginFirebase(credential: credential)
+                goToNextScreen(with: user)
             }
         }
     }
     
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
         print("<<<< Usuario efetuou logout no facebook")
-        logoutFirebase()
+        loginViewModel.logoutFirebase()
     }
 }
 
@@ -206,6 +198,8 @@ extension LoginViewController: GIDSignInDelegate {
             )
 
             print("<<<< Usuario \(String(describing: user.profile.name)) efetuou login no Gmail")
-            loginFirebase(credential: credential)
+
+            let user = loginViewModel.loginFirebase(credential: credential)
+            goToNextScreen(with: user)
     }
 }
