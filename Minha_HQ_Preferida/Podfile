@@ -12,5 +12,10 @@ target 'Minha_HQ_Preferida' do
   pod 'GoogleSignIn', '~> 5.0'
   pod 'FacebookCore'
   pod 'FacebookLogin'
+  
+  target 'Minha_HQ_PreferidaTests' do
+          inherit! :search_paths
+          pod 'Firebase'
+      end
 
 end

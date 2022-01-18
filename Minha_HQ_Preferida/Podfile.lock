@@ -21,6 +21,8 @@ PODS:
     - FBSDKLoginKit/Login (= 5.15.1)
   - FBSDKLoginKit/Login (5.15.1):
     - FBSDKCoreKit (~> 5.0)
+  - Firebase (8.9.1):
+    - Firebase/Core (= 8.9.1)
   - Firebase/Auth (8.9.1):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 8.9.0)
@@ -128,6 +130,7 @@ DEPENDENCIES:
   - Alamofire (~> 5.4)
   - FacebookCore
   - FacebookLogin
+  - Firebase
   - Firebase/Auth
   - Firebase/Core
   - GoogleSignIn (~> 5.0)
@@ -177,6 +180,6 @@ SPEC CHECKSUMS:
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
 
-PODFILE CHECKSUM: 8763d2c8c29692eeefc2d82a0ec6cb89e1a895f9
+PODFILE CHECKSUM: da49b2803a583a231e6e203be13a4846bffe9bf9
 
 COCOAPODS: 1.11.2
