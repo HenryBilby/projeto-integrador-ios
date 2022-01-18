@@ -17,9 +17,9 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var textFieldEmail: UITextField!
     @IBOutlet weak var textFieldPassword: UITextField!
     
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var resetSenhaButton: UIButton!
-    @IBOutlet weak var logoutButton: UIButton!
+    @IBOutlet weak var buttonLogin: UIButton!
+    @IBOutlet weak var buttonResetSenha: UIButton!
+    @IBOutlet weak var buttonCriarConta: UIButton!
     
     @IBOutlet weak var facebookButtonContainer: UIView!
 
@@ -29,23 +29,21 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        GIDSignIn.sharedInstance().presentingViewController = self
-        GIDSignIn.sharedInstance().delegate = self
-        
-        let facebookButton = FBLoginButton(frame: facebookButtonContainer.bounds, permissions: [.publicProfile])
-                
-        facebookButton.delegate = self
-                
-        self.facebookButtonContainer.backgroundColor = .clear
-                
-        self.facebookButtonContainer.addSubview(facebookButton)
+        setGoogleButtonBehavior()
+        setFacebookButtonBehavior()
+        setButtonsRadius()
         
         loginViewModel.delegate = self
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let selecteCharactersViewController = segue.destination as? SelectCharacterViewController, segue.identifier == "selectCharacterSegue" {
+            selecteCharactersViewController.usuario = sender as? String
+        }
     }
 
     @IBAction func resetSenhaButton(_ sender: Any) {
@@ -68,46 +66,24 @@ class LoginViewController: UIViewController {
             criarNovaContaNoFirebase(email: textFieldEmail.text!, password: textFieldPassword.text!)
         }
     }
-    
-    func criarNovaContaNoFirebase(email: String, password: String) {
-        
-        let alert = UIAlertController(
-            title: "Criar uma nova conta",
-            message: "Você deseja criar uma nova conta?",
-            preferredStyle: .alert
-        )
-        
-        let continuarAction = UIAlertAction(
-            title: "Continuar",
-            style: .default) { _ in
-              
-                Auth.auth().createUser(withEmail: email, password: password) { result, error in
-                    
-                    guard error == nil else {
-                        print("Erro ao criar a conta")
-                        return
-                    }
-                    
-                    print("Sucesso na criação de conta e login efetuado!")
-                }
-            }
-        
-        let cancelarAction = UIAlertAction(
-            title: "Cancelar",
-            style: .cancel) { _ in
-                // retornar
-            }
-        
-        alert.addAction(continuarAction)
-        alert.addAction(cancelarAction)
-        
-        present(alert, animated: true, completion: nil)
+
+    private func setButtonsRadius() {
+        let radius : CGFloat = 10
+        buttonLogin.layer.cornerRadius = radius
+        buttonCriarConta.layer.cornerRadius = radius
+        buttonResetSenha.layer.cornerRadius = radius
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let selecteCharactersViewController = segue.destination as? SelectCharacterViewController, segue.identifier == "selectCharacterSegue" {
-            selecteCharactersViewController.usuario = sender as? String
-        }
+    private func setGoogleButtonBehavior() {
+        GIDSignIn.sharedInstance().presentingViewController = self
+        GIDSignIn.sharedInstance().delegate = self
+    }
+    
+    private func setFacebookButtonBehavior() {
+        let facebookButton = FBLoginButton(frame: facebookButtonContainer.bounds, permissions: [.publicProfile])
+        facebookButton.delegate = self
+        self.facebookButtonContainer.backgroundColor = .clear
+        self.facebookButtonContainer.addSubview(facebookButton)
     }
 
     private func goToNextScreen(with userName: String?) {
@@ -157,6 +133,44 @@ class LoginViewController: UIViewController {
         
         present(alert, animated: true, completion: nil)
     }
+    
+    private func showDialogWithHandler(with message: String) {
+        let alert = UIAlertController(title: "Minha HQ Preferida APP", message: message, preferredStyle: .alert)
+        
+        let alertAction = UIAlertAction(
+            title: "Continuar",
+            style: .default) {[weak self] _ in
+                guard let self = self else {return}
+                self.goToNextScreen(with: nil)
+            }
+        
+        alert.addAction(alertAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    private func criarNovaContaNoFirebase(email: String, password: String) {
+        
+        let alert = UIAlertController(
+            title: "Minha HQ Preferia APP",
+            message: "Você deseja criar uma nova conta?",
+            preferredStyle: .alert
+        )
+        
+        let continuarAction = UIAlertAction(
+            title: "Continuar",
+            style: .default) {[weak self] _ in
+                guard let self = self else {return}
+                self.loginViewModel.createUser(with: email, with: password)
+            }
+        
+        let cancelarAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+        
+        alert.addAction(continuarAction)
+        alert.addAction(cancelarAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
 }
 
 extension LoginViewController:LoginButtonDelegate {
@@ -199,21 +213,22 @@ extension LoginViewController: GIDSignInDelegate {
 }
 
 extension LoginViewController: LoginViewModelDelegate {
+    func createUserWithSucess(userEmail: String) {
+        let message = "Sucesso: Usuário criado com o \(userEmail)"
+        showDialogWithHandler(with: message)
+    }
+    
     func operationWithError(errorMessage: String) {
         showDialog(with: errorMessage)
     }
     
-    func resetPasswordWithSucess(userEmail: String?) {
-        var message = "Sucesso: Favor acessar o seu e-mail para redefinir sua senha"
-
-        if let email = userEmail {
-            message = "Sucesso: Favor acessar o \(email) para redefinir sua senha"
-        }
-
+    func resetPasswordWithSucess(userEmail: String) {
+        let message = "Sucesso: Favor acessar o \(userEmail) para redefinir sua senha"
         showDialog(with: message)
     }
 
     func loginWithSucess(userName: String?) {
         goToNextScreen(with: userName)
     }
+    
 }

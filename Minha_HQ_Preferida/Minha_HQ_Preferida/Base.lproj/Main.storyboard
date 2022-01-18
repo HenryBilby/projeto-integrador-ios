@@ -22,100 +22,101 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <view opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J6H-5x-gC8" customClass="GIDSignInButton">
-                                <rect key="frame" x="64" y="447" width="144" height="45"/>
-                                <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
-                                <accessibility key="accessibilityConfiguration">
-                                    <accessibilityTraits key="traits" button="YES"/>
-                                </accessibility>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="LkM-dR-vsX"/>
-                                    <constraint firstAttribute="width" constant="144" id="izk-Qt-jiu"/>
-                                </constraints>
-                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="XSD-iG-6mn">
+                                <rect key="frame" x="64" y="473.5" width="286" height="52.5"/>
+                                <subviews>
+                                    <view opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J6H-5x-gC8" customClass="GIDSignInButton">
+                                        <rect key="frame" x="0.0" y="0.0" width="139" height="52.5"/>
+                                        <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" button="YES"/>
+                                        </accessibility>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nDV-9a-brX">
+                                        <rect key="frame" x="147" y="0.0" width="139" height="52.5"/>
+                                        <color key="backgroundColor" systemColor="systemGray3Color"/>
+                                    </view>
+                                </subviews>
+                            </stackView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite o seu e-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M6L-kc-zIx">
-                                <rect key="frame" x="64" y="271" width="286" height="34"/>
+                                <rect key="frame" x="64" y="271" width="286" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="DVN-wA-Cdc"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Informe a senha" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mvc-lU-6An">
-                                <rect key="frame" x="64" y="339" width="286" height="34"/>
+                                <rect key="frame" x="64" y="322" width="286" height="35"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5na-Ad-weG">
-                                <rect key="frame" x="151" y="642" width="112.5" height="31"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="112.5" id="TkI-6N-b9D"/>
-                                    <constraint firstAttribute="height" constant="31" id="kQ3-Vf-NUS"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="resetar senha"/>
-                                <connections>
-                                    <action selector="resetSenhaButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sgc-ao-sGH"/>
-                                </connections>
-                            </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nDV-9a-brX">
-                                <rect key="frame" x="216" y="447" width="144" height="45"/>
-                                <color key="backgroundColor" systemColor="systemGray3Color"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="Syu-sQ-Bbe"/>
-                                    <constraint firstAttribute="width" constant="144" id="f0D-kU-YVb"/>
-                                </constraints>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecV-ec-NWA">
-                                <rect key="frame" x="64" y="390" width="128.5" height="31"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Login">
-                                    <color key="baseForegroundColor" systemColor="tintColor"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="loginButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LeT-6P-48B"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Yq-ZG-rhs">
-                                <rect key="frame" x="221.5" y="390" width="128.5" height="31"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Criar Conta"/>
-                                <connections>
-                                    <action selector="criarButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9uX-K7-Qpa"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="mP9-HU-Bho">
+                                <rect key="frame" x="64" y="389" width="286" height="52.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecV-ec-NWA">
+                                        <rect key="frame" x="0.0" y="0.0" width="90" height="52.5"/>
+                                        <color key="backgroundColor" red="0.87843137250000003" green="0.098039215690000001" blue="0.098039215690000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" red="0.98039215800000001" green="0.88627451660000001" blue="0.35686278339999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Login">
+                                            <color key="baseForegroundColor" systemColor="tintColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="loginButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LeT-6P-48B"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Yq-ZG-rhs">
+                                        <rect key="frame" x="98" y="0.0" width="90" height="52.5"/>
+                                        <color key="backgroundColor" red="0.87843137250000003" green="0.098039215690000001" blue="0.098039215690000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" red="0.98039215800000001" green="0.88627451660000001" blue="0.35686278339999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Criar Conta"/>
+                                        <connections>
+                                            <action selector="criarButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9uX-K7-Qpa"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5na-Ad-weG">
+                                        <rect key="frame" x="196" y="0.0" width="90" height="52.5"/>
+                                        <color key="backgroundColor" red="0.8078432083" green="0.20392158630000001" blue="0.1607843041" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="tintColor" red="0.98039215800000001" green="0.88627451660000001" blue="0.35686278339999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Esqueci a Senha"/>
+                                        <connections>
+                                            <action selector="resetSenhaButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sgc-ao-sGH"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.8078432083" green="0.20392158630000001" blue="0.1607843041" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="3Yq-ZG-rhs" firstAttribute="top" secondItem="Mvc-lU-6An" secondAttribute="bottom" constant="17" id="29H-OD-CXW"/>
-                            <constraint firstItem="J6H-5x-gC8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="64" id="2sX-Tp-34d"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3Yq-ZG-rhs" secondAttribute="trailing" constant="64" id="43b-su-Llu"/>
-                            <constraint firstItem="5na-Ad-weG" firstAttribute="top" secondItem="J6H-5x-gC8" secondAttribute="bottom" constant="150" id="764-ZW-vlz"/>
+                            <constraint firstItem="XSD-iG-6mn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="64" id="27B-YH-K4l"/>
                             <constraint firstItem="Mvc-lU-6An" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="64" id="CUy-cU-ZOT"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nDV-9a-brX" secondAttribute="trailing" constant="54" id="FGq-en-lHT"/>
-                            <constraint firstItem="ecV-ec-NWA" firstAttribute="width" secondItem="Mvc-lU-6An" secondAttribute="width" multiplier="0.45" id="IuM-EL-plw"/>
-                            <constraint firstItem="Mvc-lU-6An" firstAttribute="top" secondItem="M6L-kc-zIx" secondAttribute="bottom" constant="34" id="KKm-LM-wdY"/>
-                            <constraint firstItem="nDV-9a-brX" firstAttribute="top" secondItem="3Yq-ZG-rhs" secondAttribute="bottom" constant="26" id="OEZ-XF-iqR"/>
-                            <constraint firstItem="ecV-ec-NWA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="64" id="Tj9-XQ-SkL"/>
+                            <constraint firstItem="mP9-HU-Bho" firstAttribute="height" secondItem="Mvc-lU-6An" secondAttribute="height" multiplier="1.5" id="K0s-dA-EXu"/>
+                            <constraint firstItem="Mvc-lU-6An" firstAttribute="top" secondItem="M6L-kc-zIx" secondAttribute="bottom" constant="16" id="KKm-LM-wdY"/>
+                            <constraint firstItem="XSD-iG-6mn" firstAttribute="top" secondItem="mP9-HU-Bho" secondAttribute="bottom" constant="32" id="PMb-Xn-nrf"/>
+                            <constraint firstItem="Mvc-lU-6An" firstAttribute="height" secondItem="M6L-kc-zIx" secondAttribute="height" id="UVB-Hh-Ecp"/>
+                            <constraint firstItem="mP9-HU-Bho" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="64" id="Umh-Bs-4aL"/>
+                            <constraint firstItem="XSD-iG-6mn" firstAttribute="width" secondItem="mP9-HU-Bho" secondAttribute="width" id="XEO-um-AUf"/>
                             <constraint firstItem="M6L-kc-zIx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="64" id="XUx-I0-EQ4"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5na-Ad-weG" secondAttribute="trailing" constant="150.5" id="XeL-ms-FoL"/>
+                            <constraint firstItem="mP9-HU-Bho" firstAttribute="top" secondItem="Mvc-lU-6An" secondAttribute="bottom" constant="32" id="bbw-C2-9D5"/>
                             <constraint firstItem="M6L-kc-zIx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="183" id="cWE-sa-5tN"/>
+                            <constraint firstItem="XSD-iG-6mn" firstAttribute="height" secondItem="mP9-HU-Bho" secondAttribute="height" id="hsK-Nr-8XF"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Mvc-lU-6An" secondAttribute="trailing" constant="64" id="ntw-2e-W9Q"/>
-                            <constraint firstItem="ecV-ec-NWA" firstAttribute="top" secondItem="Mvc-lU-6An" secondAttribute="bottom" constant="17" id="oVa-FT-qbf"/>
-                            <constraint firstItem="3Yq-ZG-rhs" firstAttribute="width" secondItem="Mvc-lU-6An" secondAttribute="width" multiplier="0.45" id="omu-Qj-ieF"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="M6L-kc-zIx" secondAttribute="trailing" constant="64" id="p3R-re-6em"/>
-                            <constraint firstItem="5na-Ad-weG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="151" id="p56-Eo-MsC"/>
-                            <constraint firstItem="J6H-5x-gC8" firstAttribute="top" secondItem="ecV-ec-NWA" secondAttribute="bottom" constant="26" id="rAY-8K-BKY"/>
+                            <constraint firstAttribute="trailing" secondItem="mP9-HU-Bho" secondAttribute="trailing" constant="64" id="wwN-Cr-ygf"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ZOC-s7-kVb">
                         <barButtonItem key="backBarButtonItem" title="Login" id="WBE-s5-Tr0"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="buttonCriarConta" destination="3Yq-ZG-rhs" id="4PG-gZ-9EC"/>
+                        <outlet property="buttonLogin" destination="ecV-ec-NWA" id="jQw-yA-fEs"/>
+                        <outlet property="buttonResetSenha" destination="5na-Ad-weG" id="WAA-Zr-zRA"/>
                         <outlet property="facebookButtonContainer" destination="nDV-9a-brX" id="5Br-JC-PNM"/>
-                        <outlet property="loginButton" destination="ecV-ec-NWA" id="jQw-yA-fEs"/>
-                        <outlet property="resetSenhaButton" destination="5na-Ad-weG" id="WAA-Zr-zRA"/>
                         <outlet property="signInButton" destination="J6H-5x-gC8" id="Csv-du-hM2"/>
                         <outlet property="textFieldEmail" destination="M6L-kc-zIx" id="3hY-7C-TVz"/>
                         <outlet property="textFieldPassword" destination="Mvc-lU-6An" id="P2s-Tr-eGm"/>

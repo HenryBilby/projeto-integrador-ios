@@ -68,4 +68,19 @@ class LoginService {
             completion(nil)
         }
     }
+    
+    public func createUser(with email: String, with password: String, completion: @escaping (AuthErrorCode?) -> Void) {
+        Auth.auth().createUser(withEmail: email, password: password) { result, error in
+            
+            if let error = error {
+                print("Erro ao criar usuário: \(error.localizedDescription)")
+
+                let authErrorCode = AuthErrorCode(rawValue: error._code)
+                completion(authErrorCode)
+            }
+            
+            print("Sucesso na criação de conta e login efetuado!")
+            completion(nil)
+        }
+    }
 }

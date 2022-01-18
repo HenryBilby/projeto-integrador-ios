@@ -12,7 +12,8 @@ import UIKit
 protocol LoginViewModelDelegate {
     func loginWithSucess(userName: String?)
     func operationWithError(errorMessage: String)
-    func resetPasswordWithSucess(userEmail: String?)
+    func resetPasswordWithSucess(userEmail: String)
+    func createUserWithSucess(userEmail: String)
 }
 
 class LoginViewModel {
@@ -57,14 +58,22 @@ class LoginViewModel {
             if let error = error {
                 self.operationWithError(error: error)
             } else {
-                self.resetPasswordWithSucess(userEmail: email)
+                DispatchQueue.main.async {
+                    self.delegate?.resetPasswordWithSucess(userEmail: email)
+                }
             }
         }
     }
-
-    private func resetPasswordWithSucess(userEmail: String?) {
-        DispatchQueue.main.async {
-            self.delegate?.resetPasswordWithSucess(userEmail: userEmail)
+    
+    public func createUser(with email: String, with password: String) {
+        serviceLogin.createUser(with: email, with: password) { error in
+            if let error = error {
+                self.operationWithError(error: error)
+            } else {
+                DispatchQueue.main.async {
+                    self.delegate?.createUserWithSucess(userEmail: email)
+                }
+            }
         }
     }
 
