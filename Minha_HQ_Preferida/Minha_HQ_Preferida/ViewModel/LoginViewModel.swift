@@ -10,8 +10,9 @@ import Firebase
 import UIKit
 
 protocol LoginViewModelDelegate {
-    func loginComSucesso(userName: String?)
-    func loginComErro(errorMessage: String)
+    func loginWithSucess(userName: String?)
+    func operationWithError(errorMessage: String)
+    func resetPasswordWithSucess(userEmail: String?)
 }
 
 class LoginViewModel {
@@ -19,8 +20,14 @@ class LoginViewModel {
     public var delegate : LoginViewModelDelegate?
     private let serviceLogin = LoginService()
     
-    public func loginFirebase(credential: AuthCredential) -> User? {
-        return serviceLogin.loginFirebase(credential: credential)
+    public func loginFirebase(credential: AuthCredential) {
+        serviceLogin.loginFirebase(credential: credential) { result in
+            if let user = result.user {
+                self.loginWithSucess(user: user)
+            } else if let error = result.error {
+                self.operationWithError(error: error)
+            }
+        }
     }
     
     public func logoutFirebase() {
@@ -38,28 +45,61 @@ class LoginViewModel {
     public func loginFirebase(email: String, password: String) {
         serviceLogin.loginFirebase(with: email, with: password) { result in
             if let user = result.user {
-                DispatchQueue.main.async {
-                    self.delegate?.loginComSucesso(userName: user.displayName)
-                }
-            } else {
-                var message = ""
-                
-                switch result.error {
-                case .invalidEmail:
-                    message = "E-mail inválido"
-                    break
-                case .invalidPassword:
-                    message = "Senha inválida"
-                    break
-                default:
-                    message = "Erro ao realizar login!"
-                    break
-                }
-                
-                DispatchQueue.main.async {
-                    self.delegate?.loginComErro(errorMessage: message)
-                }
+                self.loginWithSucess(user: user)
+            } else if let error = result.error {
+                self.operationWithError(error: error)
             }
+        }
+    }
+
+    public func resetPassword(with email: String) {
+        serviceLogin.resetPassword(with: email) { error in
+            if let error = error {
+                self.operationWithError(error: error)
+            } else {
+                self.resetPasswordWithSucess(userEmail: email)
+            }
+        }
+    }
+
+    private func resetPasswordWithSucess(userEmail: String?) {
+        DispatchQueue.main.async {
+            self.delegate?.resetPasswordWithSucess(userEmail: userEmail)
+        }
+    }
+
+    private func loginWithSucess(user: User) {
+        DispatchQueue.main.async {
+            self.delegate?.loginWithSucess(userName: user.displayName)
+        }
+    }
+
+    private func operationWithError(error: AuthErrorCode) {
+        var message = ""
+
+        switch error {
+        case .invalidUserToken:
+            message = "Erro de token: Necessário realizar o login novamente"
+            break
+        case .invalidCredential:
+            message = "Erro de credencial: Necessário realizar o login novamente"
+            break
+        case .invalidEmail:
+            message = "E-mail inválido"
+            break
+        case .wrongPassword:
+            message = "Senha inválida"
+            break
+        case .userNotFound:
+            message = "Usuário não encontrado, favor criar uma conta"
+            break
+        default:
+            message = "Erro ao realizar login!"
+            break
+        }
+
+        DispatchQueue.main.async {
+            self.delegate?.operationWithError(errorMessage: message)
         }
     }
 }

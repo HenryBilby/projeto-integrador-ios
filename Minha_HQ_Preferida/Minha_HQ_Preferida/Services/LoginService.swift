@@ -15,52 +15,34 @@ enum FirebaseError : Error {
 
 struct LoginResult {
     let user: User?
-    let error: FirebaseError?
+    let error: AuthErrorCode?
 }
 
 class LoginService {
     
-    public func loginFirebase(credential: AuthCredential) -> User? {
-
-        var user : User?
-
+    public func loginFirebase(credential: AuthCredential, completion: @escaping (LoginResult) -> Void){
         Auth.auth().signIn(with: credential) { result, error in
             if let error = error {
                 print("<<<< Erro ao logar no Firebase com credencial: \(error.localizedDescription)")
-                return
+                let authErrorCode = AuthErrorCode(rawValue: error._code)
+                completion(LoginResult(user: nil, error: authErrorCode))
             }
 
-            user = Auth.auth().currentUser
+            let user = Auth.auth().currentUser
+            completion(LoginResult(user: user, error: nil))
         }
-
-        return user
     }
     
     public func loginFirebase(with email: String, with password: String, completion: @escaping (LoginResult) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
-            var user : User?
-            var firebaseError : FirebaseError?
-            
             if let error = error {
                 print("<<<< Erro ao logar no Firebase com e-mail: \(error.localizedDescription)")
                 
                 let authErrorCode = AuthErrorCode(rawValue: error._code)
-                
-                switch authErrorCode {
-                case .invalidEmail:
-                    firebaseError = .invalidEmail
-                    break
-                case .wrongPassword:
-                    firebaseError = .invalidPassword
-                    break
-                default:
-                    break
-                }
-                
-                completion(LoginResult(user: nil, error: firebaseError))
+                completion(LoginResult(user: nil, error: authErrorCode))
             }
             
-            user = Auth.auth().currentUser
+            let user = Auth.auth().currentUser
             completion(LoginResult(user: user, error: nil))
         }
     }
@@ -71,6 +53,19 @@ class LoginService {
             print("<<<< Usuario efetuou logout no firebase com sucesso")
         } catch let error {
             print(error.localizedDescription)
+        }
+    }
+
+    public func resetPassword(with email: String, completion: @escaping (AuthErrorCode?) -> Void) {
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+            if let error = error {
+                print("Erro ao resetar senha: \(error.localizedDescription)")
+
+                let authErrorCode = AuthErrorCode(rawValue: error._code)
+                completion(authErrorCode)
+            }
+
+            completion(nil)
         }
     }
 }

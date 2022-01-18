@@ -49,16 +49,12 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func resetSenhaButton(_ sender: Any) {
-        guard let email = textFieldEmail.text else { return }
-                
-                Auth.auth().sendPasswordReset(withEmail: email) { error in
-                    if let error = error {
-                        print("Erro ao resetar senha")
-                        return
-                    }
-                    
-                    print("email de resetar senha enviado com sucesso")
-                }
+        if loginViewModel.isValid(textField: textFieldEmail) {
+            removeError(textField: textFieldEmail)
+            loginViewModel.resetPassword(with: textFieldEmail.text!)
+        } else {
+            showError(textField: textFieldEmail)
+        }
     }
     
     @IBAction func loginButtonAction(_ sender: Any) {
@@ -137,7 +133,7 @@ class LoginViewController: UIViewController {
     private func showError(textField: UITextField){
         textField.layer.borderColor = UIColor.red.cgColor
         textField.layer.borderWidth = 2
-        let message = "Corrigir o campo marcado de vermelho"
+        let message = "O campo marcado de vermelho não pode estar vazio"
         showDialog(with: message)
     }
     
@@ -174,9 +170,7 @@ extension LoginViewController:LoginButtonDelegate {
             if let token = loginResult.token?.tokenString {
                 print("<<<< Token is: \(token)")
                 let credential = FacebookAuthProvider.credential(withAccessToken: token)
-
-                let user = loginViewModel.loginFirebase(credential: credential)
-                goToNextScreen(with: user?.displayName)
+                loginViewModel.loginFirebase(credential: credential)
             }
         }
     }
@@ -200,17 +194,26 @@ extension LoginViewController: GIDSignInDelegate {
 
             print("<<<< Usuario \(String(describing: user.profile.name)) efetuou login no Gmail")
 
-            let user = loginViewModel.loginFirebase(credential: credential)
-        goToNextScreen(with: user?.displayName)
+            loginViewModel.loginFirebase(credential: credential)
     }
 }
 
 extension LoginViewController: LoginViewModelDelegate {
-    func loginComSucesso(userName: String?) {
-        goToNextScreen(with: userName)
+    func operationWithError(errorMessage: String) {
+        showDialog(with: errorMessage)
     }
     
-    func loginComErro(errorMessage: String) {
-        showDialog(with: errorMessage)
+    func resetPasswordWithSucess(userEmail: String?) {
+        var message = "Sucesso: Favor acessar o seu e-mail para redefinir sua senha"
+
+        if let email = userEmail {
+            message = "Sucesso: Favor acessar o \(email) para redefinir sua senha"
+        }
+
+        showDialog(with: message)
+    }
+
+    func loginWithSucess(userName: String?) {
+        goToNextScreen(with: userName)
     }
 }
