@@ -14,18 +14,18 @@ import FacebookLogin
 
 class LoginViewController: UIViewController {
     
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var textFieldEmail: UITextField!
+    @IBOutlet weak var textFieldPassword: UITextField!
     
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var resetSenhaButton: UIButton!
     @IBOutlet weak var logoutButton: UIButton!
     
     @IBOutlet weak var facebookButtonContainer: UIView!
+
+    @IBOutlet var signInButton: GIDSignInButton!
     
     let loginViewModel = LoginViewModel()
-
-        @IBOutlet var signInButton: GIDSignInButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,34 +40,16 @@ class LoginViewController: UIViewController {
         self.facebookButtonContainer.backgroundColor = .clear
                 
         self.facebookButtonContainer.addSubview(facebookButton)
+        
+        loginViewModel.delegate = self
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
 
-    private func escondeCamposDeLogin() {
-
-        emailTextField.isHidden = true
-        passwordTextField.isHidden = true
-
-        loginButton.isHidden = true
-        resetSenhaButton.isHidden = true
-
-        logoutButton.isHidden = false
-    }
-        private func revelaCamposDeLogin() {
-            
-            emailTextField.isHidden = false
-            passwordTextField.isHidden = false
-            
-            loginButton.isHidden = false
-            resetSenhaButton.isHidden = false
-            
-            logoutButton.isHidden = true
-        }
     @IBAction func resetSenhaButton(_ sender: Any) {
-        guard let email = emailTextField.text else { return }
+        guard let email = textFieldEmail.text else { return }
                 
                 Auth.auth().sendPasswordReset(withEmail: email) { error in
                     if let error = error {
@@ -79,34 +61,15 @@ class LoginViewController: UIViewController {
                 }
     }
     
-    @IBAction func logoutButtonAction(_ sender: Any) {
-        do {
-            try Auth.auth().signOut()
-            revelaCamposDeLogin()
-            print("Usuário efetuou logout com sucesso")
-
-        } catch {
-            print("Erro ao deslogar")
-            
+    @IBAction func loginButtonAction(_ sender: Any) {
+        if isValidSignIn() {
+            loginViewModel.loginFirebase(email: textFieldEmail.text!, password: textFieldPassword.text!)
         }
     }
     
-    @IBAction func loginButtonAction(_ sender: Any) {
-        guard let email = emailTextField.text,
-              let password = passwordTextField.text else { return }
-        
-        Auth.auth().signIn(withEmail: email, password: password) { [weak self] result, error in
-            guard let self = self else { return }
-            
-            guard error == nil else {
-                self.criarNovaContaNoFirebase(email: email, password: password)
-                self.performSegue(withIdentifier: "selectCharacterSegue", sender: email)
-                return
-            }
-            
-            print(" O usuário fez login com sucesso!")
-            self.performSegue(withIdentifier: "selectCharacterSegue", sender: email)
-            self.escondeCamposDeLogin()
+    @IBAction func criarButton(_ sender: Any) {
+        if isValidSignIn() {
+            criarNovaContaNoFirebase(email: textFieldEmail.text!, password: textFieldPassword.text!)
         }
     }
     
@@ -130,8 +93,6 @@ class LoginViewController: UIViewController {
                     }
                     
                     print("Sucesso na criação de conta e login efetuado!")
-                    self.escondeCamposDeLogin()
-                    
                 }
             }
         
@@ -153,12 +114,52 @@ class LoginViewController: UIViewController {
         }
     }
 
-    private func goToNextScreen(with user: User?) {
-        if let user = user {
-            self.performSegue(withIdentifier: "selectCharacterSegue", sender: user.displayName)
-        } else {
-            self.performSegue(withIdentifier: "selectCharacterSegue", sender: nil)
+    private func goToNextScreen(with userName: String?) {
+        self.performSegue(withIdentifier: "selectCharacterSegue", sender: userName)
+    }
+    
+    private func isValidSignIn() -> Bool {
+        if !loginViewModel.isValid(textField: textFieldEmail) {
+            showError(textField: textFieldEmail)
+            return false
         }
+        
+        if !loginViewModel.isValid(textField: textFieldPassword) {
+            showError(textField: textFieldPassword)
+            return false
+        }
+        
+        removeErrorsFromTextFields()
+        
+        return true
+    }
+    
+    private func showError(textField: UITextField){
+        textField.layer.borderColor = UIColor.red.cgColor
+        textField.layer.borderWidth = 2
+        let message = "Corrigir o campo marcado de vermelho"
+        showDialog(with: message)
+    }
+    
+    private func removeErrorsFromTextFields() {
+        removeError(textField: textFieldEmail)
+        removeError(textField: textFieldPassword)
+    }
+    
+    private func removeError(textField: UITextField){
+        if textField.layer.borderColor == UIColor.red.cgColor {
+            textField.layer.borderColor = UIColor.clear.cgColor
+            textField.layer.borderWidth = 0
+        }
+    }
+    
+    private func showDialog(with message: String){
+        let alert = UIAlertController(title: "Minha HQ Preferida APP", message: message, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        
+        alert.addAction(alertAction)
+        
+        present(alert, animated: true, completion: nil)
     }
 }
 
@@ -175,7 +176,7 @@ extension LoginViewController:LoginButtonDelegate {
                 let credential = FacebookAuthProvider.credential(withAccessToken: token)
 
                 let user = loginViewModel.loginFirebase(credential: credential)
-                goToNextScreen(with: user)
+                goToNextScreen(with: user?.displayName)
             }
         }
     }
@@ -200,6 +201,16 @@ extension LoginViewController: GIDSignInDelegate {
             print("<<<< Usuario \(String(describing: user.profile.name)) efetuou login no Gmail")
 
             let user = loginViewModel.loginFirebase(credential: credential)
-            goToNextScreen(with: user)
+        goToNextScreen(with: user?.displayName)
+    }
+}
+
+extension LoginViewController: LoginViewModelDelegate {
+    func loginComSucesso(userName: String?) {
+        goToNextScreen(with: userName)
+    }
+    
+    func loginComErro(errorMessage: String) {
+        showDialog(with: errorMessage)
     }
 }
