@@ -24,10 +24,19 @@ class FavoritoViewModel{
         delegate?.recarregaDados()
     }
     
-    func adicionarFavorito(nome: String?, imagem: String?) {
+    func adicionarFavorito(nome: String?, imagem: String?) -> Bool {
+        guard let nome = nome,
+              let imagem = imagem
+        else {
+            return false
+        }
+        
         favorito = service.adicionarFavoritoNoCoreData(nome: nome, imagem: imagem)
         delegate?.recarregaDados()
+        
+        return true
     }
+    
     func removerFavorito(em posicao: Int) {
         favorito = service.removerFavoritoNoCoreData(favorito: favorito[posicao])
         delegate?.recarregaDados()
