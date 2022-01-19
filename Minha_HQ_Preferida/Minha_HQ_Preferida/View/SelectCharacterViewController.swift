@@ -13,8 +13,10 @@ class SelectCharacterViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var selectCharacterCollectioView: UICollectionView!
     @IBOutlet weak var loadingActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var logOutButton: UIButton!
     
     let selectCharacterViewModel = SelectCharacterViewModel()
+    let loginViewModel = LoginViewModel()
     
     var usuario : String?
     
@@ -26,11 +28,6 @@ class SelectCharacterViewController: UIViewController {
         setLabelRadius()
         setButtonRadius()
         setCollectionView()
-        
-        if let usuario = self.usuario {
-            print("<<<<<<  SelectCharacterViewController usuario: \(usuario)")
-        }
-        
     }
     
     @IBAction func actionAvancarButton(_ sender: Any) {
@@ -39,6 +36,12 @@ class SelectCharacterViewController: UIViewController {
         } else {
             showDialog(message: "Favor selecionar 3 personagens", title: "Atenção")
         }
+    }
+    
+    @IBAction func logout(_ sender: Any) {
+        print("<<< actionLogoutButton")
+        loginViewModel.logoutFirebase()
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -50,8 +53,7 @@ class SelectCharacterViewController: UIViewController {
     private func showDialog(message :String, title: String) {
         let dialogMessage = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
-        })
+        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
         
         dialogMessage.addAction(ok)
         
@@ -59,7 +61,8 @@ class SelectCharacterViewController: UIViewController {
     }
     
     private func setButtonRadius() {
-        nextButton.layer.cornerRadius = 28
+        nextButton.layer.cornerRadius = nextButton.frame.height/2
+        logOutButton.layer.cornerRadius = logOutButton.frame.height/2
     }
     
     private func setLabelRadius() {

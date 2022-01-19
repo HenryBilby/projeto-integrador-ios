@@ -208,13 +208,12 @@
 		E087420F270F39EF00BFE8F9 /* Minha_HQ_Preferida */ = {
 			isa = PBXGroup;
 			children = (
-				E0426CE12735EC5C002BB00E /* Services */,
 				E0874248270F678F00BFE8F9 /* View */,
 				E0874247270F676D00BFE8F9 /* ViewModel */,
+				E0426CE12735EC5C002BB00E /* Services */,
 				E0874240270F483D00BFE8F9 /* Model */,
 				E0874210270F39EF00BFE8F9 /* AppDelegate.swift */,
 				E0874212270F39EF00BFE8F9 /* SceneDelegate.swift */,
-				E0874214270F39EF00BFE8F9 /* LoginViewController.swift */,
 				E0874216270F39EF00BFE8F9 /* Main.storyboard */,
 				E0874219270F39F100BFE8F9 /* Assets.xcassets */,
 				E087421B270F39F100BFE8F9 /* LaunchScreen.storyboard */,
@@ -269,6 +268,7 @@
 		E0874248270F678F00BFE8F9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E0874214270F39EF00BFE8F9 /* LoginViewController.swift */,
 				E087424D270F827F00BFE8F9 /* SelectCharacterViewController.swift */,
 				E08742592710798300BFE8F9 /* ShowSelectedCharactersViewController.swift */,
 				9BA723CE271CBA2200C2303F /* ComicCollectionViewController.swift */,

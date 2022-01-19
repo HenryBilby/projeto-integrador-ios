@@ -1,0 +1,229 @@
+//
+//  ViewController.swift
+//  Minha_HQ_Preferida
+//
+//  Created by Henry Bilby on 07/10/21.
+//
+import Foundation
+import UIKit
+import GoogleSignIn
+import FirebaseAuth
+import FacebookCore
+import FacebookLogin
+
+
+class LoginViewController: UIViewController {
+    
+    @IBOutlet weak var textFieldEmail: UITextField!
+    @IBOutlet weak var textFieldPassword: UITextField!
+    
+    @IBOutlet weak var buttonLogin: UIButton!
+    @IBOutlet weak var buttonResetSenha: UIButton!
+    @IBOutlet weak var buttonCriarConta: UIButton!
+    
+    @IBOutlet weak var facebookButtonContainer: UIView!
+
+    @IBOutlet var signInButton: GIDSignInButton!
+    
+    let loginViewModel = LoginViewModel()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setGoogleButtonBehavior()
+        setFacebookButtonBehavior()
+        setButtonsRadius()
+        checkIfUserIsLoggedIn()
+        
+        loginViewModel.delegate = self
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let selecteCharactersViewController = segue.destination as? SelectCharacterViewController, segue.identifier == "selectCharacterSegue" {
+            selecteCharactersViewController.usuario = sender as? String
+        }
+    }
+
+    @IBAction func resetSenhaButton(_ sender: Any) {
+        if loginViewModel.isValid(textField: textFieldEmail) {
+            removeError(textField: textFieldEmail)
+            loginViewModel.resetPassword(with: textFieldEmail.text!)
+        } else {
+            showError(textField: textFieldEmail)
+        }
+    }
+    
+    @IBAction func loginButtonAction(_ sender: Any) {
+        if isValidSignIn() {
+            loginViewModel.loginFirebase(email: textFieldEmail.text!, password: textFieldPassword.text!)
+        }
+    }
+    
+    @IBAction func criarButton(_ sender: Any) {
+        if isValidSignIn() {
+            showDialogCreateUser(email: textFieldEmail.text!, password: textFieldPassword.text!)
+        }
+    }
+    
+    private func checkIfUserIsLoggedIn() {
+        loginViewModel.getUser()
+    }
+
+    private func setButtonsRadius() {
+        let radius : CGFloat = 25
+        buttonLogin.layer.cornerRadius = radius
+        buttonCriarConta.layer.cornerRadius = radius
+        buttonResetSenha.layer.cornerRadius = radius
+    }
+    
+    private func setGoogleButtonBehavior() {
+        GIDSignIn.sharedInstance().presentingViewController = self
+        GIDSignIn.sharedInstance().delegate = self
+    }
+    
+    private func setFacebookButtonBehavior() {
+        let facebookButton = FBLoginButton(frame: facebookButtonContainer.bounds, permissions: [.publicProfile])
+        facebookButton.delegate = self
+        self.facebookButtonContainer.backgroundColor = .clear
+        self.facebookButtonContainer.addSubview(facebookButton)
+    }
+
+    private func goToNextScreen(with userName: String?) {
+        self.performSegue(withIdentifier: "selectCharacterSegue", sender: userName)
+    }
+    
+    private func isValidSignIn() -> Bool {
+        if !loginViewModel.isValid(textField: textFieldEmail) {
+            showError(textField: textFieldEmail)
+            return false
+        }
+        
+        if !loginViewModel.isValid(textField: textFieldPassword) {
+            showError(textField: textFieldPassword)
+            return false
+        }
+        
+        removeErrorsFromTextFields()
+        
+        return true
+    }
+    
+    private func showError(textField: UITextField){
+        textField.layer.borderColor = UIColor.red.cgColor
+        textField.layer.borderWidth = 2
+        let message = "O campo marcado de vermelho não pode estar vazio"
+        showDialog(with: message)
+    }
+    
+    private func removeErrorsFromTextFields() {
+        removeError(textField: textFieldEmail)
+        removeError(textField: textFieldPassword)
+    }
+    
+    private func removeError(textField: UITextField){
+        if textField.layer.borderColor == UIColor.red.cgColor {
+            textField.layer.borderColor = UIColor.clear.cgColor
+            textField.layer.borderWidth = 0
+        }
+    }
+    
+    private func showDialog(with message: String){
+        let alert = UIAlertController(title: "Minha HQ Preferida APP", message: message, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        
+        alert.addAction(alertAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    private func showDialogGoToNextScreen(with message: String) {
+        let alert = UIAlertController(title: "Minha HQ Preferida APP", message: message, preferredStyle: .alert)
+        
+        let alertAction = UIAlertAction(
+            title: "Ok",
+            style: .default) {[weak self] _ in
+                guard let self = self else {return}
+                self.goToNextScreen(with: nil)
+            }
+        
+        alert.addAction(alertAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    private func showDialogCreateUser(email: String, password: String) {
+        
+        let alert = UIAlertController(
+            title: "Minha HQ Preferia APP",
+            message: "Você deseja criar uma nova conta?",
+            preferredStyle: .alert
+        )
+        
+        let continuarAction = UIAlertAction(
+            title: "Continuar",
+            style: .default) {[weak self] _ in
+                guard let self = self else {return}
+                self.loginViewModel.createUser(with: email, with: password)
+            }
+        
+        let cancelarAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+        
+        alert.addAction(continuarAction)
+        alert.addAction(cancelarAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+}
+
+extension LoginViewController:LoginButtonDelegate {
+    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
+        switch result {
+        case .none:
+            let message = "Erro ao efetuar login no Facebook"
+            showDialog(with: message)
+        case .some(let loginResult):
+            if let token = loginResult.token?.tokenString {
+                let credential = FacebookAuthProvider.credential(withAccessToken: token)
+                loginViewModel.loginFirebase(credential: credential)
+            }
+        }
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
+        loginViewModel.logoutFirebase()
+    }
+}
+
+extension LoginViewController: GIDSignInDelegate {
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser, withError error: Error!) {
+        if error != nil {
+            let message = "Erro ao realizar o login com Google"
+            showDialog(with: message)
+        }
+        loginViewModel.loginGoogle(user: user)
+    }
+}
+
+extension LoginViewController: LoginViewModelDelegate {
+    func createUserWithSucess(userEmail: String) {
+        let message = "Sucesso: Usuário criado com o \(userEmail)"
+        showDialogGoToNextScreen(with: message)
+    }
+    
+    func operationWithError(errorMessage: String) {
+        showDialog(with: errorMessage)
+    }
+    
+    func resetPasswordWithSucess(userEmail: String) {
+        let message = "Sucesso: Favor acessar o \(userEmail) para redefinir sua senha"
+        showDialog(with: message)
+    }
+
+    func loginWithSucess(userName: String?) {
+        goToNextScreen(with: userName)
+    }
+    
+}
