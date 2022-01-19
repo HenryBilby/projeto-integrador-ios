@@ -64,7 +64,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func criarButton(_ sender: Any) {
         if isValidSignIn() {
-            showDialogCriarConta(email: textFieldEmail.text!, password: textFieldPassword.text!)
+            showDialogCreateUser(email: textFieldEmail.text!, password: textFieldPassword.text!)
         }
     }
     
@@ -139,11 +139,11 @@ class LoginViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    private func showDialogWithHandler(with message: String) {
+    private func showDialogGoToNextScreen(with message: String) {
         let alert = UIAlertController(title: "Minha HQ Preferida APP", message: message, preferredStyle: .alert)
         
         let alertAction = UIAlertAction(
-            title: "Continuar",
+            title: "Ok",
             style: .default) {[weak self] _ in
                 guard let self = self else {return}
                 self.goToNextScreen(with: nil)
@@ -154,7 +154,7 @@ class LoginViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    private func showDialogCriarConta(email: String, password: String) {
+    private func showDialogCreateUser(email: String, password: String) {
         
         let alert = UIAlertController(
             title: "Minha HQ Preferia APP",
@@ -210,7 +210,7 @@ extension LoginViewController: GIDSignInDelegate {
 extension LoginViewController: LoginViewModelDelegate {
     func createUserWithSucess(userEmail: String) {
         let message = "Sucesso: Usuário criado com o \(userEmail)"
-        showDialogWithHandler(with: message)
+        showDialogGoToNextScreen(with: message)
     }
     
     func operationWithError(errorMessage: String) {
