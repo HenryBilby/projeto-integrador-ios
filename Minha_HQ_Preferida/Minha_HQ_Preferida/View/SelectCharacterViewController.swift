@@ -13,6 +13,7 @@ class SelectCharacterViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var selectCharacterCollectioView: UICollectionView!
     @IBOutlet weak var loadingActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var logOutButton: UIButton!
     
     let selectCharacterViewModel = SelectCharacterViewModel()
     let loginViewModel = LoginViewModel()
@@ -27,7 +28,6 @@ class SelectCharacterViewController: UIViewController {
         setLabelRadius()
         setButtonRadius()
         setCollectionView()
-        setTitle()
     }
     
     @IBAction func actionAvancarButton(_ sender: Any) {
@@ -50,21 +50,10 @@ class SelectCharacterViewController: UIViewController {
         }
     }
     
-    private func setTitle(){
-        self.navigationItem.leftBarButtonItem?.title = "Olá"
-        self.title = "Olá"
-        if let usuario = self.usuario {
-            print("<<<<<<  SelectCharacterViewController usuario: \(usuario)")
-            self.title! += " \(usuario),"
-            self.navigationItem.leftBarButtonItem?.title! += " \(usuario),"
-        }
-    }
-    
     private func showDialog(message :String, title: String) {
         let dialogMessage = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
-        })
+        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
         
         dialogMessage.addAction(ok)
         
@@ -72,7 +61,8 @@ class SelectCharacterViewController: UIViewController {
     }
     
     private func setButtonRadius() {
-        nextButton.layer.cornerRadius = 28
+        nextButton.layer.cornerRadius = nextButton.frame.height/2
+        logOutButton.layer.cornerRadius = logOutButton.frame.height/2
     }
     
     private func setLabelRadius() {

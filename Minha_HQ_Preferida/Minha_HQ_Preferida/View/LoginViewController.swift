@@ -180,14 +180,12 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController:LoginButtonDelegate {
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
-        print("<<<< Usuario efetuou login no facebook")
-        
         switch result {
         case .none:
-            print("<<<< Erro ao efetuar login no Facebook")
+            let message = "Erro ao efetuar login no Facebook"
+            showDialog(with: message)
         case .some(let loginResult):
             if let token = loginResult.token?.tokenString {
-                print("<<<< Token is: \(token)")
                 let credential = FacebookAuthProvider.credential(withAccessToken: token)
                 loginViewModel.loginFirebase(credential: credential)
             }
@@ -195,25 +193,17 @@ extension LoginViewController:LoginButtonDelegate {
     }
     
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
-        print("<<<< Usuario efetuou logout no facebook")
         loginViewModel.logoutFirebase()
     }
 }
 
 extension LoginViewController: GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser, withError error: Error!) {
-            guard
-                let authentication = user.authentication,
-                let idToken = authentication.idToken else { return }
-            
-            let credential = GoogleAuthProvider.credential(
-                withIDToken: idToken,
-                accessToken: authentication.accessToken
-            )
-
-            print("<<<< Usuario \(String(describing: user.profile.name)) efetuou login no Gmail")
-
-            loginViewModel.loginFirebase(credential: credential)
+        if error != nil {
+            let message = "Erro ao realizar o login com Google"
+            showDialog(with: message)
+        }
+        loginViewModel.loginGoogle(user: user)
     }
 }
 

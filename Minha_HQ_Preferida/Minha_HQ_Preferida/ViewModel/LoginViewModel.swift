@@ -8,6 +8,8 @@
 import Foundation
 import Firebase
 import UIKit
+import GoogleSignIn
+import Alamofire
 
 protocol LoginViewModelDelegate {
     func loginWithSucess(userName: String?)
@@ -20,6 +22,13 @@ class LoginViewModel {
     
     public var delegate : LoginViewModelDelegate?
     private let serviceLogin = LoginService()
+    
+    public func loginGoogle(user: GIDGoogleUser) {
+        serviceLogin.loginGoogle(user: user) { [weak self] credential in
+            guard let self = self else { return }
+            self.loginFirebase(credential: credential)
+        }
+    }
     
     public func loginFirebase(credential: AuthCredential) {
         serviceLogin.loginFirebase(credential: credential) { result in
@@ -103,7 +112,6 @@ class LoginViewModel {
     private func getNameFromEmail(email: String) -> String {
         let delimiter = "@"
         if let name = email.components(separatedBy: delimiter).first {
-            print ("<<<< email: \(email) name: \(name)")
             return name
         }
         return ""
@@ -130,6 +138,9 @@ class LoginViewModel {
             break
         case .weakPassword:
             message = "Senha muito fraca, escolha outra"
+            break
+        case .appVerificationUserInteractionFailure:
+            message = "Erro na verificação do usuário, realizar login mais tarde"
             break
         default:
             message = "Erro ao realizar login!"

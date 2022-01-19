@@ -7,11 +7,9 @@
 
 import Foundation
 import Firebase
-
-enum FirebaseError : Error {
-    case invalidEmail
-    case invalidPassword
-}
+import FacebookCore
+import FacebookLogin
+import GoogleSignIn
 
 struct LoginResult {
     let user: User?
@@ -19,6 +17,19 @@ struct LoginResult {
 }
 
 class LoginService {
+    
+    public func loginGoogle(user: GIDGoogleUser, completion: @escaping (AuthCredential) -> Void){
+        guard
+            let authentication = user.authentication,
+            let idToken = authentication.idToken else { return }
+        
+        let credential = GoogleAuthProvider.credential(
+            withIDToken: idToken,
+            accessToken: authentication.accessToken
+        )
+
+        completion(credential)
+    }
     
     public func loginFirebase(credential: AuthCredential, completion: @escaping (LoginResult) -> Void){
         Auth.auth().signIn(with: credential) { result, error in
@@ -48,10 +59,8 @@ class LoginService {
     }
     
     public func logoutFirebase(){
-        print("<<<< logoutFirebase()")
         do {
             try Auth.auth().signOut()
-            print("<<<< Usuario efetuou logout no firebase com sucesso")
         } catch let error {
             print(error.localizedDescription)
         }
