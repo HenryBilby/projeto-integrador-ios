@@ -48,6 +48,7 @@ class LoginService {
     }
     
     public func logoutFirebase(){
+        print("<<<< logoutFirebase()")
         do {
             try Auth.auth().signOut()
             print("<<<< Usuario efetuou logout no firebase com sucesso")

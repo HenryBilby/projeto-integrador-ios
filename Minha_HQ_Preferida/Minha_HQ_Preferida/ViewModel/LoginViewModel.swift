@@ -24,7 +24,7 @@ class LoginViewModel {
     public func loginFirebase(credential: AuthCredential) {
         serviceLogin.loginFirebase(credential: credential) { result in
             if let user = result.user {
-                self.loginWithSucess(user: user)
+                self.getNameFromUser(user: user)
             } else if let error = result.error {
                 self.operationWithError(error: error)
             }
@@ -46,7 +46,7 @@ class LoginViewModel {
     public func loginFirebase(email: String, password: String) {
         serviceLogin.loginFirebase(with: email, with: password) { result in
             if let user = result.user {
-                self.loginWithSucess(user: user)
+                self.getNameFromUser(user: user)
             } else if let error = result.error {
                 self.operationWithError(error: error)
             }
@@ -76,11 +76,37 @@ class LoginViewModel {
             }
         }
     }
-
-    private func loginWithSucess(user: User) {
-        DispatchQueue.main.async {
-            self.delegate?.loginWithSucess(userName: user.displayName)
+    
+    public func getUser(){
+        if let user = Auth.auth().currentUser {
+            getNameFromUser(user: user)
         }
+    }
+    
+    private func getNameFromUser(user: User) {
+        if let name = user.displayName {
+            loginWithSucess(name: name)
+        } else if let email = user.email{
+            let name = getNameFromEmail(email: email)
+            loginWithSucess(name: name)
+        } else {
+            loginWithSucess(name: nil)
+        }
+    }
+
+    private func loginWithSucess(name: String?) {
+        DispatchQueue.main.async {
+            self.delegate?.loginWithSucess(userName: name)
+        }
+    }
+    
+    private func getNameFromEmail(email: String) -> String {
+        let delimiter = "@"
+        if let name = email.components(separatedBy: delimiter).first {
+            print ("<<<< email: \(email) name: \(name)")
+            return name
+        }
+        return ""
     }
 
     private func operationWithError(error: AuthErrorCode) {
@@ -101,6 +127,9 @@ class LoginViewModel {
             break
         case .userNotFound:
             message = "Usuário não encontrado, favor criar uma conta"
+            break
+        case .weakPassword:
+            message = "Senha muito fraca, escolha outra"
             break
         default:
             message = "Erro ao realizar login!"

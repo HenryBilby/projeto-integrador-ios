@@ -15,6 +15,7 @@ class SelectCharacterViewController: UIViewController {
     @IBOutlet weak var loadingActivityIndicator: UIActivityIndicatorView!
     
     let selectCharacterViewModel = SelectCharacterViewModel()
+    let loginViewModel = LoginViewModel()
     
     var usuario : String?
     
@@ -26,11 +27,7 @@ class SelectCharacterViewController: UIViewController {
         setLabelRadius()
         setButtonRadius()
         setCollectionView()
-        
-        if let usuario = self.usuario {
-            print("<<<<<<  SelectCharacterViewController usuario: \(usuario)")
-        }
-        
+        setTitle()
     }
     
     @IBAction func actionAvancarButton(_ sender: Any) {
@@ -41,9 +38,25 @@ class SelectCharacterViewController: UIViewController {
         }
     }
     
+    @IBAction func logout(_ sender: Any) {
+        print("<<< actionLogoutButton")
+        loginViewModel.logoutFirebase()
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let showSelectedCharacters = segue.destination as? ShowSelectedCharactersViewController ,segue.identifier == "showCharactersSegue" {
             showSelectedCharacters.selectedCharacters = selectCharacterViewModel.getCharacterListSelected()
+        }
+    }
+    
+    private func setTitle(){
+        self.navigationItem.leftBarButtonItem?.title = "Olá"
+        self.title = "Olá"
+        if let usuario = self.usuario {
+            print("<<<<<<  SelectCharacterViewController usuario: \(usuario)")
+            self.title! += " \(usuario),"
+            self.navigationItem.leftBarButtonItem?.title! += " \(usuario),"
         }
     }
     

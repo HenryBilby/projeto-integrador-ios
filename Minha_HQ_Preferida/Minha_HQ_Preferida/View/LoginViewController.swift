@@ -32,6 +32,7 @@ class LoginViewController: UIViewController {
         setGoogleButtonBehavior()
         setFacebookButtonBehavior()
         setButtonsRadius()
+        checkIfUserIsLoggedIn()
         
         loginViewModel.delegate = self
     }
@@ -63,12 +64,16 @@ class LoginViewController: UIViewController {
     
     @IBAction func criarButton(_ sender: Any) {
         if isValidSignIn() {
-            criarNovaContaNoFirebase(email: textFieldEmail.text!, password: textFieldPassword.text!)
+            showDialogCriarConta(email: textFieldEmail.text!, password: textFieldPassword.text!)
         }
+    }
+    
+    private func checkIfUserIsLoggedIn() {
+        loginViewModel.getUser()
     }
 
     private func setButtonsRadius() {
-        let radius : CGFloat = 10
+        let radius : CGFloat = 25
         buttonLogin.layer.cornerRadius = radius
         buttonCriarConta.layer.cornerRadius = radius
         buttonResetSenha.layer.cornerRadius = radius
@@ -149,7 +154,7 @@ class LoginViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    private func criarNovaContaNoFirebase(email: String, password: String) {
+    private func showDialogCriarConta(email: String, password: String) {
         
         let alert = UIAlertController(
             title: "Minha HQ Preferia APP",
