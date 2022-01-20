@@ -37,6 +37,11 @@ class LoginViewController: UIViewController {
         loginViewModel.delegate = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        textFieldEmail.becomeFirstResponder()
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
@@ -49,10 +54,10 @@ class LoginViewController: UIViewController {
 
     @IBAction func resetSenhaButton(_ sender: Any) {
         if loginViewModel.isValid(textField: textFieldEmail) {
-            removeError(textField: textFieldEmail)
+            removeErrorFrom(textField: textFieldEmail)
             loginViewModel.resetPassword(with: textFieldEmail.text!)
         } else {
-            showError(textField: textFieldEmail)
+            showErrorFor(textField: textFieldEmail)
         }
     }
     
@@ -73,10 +78,9 @@ class LoginViewController: UIViewController {
     }
 
     private func setButtonsRadius() {
-        let radius : CGFloat = 25
-        buttonLogin.layer.cornerRadius = radius
-        buttonCriarConta.layer.cornerRadius = radius
-        buttonResetSenha.layer.cornerRadius = radius
+        buttonLogin.layer.cornerRadius = buttonLogin.frame.height/2
+        buttonCriarConta.layer.cornerRadius = buttonCriarConta.frame.height/2
+        buttonResetSenha.layer.cornerRadius = buttonResetSenha.frame.height/2
     }
     
     private func setGoogleButtonBehavior() {
@@ -97,33 +101,33 @@ class LoginViewController: UIViewController {
     
     private func isValidSignIn() -> Bool {
         if !loginViewModel.isValid(textField: textFieldEmail) {
-            showError(textField: textFieldEmail)
+            showErrorFor(textField: textFieldEmail)
             return false
         }
+        
+        removeErrorFrom(textField: textFieldEmail)
         
         if !loginViewModel.isValid(textField: textFieldPassword) {
-            showError(textField: textFieldPassword)
+            showErrorFor(textField: textFieldPassword)
             return false
         }
         
-        removeErrorsFromTextFields()
+        removeErrorFrom(textField: textFieldPassword)
         
         return true
     }
     
-    private func showError(textField: UITextField){
+    private func showErrorFor(textField: UITextField){
         textField.layer.borderColor = UIColor.red.cgColor
         textField.layer.borderWidth = 2
+        if !textField.isEditing {
+            textField.becomeFirstResponder()
+        }
         let message = "O campo marcado de vermelho não pode estar vazio"
         showDialog(with: message)
     }
-    
-    private func removeErrorsFromTextFields() {
-        removeError(textField: textFieldEmail)
-        removeError(textField: textFieldPassword)
-    }
-    
-    private func removeError(textField: UITextField){
+        
+    private func removeErrorFrom(textField: UITextField){
         if textField.layer.borderColor == UIColor.red.cgColor {
             textField.layer.borderColor = UIColor.clear.cgColor
             textField.layer.borderWidth = 0
