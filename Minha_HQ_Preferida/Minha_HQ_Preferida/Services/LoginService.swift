@@ -58,9 +58,10 @@ class LoginService {
         }
     }
     
-    public func logoutFirebase(){
+    public func logout(){
         do {
             try Auth.auth().signOut()
+            LoginManager().logOut()
         } catch let error {
             print(error.localizedDescription)
         }

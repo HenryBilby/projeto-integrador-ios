@@ -145,11 +145,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selecione 3 personagens favoritos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vIW-Rd-iMw">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vIW-Rd-iMw">
                                 <rect key="frame" x="16" y="94" width="382" height="66"/>
                                 <color key="backgroundColor" red="0.98039215800000001" green="0.88627451660000001" blue="0.35686278339999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="66" id="p0a-ox-jXB"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="66" id="p0a-ox-jXB"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="22"/>
                                 <color key="textColor" red="0.8078432083" green="0.20392158630000001" blue="0.1607843041" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -764,11 +764,11 @@
             </objects>
             <point key="canvasLocation" x="129" y="821"/>
         </scene>
-        <!--Login-->
+        <!--App-->
         <scene sceneID="DiZ-WP-Ezs">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GCf-ED-Tzl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Login" image="person.fill" catalog="system" id="t8f-6g-gIf">
+                    <tabBarItem key="tabBarItem" title="App" image="app.fill" catalog="system" id="t8f-6g-gIf">
                         <color key="badgeColor" red="0.98039215800000001" green="0.88627451660000001" blue="0.35686278339999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -777,7 +777,6 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="Helvetica-BoldOblique" family="Helvetica" pointSize="25"/>
-                            <color key="textColor" red="0.98039215800000001" green="0.88627451660000001" blue="0.35686278339999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -812,9 +811,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="app.fill" catalog="system" width="128" height="114"/>
         <image name="arrow.left.circle" catalog="system" width="128" height="121"/>
         <image name="login_heroes" width="550" height="707"/>
-        <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="rectangle.portrait.and.arrow.right.fill" catalog="system" width="128" height="108"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>

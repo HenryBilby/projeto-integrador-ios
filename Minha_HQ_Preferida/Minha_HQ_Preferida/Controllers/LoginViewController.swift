@@ -193,7 +193,7 @@ extension LoginViewController:LoginButtonDelegate {
     }
     
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
-        loginViewModel.logoutFirebase()
+        loginViewModel.logout()
     }
 }
 

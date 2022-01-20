@@ -28,6 +28,7 @@ class SelectCharacterViewController: UIViewController {
         setLabelRadius()
         setButtonRadius()
         setCollectionView()
+        setLabelUserName()
     }
     
     @IBAction func actionAvancarButton(_ sender: Any) {
@@ -40,13 +41,22 @@ class SelectCharacterViewController: UIViewController {
     
     @IBAction func logout(_ sender: Any) {
         print("<<< actionLogoutButton")
-        loginViewModel.logoutFirebase()
+        loginViewModel.logout()
         self.navigationController?.popToRootViewController(animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let showSelectedCharacters = segue.destination as? ShowSelectedCharactersViewController ,segue.identifier == "showCharactersSegue" {
             showSelectedCharacters.selectedCharacters = selectCharacterViewModel.getCharacterListSelected()
+        }
+    }
+    
+    private func setLabelUserName() {
+        if let usuario = usuario {
+            let boasVindas = "  Olá, \(usuario)!\n  Selecione 3 personagens favoritos"
+            selectCharacterLabel.text = boasVindas
+        } else {
+            selectCharacterLabel.text = "  Selecione 3 personagens favoritos"
         }
     }
     

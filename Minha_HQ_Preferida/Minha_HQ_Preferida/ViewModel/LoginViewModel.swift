@@ -7,9 +7,7 @@
 
 import Foundation
 import Firebase
-import UIKit
 import GoogleSignIn
-import Alamofire
 
 protocol LoginViewModelDelegate {
     func loginWithSucess(userName: String?)
@@ -40,8 +38,8 @@ class LoginViewModel {
         }
     }
     
-    public func logoutFirebase() {
-        serviceLogin.logoutFirebase()
+    public func logout() {
+        serviceLogin.logout()
     }
     
     public func isValid(textField: UITextField) -> Bool {
@@ -141,6 +139,9 @@ class LoginViewModel {
             break
         case .appVerificationUserInteractionFailure:
             message = "Erro na verificação do usuário, realizar login mais tarde"
+            break
+        case .emailAlreadyInUse:
+            message = "E-mail já cadastrado, clica em esqueci a senha"
             break
         default:
             message = "Erro ao realizar login!"
