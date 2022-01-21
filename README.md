@@ -127,6 +127,12 @@ aproximar ainda mais os usuários de seus conteúdos(da Marvel). A API consumida
   <img src="https://media.giphy.com/media/QMaYUW6Ii5cob6zE33/giphy.gif" width="400px" height="800px" >
 </p>
 
+### **Tela de Carregamento**
+ 
+ <p align="center">
+  <img src="https://github.com/HenryBilby/projeto-integrador-ios/blob/development/imagesApp/telaCarregamento.png" width="400px" height="800px" >
+</p>
+ 
 ### **Tela Login**
 
 <p align="center">
