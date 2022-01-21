@@ -121,7 +121,9 @@ aproximar ainda mais os usuários de seus conteúdos(da Marvel). A API consumida
 </p>
 
 ---
-## 📚 **Minha HQ Preferida**
+# 📚 **Minha HQ Preferida**
+ 
+ ### **Navegação do Aplicativo**
 
 <p align="center">
   <img src="https://media.giphy.com/media/QMaYUW6Ii5cob6zE33/giphy.gif" width="400px" height="800px" >
