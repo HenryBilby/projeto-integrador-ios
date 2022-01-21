@@ -38,7 +38,7 @@
                                     </view>
                                 </subviews>
                             </stackView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite o seu e-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M6L-kc-zIx">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite o seu e-mail" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="M6L-kc-zIx">
                                 <rect key="frame" x="64" y="271" width="286" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="DVN-wA-Cdc"/>
@@ -46,7 +46,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Informe a senha" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mvc-lU-6An">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Informe a senha" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Mvc-lU-6An">
                                 <rect key="frame" x="64" y="322" width="286" height="35"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -120,7 +120,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ZOC-s7-kVb">
-                        <barButtonItem key="backBarButtonItem" title="Login" id="viy-PH-xPp"/>
+                        <barButtonItem key="backBarButtonItem" title="Login" id="viy-PH-xPp">
+                            <color key="tintColor" red="0.98039215800000001" green="0.88627451660000001" blue="0.35686278339999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="buttonCriarConta" destination="3Yq-ZG-rhs" id="4PG-gZ-9EC"/>
@@ -147,7 +149,7 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vIW-Rd-iMw">
                                 <rect key="frame" x="16" y="94" width="382" height="66"/>
-                                <color key="backgroundColor" red="0.98039215800000001" green="0.88627451660000001" blue="0.35686278339999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.98039215686274506" green="0.88627450980392153" blue="0.35686274509803922" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="66" id="p0a-ox-jXB"/>
                                 </constraints>
@@ -228,7 +230,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="XId-eN-5GE">
-                        <barButtonItem key="backBarButtonItem" title="Selecionar 3 Personagens" id="huF-1x-lWN"/>
+                        <barButtonItem key="backBarButtonItem" title="Selecionar 3 Personagens" id="huF-1x-lWN">
+                            <color key="tintColor" red="0.98039215800000001" green="0.88627451660000001" blue="0.35686278339999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="tQy-hA-YLB">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="O1e-Ib-m2l">
                                 <rect key="frame" x="313" y="11" width="81" height="22"/>
@@ -355,7 +359,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="qwu-Q7-ZYw">
-                        <barButtonItem key="backBarButtonItem" title="Selecionar HQ por personagem" id="Pnx-jZ-NAR"/>
+                        <barButtonItem key="backBarButtonItem" title="Selecionar HQ por personagem" id="Pnx-jZ-NAR">
+                            <color key="tintColor" red="0.98039215800000001" green="0.88627451660000001" blue="0.35686278339999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="favoriteTableView" destination="yh3-8M-xmk" id="Lj8-en-xbd"/>
@@ -772,7 +778,7 @@
                         <color key="badgeColor" red="0.98039215800000001" green="0.88627451660000001" blue="0.35686278339999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="arrow.left.circle" catalog="system" id="lB4-58-LOO">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lB4-58-LOO">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
@@ -812,7 +818,6 @@
     </scenes>
     <resources>
         <image name="app.fill" catalog="system" width="128" height="114"/>
-        <image name="arrow.left.circle" catalog="system" width="128" height="121"/>
         <image name="login_heroes" width="550" height="707"/>
         <image name="rectangle.portrait.and.arrow.right.fill" catalog="system" width="128" height="108"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>

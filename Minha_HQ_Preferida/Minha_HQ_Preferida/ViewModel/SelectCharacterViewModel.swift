@@ -52,4 +52,8 @@ class SelectCharacterViewModel {
             }
         }
     }
+    
+    public func setCharacterList( list: [Character]) {
+        self.characterList = list
+    }
 }

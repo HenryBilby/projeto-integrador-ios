@@ -29,6 +29,8 @@ class SelectCharacterViewController: UIViewController {
         setButtonRadius()
         setCollectionView()
         setLabelUserName()
+        
+        self.navigationItem.setHidesBackButton(true, animated: false)
     }
     
     @IBAction func actionAvancarButton(_ sender: Any) {
