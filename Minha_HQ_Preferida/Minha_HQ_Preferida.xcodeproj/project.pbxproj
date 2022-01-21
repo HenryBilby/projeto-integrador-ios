@@ -167,7 +167,7 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
-		E0426CE12735EC5C002BB00E /* Services */ = {
+		E0426CE12735EC5C002BB00E /* Service */ = {
 			isa = PBXGroup;
 			children = (
 				E0874249270F7C2100BFE8F9 /* LoginService.swift */,
@@ -176,10 +176,10 @@
 				D0C81FF2274857B100548A1C /* CoreDataService.swift */,
 				D0DF0FE8275FCAC000F0E238 /* FirebaseService.swift */,
 			);
-			path = Services;
+			path = Service;
 			sourceTree = "<group>";
 		};
-		E043F3A12798D6F3006AC427 /* Controllers */ = {
+		E043F3A12798D6F3006AC427 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				E0874214270F39EF00BFE8F9 /* LoginViewController.swift */,
@@ -189,7 +189,7 @@
 				D030C8C72723482F008D653E /* DetailViewController.swift */,
 				D0DE7B9E2745D4BC00B45DBC /* FavoriteHQViewController.swift */,
 			);
-			path = Controllers;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		E0874204270F39EF00BFE8F9 = {
@@ -220,9 +220,9 @@
 			isa = PBXGroup;
 			children = (
 				E0874248270F678F00BFE8F9 /* View */,
-				E043F3A12798D6F3006AC427 /* Controllers */,
+				E043F3A12798D6F3006AC427 /* Controller */,
 				E0874247270F676D00BFE8F9 /* ViewModel */,
-				E0426CE12735EC5C002BB00E /* Services */,
+				E0426CE12735EC5C002BB00E /* Service */,
 				E0874240270F483D00BFE8F9 /* Model */,
 				E0874210270F39EF00BFE8F9 /* AppDelegate.swift */,
 				E0874212270F39EF00BFE8F9 /* SceneDelegate.swift */,
