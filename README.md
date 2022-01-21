@@ -152,6 +152,13 @@ aproximar ainda mais os usuários de seus conteúdos(da Marvel). A API consumida
 <p align="center">
   <img src="https://github.com/HenryBilby/projeto-integrador-ios/blob/development/imagesApp/telaSelect.png" width="400px" height="800px" >
 </p>
+ 
+ 
+### **Tela dos 3 Personagens Selecionadas**
+
+<p align="center">
+  <img src="https://github.com/HenryBilby/projeto-integrador-ios/blob/development/imagesApp/personagens%20favs%20detalhes.png" width="400px" height="800px" >
+</p>
 
 ### **Tela de HQs do Personagem Selecionado**
 
