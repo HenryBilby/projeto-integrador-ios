@@ -117,6 +117,11 @@ aproximar ainda mais os usuários de seus conteúdos(da Marvel). A API consumida
 ## **Protótipo Inicial**
  
 <p align="center">
+<img src="https://github.com/HenryBilby/projeto-integrador-ios/blob/development/imagesApp/figma.PNG" width="900px" height="400px" >
+</p>
+
+ 
+<p align="center">
 <img src="https://media.giphy.com/media/lpJU3PGMePdX9UlF2P/giphy.gif" width="900px" height="800px" >
 </p>
 
