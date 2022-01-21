@@ -5,13 +5,12 @@
    <img align="left" src="https://github.com/HenryBilby/projeto-integrador-ios/blob/development/logos/Logo.jpg" width="400px">
  
    O projeto integrador consiste em desenvolver um aplicativo com técnicas e temáticas abordadas durante o curso <a href="https://www.digitalhouse.com/br/curso/desenvolvimento-mobile-ios"><b> Desenvolvimento Mobile iOS </b></a>, ofertado pela  <a href="https://www.digitalhouse.com/br/"><b> Digital House </b></a>. A equipe chegou ao consenso de criar um aplicativo capaz de possibilitar uma 
-integração do usuário com as HQs (histórias em quadrinho), séries e os personagens da Marvel, com detalhes das HQs, fichas técnicas e descrição tudo para 
+integração do usuário com as HQs (histórias em quadrinho), personagens da Marvel, com detalhes das HQs, fichas técnicas e descrição tudo para 
 aproximar ainda mais os usuários de seus conteúdos(da Marvel). A API consumida para o desenvolvimento do aplicativo foi a da <a href="https://developer.marvel.com/docs"><b> Marvel </b></a>.
 </div>
 </p>
 
 ---
- 
  ## **Integrantes**
 
 <div align="center">
@@ -65,6 +64,8 @@ aproximar ainda mais os usuários de seus conteúdos(da Marvel). A API consumida
 </p>
 
 ---
+ <div align="center">
+
 ## ⚠️ **Requisitos**
 
 <p>
@@ -108,8 +109,65 @@ aproximar ainda mais os usuários de seus conteúdos(da Marvel). A API consumida
  
 ✅ GitFlow.
  </div>
+ </div>
 
 ---
+<div align="center"> 
+ 
+## **Protótipo Inicial**
+ 
+<p align="center">
+<img src="https://media.giphy.com/media/lpJU3PGMePdX9UlF2P/giphy.gif" width="900px" height="800px" >
+</p>
+
+---
+## 📚 **Minha HQ Preferida**
+
+<p align="center">
+  <img src="https://media.giphy.com/media/QMaYUW6Ii5cob6zE33/giphy.gif" width="400px" height="800px" >
+</p>
+
+### **Tela Login**
+
+<p align="center">
+  <img src="https://github.com/HenryBilby/projeto-integrador-ios/blob/development/imagesApp/telaLogin.png" width="400px" height="800px" >
+</p>
+
+### **Cadastro de Usuário**
+
+<p align="center">
+  <img src="https://github.com/HenryBilby/projeto-integrador-ios/blob/development/imagesApp/telaCadastraUser.png" width="400px" height="800px" >
+</p>
+
+### **Tela de Seleção de Personagens**
+
+<p align="center">
+  <img src="https://github.com/HenryBilby/projeto-integrador-ios/blob/development/imagesApp/telaSelect.png" width="400px" height="800px" >
+</p>
+
+### **Tela de HQs do Personagem Selecionado**
+
+<p align="center">
+  <img src="https://github.com/HenryBilby/projeto-integrador-ios/blob/development/imagesApp/telaRevistinhas.png" width="400px" height="800px" >
+</p>
+
+### **Tela de Detalhes do Personagem Selecionado**
+
+<p align="center">
+  <img src="https://github.com/HenryBilby/projeto-integrador-ios/blob/development/imagesApp/telaDetalhes.png" width="400px" height="800px" >
+</p>
+
+### **Tela de Hqs Favoritadas**
+
+<p align="center">
+  <img src="https://github.com/HenryBilby/projeto-integrador-ios/blob/development/imagesApp/HqsFavoritados.png" width="400px" height="800px" >
+</p>
+
+  <p align="center">
+  <img src="https://github.com/HenryBilby/projeto-integrador-ios/blob/development/gifs/messagif%20(5).gif" width="400px" height="200px" >
+</p>
+
+ ---
 ## 🛠️ **Tools**
 
 - Bitrise
@@ -125,10 +183,4 @@ aproximar ainda mais os usuários de seus conteúdos(da Marvel). A API consumida
 - Xcode
 
 </p>
-
----
-## 📚 **Minha HQ Preferida Preview**
-
-<p align="center">
-  <img height="300" src="https://github.com/HenryBilby/projeto-integrador-ios/blob/development/gifs/messagif%20(5).gif" width="600px">
-</p>
+</div>
